@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Multibrowser_DC_Quiksilver" >
+    
+
+       <test name="FirefoxTest">
+              <parameter name="browser" value="firefox" />
+              <parameter name="url" value="stagingDC" />
+              
+             
+              <classes>        
+            
+                  <class name= "com.quiksilver.test.AddToWishListPdpTest"/>    
+           			  <class name= "com.quiksilver.test.AddToCartFromPdpTest"/>   
+                      <class name= "com.quiksilver.test.GuestCheckoutExpressAmexTest"/>   
+                      <class name="com.quiksilver.test.GuestVisaCheckoutTest"/>   
+                      <class name= "com.quiksilver.test.SearchForItemGuestCheckoutTest"/>                                                                             
+                      <class name= "com.quiksilver.test.SignedInCheckoutExpressMasterTest"/> 
+                      <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/>                   
+                      <class name="com.quiksilver.test.LoginTest" />
+                      <class name="com.quiksilver.test.AccountRegistrationTest" />
+                      <class name = "com.quiksilver.test.GuestCheckoutMultiPaymentWithDataProvider"/> 
+                  <!--    -->
+                                                                                                           
+                     
+              </classes>
+       </test>
+
+       <test name="ChromeTest">
+              <parameter name="browser" value="chrome" />
+              <parameter name="url" value="stagingDC" />
+              
+               <classes>
+                                  
+                      <class name= "com.quiksilver.test.AddToWishListPdpTest"/>    
+           			  <class name= "com.quiksilver.test.AddToCartFromPdpTest"/>   
+                      <class name= "com.quiksilver.test.GuestCheckoutExpressAmexTest"/>   
+                      <class name="com.quiksilver.test.GuestVisaCheckoutTest"/>   
+                      <class name= "com.quiksilver.test.SearchForItemGuestCheckoutTest"/>                                                                             
+ 					  <class name= "com.quiksilver.test.SignedInCheckoutExpressMasterTest"/> 
+                      <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/>                   
+                      <class name="com.quiksilver.test.LoginTest" />
+                      <class name="com.quiksilver.test.AccountRegistrationTest" />
+                      <class name = "com.quiksilver.test.GuestCheckoutMultiPaymentWithDataProvider"/>       
+                     <!--  -->              
+                  
+               </classes>
+       </test>      
+
+  <!--
+
+  <test name="SafariTest">
+              <parameter name="browser" value="safari" />
+              <parameter name="url" value="productionDC" />              
+              
+          <classes>
+              
+                      <class name= "com.quiksilver.test.AddToWishListPdpTest"/>    
+                         
+                      <class name="com.quiksilver.test.AccountRegistrationTest" />
+                      <class name= "com.quiksilver.test.AddToCartFromPdpTest"/>   
+                     <class name= "com.quiksilver.test.GuestCheckoutExpressAmexTest"/>                     
+                      <class name="com.quiksilver.test.GuestVisaCheckoutTest"/>                         
+                      <class name="com.quiksilver.test.LoginTest" />                     
+                      <class name= "com.quiksilver.test.SearchForItemGuestCheckoutTest"/>                                                                             
+                      <class name= "com.quiksilver.test.SignedInCheckoutExpressMasterTest"/> 
+                       <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/> 
+                      
+                  
+              </classes>
+       </test>
+       <test name="IETest">
+              <parameter name="browser" value="ie" />
+              <classes>
+                     <class name="com.quicksilver.test.Test1" />
+              </classes>
+       </test>
+-->
+</suite>
+

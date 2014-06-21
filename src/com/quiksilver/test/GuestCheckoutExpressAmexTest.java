@@ -1,0 +1,72 @@
+package com.quiksilver.test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.AssertJUnit;
+import org.testng.Reporter;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import com.quiksilver.util.BaseSuite;
+
+//TC#15 Guest Express Checkout in Smoke Test spreadsheet- test card not specified in TC shoudl test Amex or Master
+
+public class GuestCheckoutExpressAmexTest extends BaseSuite {
+	
+	@BeforeMethod
+	public void getToStep1GuestCheckout() throws Exception
+	{
+		cm.openHomePage(driver);
+		Boolean isLoggedIn= cm.isLoggedIn(driver);
+
+		if (isLoggedIn==true)
+		{
+			//logout to start test with desired logged out condition
+			cm.logout(driver);
+		}
+		
+		By locator_tshirtLink=map.getLocator("men_tshirtcss");
+		cm.homePageMainNavMen(driver, locator_tshirtLink);
+		
+		//on subcat page click on product - pass driver and locator for the product you want to click on
+		Reporter.log("On Subcat page title is "+ driver.getTitle());
+		ts.takeScreenshot(driver);
+		
+		By locator_subcatProduct = map.getLocator("subcat_product");
+		cm.subcatPageHoverOnProductClickExpressLink(driver,locator_subcatProduct);
+		
+		cm.fromMiniCartToCart(driver);
+		
+		//on Cart page click on Secure checkout
+		ts.takeScreenshot(driver);
+		cm.fromCartToSignIn(driver);		
+		
+		//click on unregistered checkout btn
+		By locator_unregisteredcheckoutbtn=map.getLocator("interstitial_unregisteredcheckoutbtn");
+		cm.checkoutSignInClickElement(driver, locator_unregisteredcheckoutbtn);
+		
+	}
+	
+	@Test
+	public void testGuestCheckoutAmex() throws Exception
+	{
+	        cm.step1Fields(driver);
+			//this is optional if the num of test is large just remove taking screenshot below
+	        ts.takeScreenshot(driver);
+
+	        cm.fromInscriptionToStep2Payment(driver);
+	        Reporter.log("After click on 'continue' button on Inscription page got to "+ driver.getTitle());
+	        
+	        //2/10 TEMP SOLUTION TESTING VISA WAITIN FOR AMEX CARD number 	       
+	        cm.selectPaymentOnStep2(driver,  "visa");
+	        
+	        //on Verification  Click on "Terms and Condition of Sale" checkbox and Place order button
+	        cm.verificationClickPlaceOrder(driver);
+	        
+	        //on Confirmation page 
+	        cm.submitConfirmation(driver);	        
+	        
+	}
+
+}
