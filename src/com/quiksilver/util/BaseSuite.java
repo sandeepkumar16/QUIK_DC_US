@@ -1,6 +1,7 @@
 package com.quiksilver.util;
 
 import java.awt.Point;
+import java.io.IOException;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -34,10 +35,10 @@ public class BaseSuite {
     
   public String stagingQuik = rp.readConfigProperties("staging");
   public String productionQuik = rp.readConfigProperties("production");
-  public  String stagingDC = rp.readConfigProperties("staging_dcshoes");
+  public  String stagingDC = rp.readConfigProperties("staging_dcshoes");   //dc shoes uk site in staging
   public String productionDC = rp.readConfigProperties("production_dcshoes");  
   
-  public String stagingDC_US=rp.readConfigProperties("staging_dcshoesUS");
+  public String stagingDC_US=rp.readConfigProperties("staging_dcshoesUS");  //dc shoes us site in staging
 
 
   public String testEmail = rp.readConfigProperties("yahoo_random");
@@ -48,7 +49,7 @@ public class BaseSuite {
 
 	 @Parameters("browser")
      @BeforeClass	 
-     public void beforeTest(@Optional("chrome") String browser) {
+     public void beforeTest(@Optional("chrome") String browser){
 		 
 		 if (browser.equalsIgnoreCase("firefox")) 
 

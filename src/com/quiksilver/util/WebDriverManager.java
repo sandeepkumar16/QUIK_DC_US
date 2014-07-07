@@ -3,6 +3,7 @@ package com.quiksilver.util;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.net.UnknownHostException;
 
 import org.apache.log4j.Logger;
@@ -12,6 +13,7 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
@@ -24,7 +26,7 @@ import org.testng.Reporter;
 
 
 public class WebDriverManager {
-	private static WebDriver driver =null;
+	private static WebDriver driver ;
 	private static Logger log;
 	private static DesiredCapabilities capability;
 	static ProfilesIni allProfiles = new ProfilesIni();
@@ -56,9 +58,25 @@ public class WebDriverManager {
 		
 		if(browser.equalsIgnoreCase("firefox")) 
 		{
-	        
-			driver=new FirefoxDriver();
+			
+			
+			// System.setProperty("webdriver.firefox.driver", "/Applications/Firefox.app/Contents/MacOS/firefox.exe");
+			 
+			
+			  driver = new FirefoxDriver();
+
+			
 		    defaultWindowSize(driver);
+/*//		    
+//		    
+//		    DesiredCapabilities capability = DesiredCapabilities.firefox();
+//		    capability.setCapability("platform", Platform.ANY);
+//		    capability.setCapability("binary", "/Applications/Firefox.app/Contents/MacOS/firefox.exe"); 
+//
+//		    //capability.setCapability("binary", "C:\\Program Files\\Mozilla  Firefox\\msfirefox.exe"); //for windows                
+//		    driver = new FirefoxDriver(capability);
+*/		 
+		    
 	    }
 		
 		
@@ -78,22 +96,23 @@ if(browser.equalsIgnoreCase("chrome")) {
 
 	    }
 	    if(browser.equalsIgnoreCase("safari")) {
-	    	SafariOptions options = new SafariOptions();
 	    	
+	    	SafariOptions options = new SafariOptions();
+
 	        capability = DesiredCapabilities.safari();
 	        capability.setBrowserName("safari");
 	        capability.setPlatform(org.openqa.selenium.Platform.ANY);
 
 	    	//~/Library/Safari/Extensions
 			//download safariextz>>import to lib folder; 
-			String locationSafariextz=System.getProperty("user.dir")+"/lib/SafariDriver2.32.0.safariextz";
-			System.setProperty("webdriver.safari.driver", locationSafariextz);	
+			//String locationSafariextz=System.getProperty("user.dir")+"/lib/SafariDriver2.32.0.safariextz";
+			//System.setProperty("webdriver.safari.driver", locationSafariextz);	
 
-	        
+
 	        if(isSupportedPlatform()==true);
 
 			{
-			
+
 			    driver = new SafariDriver(capability);
 			}
 	    }

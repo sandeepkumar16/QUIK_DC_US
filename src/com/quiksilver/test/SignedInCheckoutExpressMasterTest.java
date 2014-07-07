@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 //import org.seleniumhq.jetty7.util.log.Log;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -26,7 +27,8 @@ public class SignedInCheckoutExpressMasterTest extends BaseSuite {
 	
 	public  String testEmail = rp.readConfigProperties("hotmail");
 	  public String testPassword = rp.readConfigProperties("password_hotmail");  
-	  
+	  public String master=rp.readConfigProperties("master_nosecurecode");
+	  public String master_pass=rp.readConfigProperties("master_pass");
 
 	@BeforeMethod
 	public void getToSubcatExpressCheckout() throws Exception
@@ -40,10 +42,13 @@ public class SignedInCheckoutExpressMasterTest extends BaseSuite {
 			cm.logout(driver);
 		}
 		
+		
 		//login using email and password read from config.properties
 		System.out.println("Using email "+testEmail+" password "+testPassword);
 		cm.login(driver, testEmail, testPassword);
-				
+		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		if(isUKsite==true)
+		{		
 		By locator_tshirtLink=map.getLocator("men_tshirtcss");
 		
 		cm.homePageMainNavMen(driver, locator_tshirtLink);
@@ -60,20 +65,36 @@ public class SignedInCheckoutExpressMasterTest extends BaseSuite {
 		//on Cart page click on Secure checkout
 		ts.takeScreenshot(driver);
 		cm.fromCartToSignIn(driver);
+		return;
+		}
+		//US Site functionality
+				By locator_tshirtLink=map.getLocator("mens_Tshirt_xpath_US");
+				cm.homePageMainNavMen(driver, locator_tshirtLink);
+				
+			
+				By locator_subcatProduct = map.getLocator("subcatproductUS");
+				cm.subcatPageHoverOnProductClickExpressLink(driver,locator_subcatProduct);
+				
+				cm.subcatQuickviewAddtoCart(driver,"S");
+				cm.fromMiniCartToCart(driver);
+
+				//on Cart page click on Secure checkout
+				//ts.takeScreenshot(driver);
+				cm.fromCartToSignIn(driver);
+				
+				
 	}
 	
 	@SuppressWarnings("static-access")
 	@Test 
 	public void testSignedInCheckoutMaster() throws Exception
 	{
-		//because signed in Inscription page is skipped
-
-	        //on Step2 billing select master card
-	        //cm.selectPaymentOnStep2(driver, "master");// Veronica: no longer valid for logged in checkout as of 6/20
-		//select master card option radio on verification page
+		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		if(isUKsite==true)
+		{	
 		WebElement masterCardRadio=driver.findElement(map.getLocator("loggedin_master_id"));
 		masterCardRadio.click();
-	Boolean isCVNFieldAvailable=cm.isElementPresent(driver, (map.getLocator("loggedin_master_pin_xpath")));
+		Boolean isCVNFieldAvailable=cm.isElementPresent(driver, (map.getLocator("loggedin_master_pin_xpath")));
 	        if (isCVNFieldAvailable==true)
 	        {
 	        	WebElement CVN=driver.findElement(map.getLocator("loggedin_master_pin_xpath"));
@@ -103,9 +124,42 @@ public class SignedInCheckoutExpressMasterTest extends BaseSuite {
 	        
 	       
 	       ts.takeScreenshot(driver);
-	       
-	  //removed entire saved card section
+	       return;
+		}
+//US Site
+		WebElement masterCardRadio=driver.findElement(map.getLocator("billing_masterid_US"));
+		masterCardRadio.click();
+		WebElement billing_name=driver.findElement(map.getLocator("billing_nameid"));
+		billing_name.sendKeys("veronica peter");
 
+		try
+		{   //uncheck save card
+			cm.uncheckSaveCard(driver);
+		}
+					
+		catch(Exception e)
+		{				
+			System.out.println("GUEST CHECKOUT:'Save card' checkbox is not present; ");
+		}
+		
+		WebElement cardNumber=driver.findElement(map.getLocator("billing_ccnumberid"));
+		
+		
+		cardNumber.sendKeys(master);
+
+		WebElement cardCode= driver.findElement(map.getLocator("billing_ccsecuritycodeid"));
+		cardCode.sendKeys(master_pass);
+
+		//select month #5
+	
+		new Select(driver.findElement(map.getLocator("billing_ccmonthid"))).selectByVisibleText("05");
+		//change year
+		new Select(driver.findElement(map.getLocator("billing_ccyearid"))).selectByVisibleText("2020");
+		
+		//     WebElement continuebtn=
+		driver.findElement(map.getLocator("billing_continuebtn")).click();
+		
+		
 	}
 
 }

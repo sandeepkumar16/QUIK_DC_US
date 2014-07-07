@@ -33,6 +33,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
@@ -233,7 +234,7 @@ public class CommonMethods {
 			try
 			{
 				
-				wait.until(ExpectedConditions.elementToBeClickable(el)).click();
+				//wait.until(ExpectedConditions.elementToBeClickable(el)).click();
 				return;
 			}
 			catch (StaleElementReferenceException e)
@@ -348,6 +349,7 @@ public class CommonMethods {
 				String mouseOverScript = "if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('mouseover', true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject) { arguments[0].fireEvent('onmouseover');}";
 				JavascriptExecutor js = (JavascriptExecutor) driver;
 				js.executeScript(mouseOverScript, element);
+				
 				result = true;
 			}
 			catch (Exception e)
@@ -810,27 +812,20 @@ public class CommonMethods {
 	public void searchByItemName(WebDriver driver) throws Exception {
 
 		String item = "Boardshorts";
-
+		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		if(isUKsite==true)
+		{
 		driver.findElement(map.getLocator("searchField")).clear();
 		driver.findElement(map.getLocator("searchField")).sendKeys(item);
+		driver.findElement(map.getLocator("searchBtn")).click();
+		return;
 		
-		/*
-		 * 3/17 code specific for DC Shoes US
-		 * get url and if contains 'en_US' then type in city
-		 * 
-		 */
-		
-		Boolean isUSsite=driver.getCurrentUrl().contains("en_US");
-		if(isUSsite==true)
-		{
-			//DC US no search button need to click on Enter key
-			driver.findElement(map.getLocator("searchField")).sendKeys(Keys.ENTER);
 		}
+		//DC US no search button need to click on Enter key
+		driver.findElement(map.getLocator("searchField")).clear();
+		driver.findElement(map.getLocator("searchField")).sendKeys(item);
+		driver.findElement(map.getLocator("searchField")).sendKeys(Keys.ENTER);
 		
-		else
-		{
-			driver.findElement(map.getLocator("searchBtn")).click();
-		}
 		
 		CommonMethods.pause(1800);
 
@@ -860,13 +855,7 @@ public class CommonMethods {
 		//hover over t- shirts
 		onMouseOver(driver, menSubcat);
 		menSubcat.click();
-
-		/*
-		 * action.moveToElement(mensCat).build().perform();
-		/  /wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("nav_apparel")));
-		  WebElement mensSubcat=		driver.findElement(map.getLocator("men_jeans"));
-		   action.moveToElement(mensSubcat).click().build().perform();
-		 */
+		Thread.sleep(5000L);
 
 	}
 
@@ -930,7 +919,7 @@ public class CommonMethods {
 		WebDriverWait wait = new WebDriverWait(driver,20);				
 	    wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("name")));	  
 	    
-	    wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div/a/img")));	  
+	   // wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div/a/img")));	  
 
 
 	    List<WebElement> linkOmni= driver.findElements(By.xpath("//div/a/img"));
@@ -976,52 +965,110 @@ public class CommonMethods {
 		
 		}
 	
+
+	
+	public void QuickViewAddToCart(WebDriver driver, String size) throws Exception
+	{
+		WebDriverWait wait= new WebDriverWait(driver,15);
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart")));
+		driver.findElement(map.getLocator("pdp_sizeselector")).click();
+		Thread.sleep(5000L);
+		//US Site// Select size dropdown and size swatch
+		if (size.equals("S"))
+		{
+			wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorSswatch")));
+			driver.findElement(map.getLocator("pdp_sizeselectorSswatch")).click();
+			
+			Thread.sleep(5000L);
+			if (driver.findElement(map.getLocator("pdp_sizeunavailMsg")).isDisplayed())
+			{
+				wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorWithSize")));
+				driver.findElement(map.getLocator("pdp_sizeselectorWithSize")).click();
+				Thread.sleep(5000L);
+				wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorLswatch")));
+				driver.findElement(map.getLocator("pdp_sizeselectorLswatch")).click();
+				
+				
+			}
+		}
+		else
+		{
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorXLswatch")));
+		driver.findElement(map.getLocator("pdp_sizeselectorXLswatch")).click();
+		}
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_aftersize")));
+		
+		Thread.sleep(5000L);
+		driver.findElement(map.getLocator("pdp_addtocart_aftersize")).click();
+		
+		
+	}
+	
+	
+	
 	public void subcatPageHoverOnProductClickExpressLink(WebDriver driver, By locator) throws Exception
 	{
 
 		WebElement product = driver.findElement(locator);
 		WebDriverWait wait=new WebDriverWait(driver, 20);
 
+		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		if(isUKsite==true)
+		{	
 		//hover over product
 		onMouseOver(driver, locator);
-				
-		/*
-		 * 3/17 code specific for DC Shoes US
-		 * get url and if contains 'en_US' then type in city
-		 * 
-		 */
+		driver.findElement(map.getLocator("subcat_productxpressshop")).click();
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("subcat_addtocartexpress")));
+		driver.findElement(map.getLocator("subcat_addtocartexpress")).click();
+		return;
+		}
 		
-		Boolean isUSsite=driver.getCurrentUrl().contains("en_US");
-		if(isUSsite==true)
+		
+		
+		try{
+		//Finding the WebElement
+		WebElement element = driver.findElement(map.getLocator("subcatproductUS"));
+		Actions actionsProvider = new Actions(driver);
+		actionsProvider.moveToElement(element).perform();
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("subcat_productQuickview")));
+		driver.findElement(map.getLocator("subcat_productQuickview")).click();
+		Thread.sleep(5000L);
+		}
+		catch(Exception e)
 		{
-			//3/17 click on express checkout link locator is diff from UK sites
-			//scroll the page down slightly so the 'Express Shop' link is visible
-			//JavascriptExecutor jsx = (JavascriptExecutor)driver;
-			//jsx.executeScript("window.scrollBy(0,250)", "");
-	       						
-			Thread.sleep(350); 
-			driver.findElement(map.getLocator("subcat_productxpressshopUS")).click();
-
-			//wait untill add to cart in Express View is visible
-			wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("subcat_addtocartexpress")));
-
-			driver.findElement(map.getLocator("subcat_addtocartexpress")).click();
+			
+			onMouseOver(driver, locator);
+			Thread.sleep(5000L);
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("subcat_productQuickview")));
+		driver.findElement(map.getLocator("subcat_productQuickview")).click();
+		Thread.sleep(5000L);
 		}
-		
-		else
-		{//UK site section
-			//click on express checkout link
-			driver.findElement(map.getLocator("subcat_productxpressshop")).click();
-
-			//wait untill add to cart in Express View is visible
-			wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("subcat_addtocartexpress")));
-
-			driver.findElement(map.getLocator("subcat_addtocartexpress")).click();
-
 			//click on Checkout btn in Mini Cart  in a diff  method
-		}
+		
 
 	}	
+	
+	public void subcatQuickviewAddtoCart(WebDriver driver,String size) throws Exception
+	{
+		
+			WebDriverWait wait= new WebDriverWait(driver,15);
+			wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("quickview_AddtoCart")));
+			driver.findElement(map.getLocator("quickview_sizeselector")).click();
+			Thread.sleep(5000L);
+			//US Site// Select size dropdown and size swatch
+			if (size.equals("S"))
+			{
+				wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("quickview_Ssize")));
+				driver.findElement(map.getLocator("quickview_Ssize")).click();
+				
+				Thread.sleep(5000L);
+			}
+			driver.findElement(map.getLocator("quickview_AddtoCart")).click();
+			
+			
+			Thread.sleep(15000L);
+		
+	}
 
 	/************************************************************PDP PAGE*****************************/
 	/************************************************************PDP PAGE*****************************/
@@ -1097,9 +1144,9 @@ public class CommonMethods {
 			String actual=driver.findElement(map.getLocator("pdp_saveforlatercss")).getText();
 			System.out.println("pdp_saveforlatercss)).getText()="+ actual);
 			//wait until //a[contains(.,'Saved in your wishlist')] appears
-			wait.until(ExpectedConditions.textToBePresentInElementLocated(map.getLocator("pdp_saveforlatercss"), expectedText));
+			//wait.until(ExpectedConditions.textToBePresentInElementLocated(map.getLocator("pdp_saveforlatercss"), expectedText));
 			
-			
+			//236,1100
 		      
 		    } catch (Exception e) {
 		    	
@@ -1110,13 +1157,121 @@ public class CommonMethods {
 
 	public void pdpPageSelectAddToCart(WebDriver driver) throws Exception
 	{
-
+		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		if(isUKsite==true)
+		{
+		WebDriverWait wait= new WebDriverWait(driver,25);
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_UK")));
+		driver.findElement(map.getLocator("pdp_addtocart_UK")).click();
+		Thread.sleep(5000L);
+		return;
+		
+		//optional logic to ensure mini-cart triggered can go here
+		}
+		//US Site// Select size dropdown and size swatch
+		
 		WebDriverWait wait= new WebDriverWait(driver,15);
 		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart")));
-		driver.findElement(map.getLocator("pdp_addtocart")).click();
-		//optional logic to ensure mini-cart triggered can go here
-
+		driver.findElement(map.getLocator("pdp_sizeselector")).click();
+		Thread.sleep(5000L);
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorXLswatch")));
+		driver.findElement(map.getLocator("pdp_sizeselectorXLswatch")).click();
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_aftersize")));
+		Thread.sleep(5000L);
+		driver.findElement(map.getLocator("pdp_addtocart_aftersize")).click();
+		
+		/*Thread.sleep(5000L);
+		WebElement SizeUnavailStatus=driver.findElement(map.getLocator("pdp_sizeunavailMsg"));
+		if (SizeUnavailStatus.isDisplayed())
+		{
+			wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorWithSize")));
+			driver.findElement(map.getLocator("pdp_sizeselectorWithSize")).click();
+			Thread.sleep(5000L);
+			wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorSswatch")));
+			driver.findElement(map.getLocator("pdp_sizeselectorSswatch")).click();
+			
+		}*/
 	}
+	
+	
+	public void pdpPageSelectAddToCart(WebDriver driver, String size) throws Exception
+	{
+		WebDriverWait wait= new WebDriverWait(driver,15);
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart")));
+		driver.findElement(map.getLocator("pdp_sizeselector")).click();
+		Thread.sleep(5000L);
+		//US Site// Select size dropdown and size swatch
+		if (size.equals("S"))
+		{
+			wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorSswatch")));
+			driver.findElement(map.getLocator("pdp_sizeselectorSswatch")).click();
+			
+			Thread.sleep(5000L);
+			if (driver.findElement(map.getLocator("pdp_sizeunavailMsg")).isDisplayed())
+			{
+				wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorWithSize")));
+				driver.findElement(map.getLocator("pdp_sizeselectorWithSize")).click();
+				Thread.sleep(5000L);
+				wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorLswatch")));
+				driver.findElement(map.getLocator("pdp_sizeselectorLswatch")).click();
+				
+				
+			}
+		}
+		else
+		{
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorXLswatch")));
+		driver.findElement(map.getLocator("pdp_sizeselectorXLswatch")).click();
+		}
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_aftersize")));
+		
+		Thread.sleep(5000L);
+		driver.findElement(map.getLocator("pdp_addtocart_aftersize")).click();
+		
+		
+	}
+	
+	
+	
+	public void pdpPageSelectAddToCartNumSizes(WebDriver driver) throws Exception
+	{
+		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		if(isUKsite==true)
+		{
+		WebDriverWait wait= new WebDriverWait(driver,25);
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_UK")));
+		driver.findElement(map.getLocator("pdp_addtocart_UK")).click();
+		Thread.sleep(5000L);
+		return;
+		
+		//optional logic to ensure mini-cart triggered can go here
+		}
+		//US Site// Select size dropdown and size swatch
+		
+		WebDriverWait wait= new WebDriverWait(driver,15);
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart")));
+		driver.findElement(map.getLocator("pdp_sizeselector")).click();
+		Thread.sleep(5000L);
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselector28swatch")));
+		driver.findElement(map.getLocator("pdp_sizeselector28swatch")).click();
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_aftersize")));
+		Thread.sleep(5000L);
+		driver.findElement(map.getLocator("pdp_addtocart_aftersize")).click();
+		
+		/*Thread.sleep(5000L);
+		WebElement SizeUnavailStatus=driver.findElement(map.getLocator("pdp_sizeunavailMsg"));
+		if (SizeUnavailStatus.isDisplayed())
+		{
+			wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorWithSize")));
+			driver.findElement(map.getLocator("pdp_sizeselectorWithSize")).click();
+			Thread.sleep(5000L);
+			wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorSswatch")));
+			driver.findElement(map.getLocator("pdp_sizeselectorSswatch")).click();
+			
+		}*/
+	}
+	
+	
 
 
 	/************************************************************mini CART PAGE*****************************/
@@ -1125,14 +1280,28 @@ public class CommonMethods {
 
 	public void fromMiniCartToCart(WebDriver driver) throws Exception
 	{
+		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		if(isUKsite==true)
+		{
 		By locator_basket=map.getLocator("minicart_link");
 		onMouseOver(driver,locator_basket);	
 
 		//click on Checkout link on mini cart
-		dependableClick(driver, map.getLocator("minicart_checkoutbtncss"));
+	dependableClick(driver, map.getLocator("minicart_checkoutbtncss"));
+		//driver.findElement(map.getLocator("minicart_link_GBxpath")).click();
 
 		System.out.println("title is "+driver.getTitle());
-		Reporter.log("After click on Checkout button on mini-cart title is "+ driver.getTitle());		
+		Reporter.log("After click on Checkout button on mini-cart title is "+ driver.getTitle());	
+		return;
+		
+		}
+		//US site
+		WebDriverWait wait= new WebDriverWait(driver,15);
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("minicart_linkxpath")));
+		driver.findElement(map.getLocator("minicart_linkxpath")).click();
+//driver.get("https://www.stg.dcshoes.com/on/demandware.store/Sites-DC-US-Site/en_US/Cart-Show");
+		System.out.println("title is "+driver.getTitle());
+		Reporter.log("After click on Checkout button on mini-cart title is "+ driver.getTitle());	
 	}
 
 
@@ -1181,7 +1350,16 @@ public class CommonMethods {
 		Reporter.log("After click on 'Continue Shopping' button on Cart page  title is "+ driver.getTitle());		
 
 	}
-	
+	public void fromCartToGuestCheckout(WebDriver driver) throws Exception
+	{
+		 WebDriverWait wait = new WebDriverWait(driver, 20);
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(map.getLocator("cart_Guestcheckout_US")));
+		//in cart click on 'checkout' for redirect to interst sign in page
+
+	        driver.findElement(map.getLocator("cart_Guestcheckout_US")).click();
+		Reporter.log("After click on 'Guest Checkout' button on Cart page  title is "+ driver.getTitle());		
+
+	}
 	
 	public void fromInscriptionToStep2Payment(WebDriver driver) throws Exception
 	{
@@ -1301,25 +1479,77 @@ public class CommonMethods {
 	public void login(WebDriver driver, String email, String password) throws Exception
 	{ 
 		
-		WebDriverWait wait= new WebDriverWait(driver, 15);
-		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("login_link")));
-		
 		/*
 		 * 3/17 code specific for DC Shoes US
 		 * get url and if contains 'en_US' then type in city
 		 * 
 		 */		
-		Boolean isUSsite=driver.getCurrentUrl().contains("en_US");
-		if(isUSsite==true)
+	Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		if(isUKsite==true)
 		{
+			WebDriverWait wait= new WebDriverWait(driver, 15);
+			wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("login_link")));
+		
 			WebElement loginLink =driver.findElement(map.getLocator("login_link"));
 			loginLink.click();
+			//////////////*************
+
+			  wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("intercept_registeredrememberme")));
+			  WebElement rememberMe=driver.findElement(map.getLocator("intercept_registeredrememberme"));
+
+					if(rememberMe.isSelected()==true)
+					{
+						Reporter.log("On Checkout sign in page 'remember me' is selected on default load.");
+						//check if can check and uncheck remember me checkbox
+						rememberMe.click();
+						AssertJUnit.assertEquals(rememberMe.isSelected(), false);
+					}
+					
+					
+			String title = driver.getTitle();
+			Reporter.log("After click on 'Login' link in the header page title is "+title);
+
+			
+			
+			
+			//safari cannot find this element need to use workaround
+			//WebElement regEmail = driver.findElement(map.getLocator("intercept_registeredemail"));
+			
+			//2/20 workaround 
+			WebElement regEmail = returnLoginEmailField(driver);
+	        Reporter.log("Logging in using email:"+ email+" and password: "+password);
+	        System.out.println("Logging in using email:"+ email+" and password: "+password);
+
+			regEmail.clear();
+			regEmail.sendKeys(email);
+			title = driver.getTitle();
+
+			WebElement regPswd = driver.findElement(map.getLocator("intercept_registeredpswd"));
+			regPswd.clear();
+			regPswd.sendKeys(password);
+
+			//click on submit button
+			wait.until(ExpectedConditions.elementToBeClickable(map.getLocator("intercept_registeredbtn")));
+			WebElement regLogin =driver.findElement(map.getLocator("intercept_registeredbtn"));
+			regLogin.click();
+			
+			//wait until logout link is present to indicate that login was successful		
+			wait.until(ExpectedConditions.elementToBeClickable(map.getLocator("intercept_signoutlink")));
+			
+			return;
 		}
-				
-		WebElement loginLink =driver.findElement(map.getLocator("login_link"));
+			
+		
+		
+			WebDriverWait wait= new WebDriverWait(driver, 15);
+			wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("login_link_US")));
+		
+		WebElement loginLink =driver.findElement(map.getLocator("login_link_US"));
 		loginLink.click();
 		
-		  wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(map.getLocator("intercept_registeredrememberme")));
+		//login interception page
+
+		  wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("intercept_registeredrememberme")));
 		  WebElement rememberMe=driver.findElement(map.getLocator("intercept_registeredrememberme"));
 
 				if(rememberMe.isSelected()==true)
@@ -1334,6 +1564,9 @@ public class CommonMethods {
 		String title = driver.getTitle();
 		Reporter.log("After click on 'Login' link in the header page title is "+title);
 
+		
+		
+		
 		//safari cannot find this element need to use workaround
 		//WebElement regEmail = driver.findElement(map.getLocator("intercept_registeredemail"));
 		
@@ -1357,6 +1590,7 @@ public class CommonMethods {
 		
 		//wait until logout link is present to indicate that login was successful		
 		wait.until(ExpectedConditions.elementToBeClickable(map.getLocator("intercept_signoutlink")));
+		
 	}
 	
 	public boolean isLoggedIn (WebDriver driver) throws Exception
@@ -1585,6 +1819,83 @@ public class CommonMethods {
 		new Select(driver.findElement(map.getLocator("inscription_titleid"))).selectByVisibleText(salutation);
 	}
  */
+	
+	
+	
+	
+	public void step1FieldsUS(WebDriver driver) throws Exception
+	{
+		WebDriverWait wait =new WebDriverWait(driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(map.getLocator("inscription_fnameid")));
+
+		//assert title 
+		String title=driver.getTitle();
+		Reporter.log("On checkout 'Step1' page title is "+ title);
+
+		 //   step1Salutation(driver, "Mrs");   ->> removed from the UK site
+
+			WebElement fname=driver.findElement(map.getLocator("inscription_fnameid"));
+	        fname.clear();
+	        fname.sendKeys("Veronica");
+
+	        WebElement lname=driver.findElement(map.getLocator("inscription_lnameid"));
+	        lname.clear();
+	        lname.sendKeys("Peter");
+
+	        WebElement phone =driver.findElement(map.getLocator("inscription_phoneid"));
+	        phone.clear();
+	        phone.sendKeys("2024458287");
+	       
+	        //email and confirm email are applicable only for Guest Checkout
+	        
+	        try
+	        {
+	        	WebElement email = driver.findElement(map.getLocator("inscription_emailid"));
+		        email.clear();
+		        email.sendKeys("veronica1315@gmail.com");
+		        
+		        WebElement confirmEmail =driver.findElement(map.getLocator("inscription_confirmemailid"));
+		        confirmEmail.clear();
+		        confirmEmail.sendKeys("veronica1315@gmail.com");
+	        	
+	        }
+	        
+	        catch(Exception e)
+	        {
+	        	System.out.println("Signed In. Registered checkout: 'Email' and 'Confirm Email' fields are not present");
+	        }
+	        
+
+	        WebElement address1 =driver.findElement(map.getLocator("inscription_address1id"));
+	        address1.clear();
+	        address1.sendKeys("123 Richmond Mews");
+	       
+	        WebElement address2 =driver.findElement(map.getLocator("inscription_address2id"));
+	        address2.clear();
+	        address2.sendKeys("apt 2C");
+
+	       
+	        
+
+	        WebElement zip =driver.findElement(map.getLocator("inscription_zipid"));
+	        zip.clear();
+	         By locator_zip=map.getLocator("inscription_zipid");
+	        slowType(driver, locator_zip, "94132");      
+	        
+	        String usCity="Dublin";
+			
+			
+	        driver.findElement(map.getLocator("inscription_cityid")).clear(); 
+	        driver.findElement(map.getLocator("inscription_cityid")).sendKeys(usCity);
+	      //select CA state from the drop down
+			new Select(driver.findElement(map.getLocator("shipping_state_US_id"))).selectByVisibleText("California");
+	        
+	      
+			
+			
+	}
+
+	
 	public void step1DifferentShipping(WebDriver driver, String street) throws Exception
 	{
 		//because signed in Inscription page is skipped
@@ -1781,24 +2092,146 @@ public class CommonMethods {
 		}
 
 	}
+	
+	
+	//**************************************************************************************
+	
+	
+	public void selectPaymentOnStep2US(WebDriver driver, String paymentType) throws Exception
+	{
+		String visa=rp.readConfigProperties("verified_visa");
+		String cardSecurity=rp.readConfigProperties("cardPin");
+		String master= rp.readConfigProperties("master_nosecurecode");
+		
+		WebDriverWait wait =new WebDriverWait(driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(map.getLocator("billing_allcards")));
+		Reporter.log("Current page title is "+ driver.getTitle());
+
+
+		if (paymentType.equalsIgnoreCase("visa"))
+		{	
+			//driver.findElement(map.getLocator("billing_visaid_US")).click();
+			
+			WebElement billing_name=driver.findElement(map.getLocator("billing_nameid"));
+			billing_name.sendKeys("fluid");
+
+			WebElement cardNumber=driver.findElement(map.getLocator("billing_ccnumberid"));
+			cardNumber.sendKeys(visa);
+
+			WebElement cardCode=driver.findElement(map.getLocator("billing_ccsecuritycodeid"));
+			cardCode.sendKeys(cardSecurity);
+
+			//select month #4
+			new Select(driver.findElement(map.getLocator("billing_ccmonthid"))).selectByVisibleText("04");
+			//change year
+			new Select(driver.findElement(map.getLocator("billing_ccyearid"))).selectByVisibleText("2020");
+			
+			
+			//     WebElement continuebtn=
+			driver.findElement(map.getLocator("billing_continuebtn")).click();
+
+		}
+
+		else if (paymentType.equalsIgnoreCase("master")||
+				paymentType.equalsIgnoreCase("mastercard")||
+				paymentType.equalsIgnoreCase("master card")||
+				paymentType.equalsIgnoreCase("master_card"))
+		{
+			driver.findElement(map.getLocator("billing_masterid")).click();
+			WebElement billing_name=driver.findElement(map.getLocator("billing_nameid"));
+			billing_name.sendKeys("fluid");
+
+			try
+			{   //uncheck save card
+				uncheckSaveCard(driver);
+			}
+						
+			catch(Exception e)
+			{				
+				System.out.println("GUEST CHECKOUT:'Save card' checkbox is not present; ");
+			}
+			
+			WebElement cardNumber=driver.findElement(map.getLocator("billing_ccnumberid"));
+			cardNumber.sendKeys(master);
+
+			WebElement cardCode= driver.findElement(map.getLocator("billing_ccsecuritycodeid"));
+			cardCode.sendKeys(cardSecurity);
+
+			//select month #5
+		
+			new Select(driver.findElement(map.getLocator("billing_ccmonthid"))).selectByVisibleText("05");
+			//change year
+			new Select(driver.findElement(map.getLocator("billing_ccyearid"))).selectByVisibleText("2020");
+			
+			//     WebElement continuebtn=
+			driver.findElement(map.getLocator("billing_continuebtn")).click();
+		}
+
+		//NEED AMEX CARD NUMBER FROM QUICKSILVER
+		else if (paymentType.equalsIgnoreCase("amex")||
+				paymentType.equalsIgnoreCase("american express")||
+				paymentType.equalsIgnoreCase("amex card")||
+				paymentType.equalsIgnoreCase("american_express"))
+		{
+			driver.findElement(map.getLocator("billing_amexid")).click();
+
+			WebElement billing_name=driver.findElement(map.getLocator("billing_nameid"));
+			billing_name.sendKeys("fluid");
+
+			try
+			{   //uncheck save card
+				uncheckSaveCard(driver);
+			}						
+			catch(Exception e)
+			{				
+				System.out.println("GUEST CHECKOUT:'Save card' checkbox is not present; ");
+			}
+			
+			WebElement cardNumber=driver.findElement(map.getLocator("billing_ccnumberid"));
+			cardNumber.sendKeys("REPLACE THIS WITH AMEX CARD");
+
+			WebElement cardCode= driver.findElement(map.getLocator("billing_ccsecuritycodeid"));
+			cardCode.sendKeys(cardSecurity);
+
+			//select month #5
+			new Select(driver.findElement(map.getLocator("billing_ccmonthid"))).selectByVisibleText("05");
+			//year
+			new Select(driver.findElement(map.getLocator("billing_ccyearid"))).selectByVisibleText("2020");
+			
+			//     WebElement continuebtn=
+			driver.findElement(map.getLocator("billing_continuebtn")).click();
+
+		}
+		else if (paymentType.equalsIgnoreCase("paypal")||
+				(paymentType.equalsIgnoreCase("PayPal")))
+		{
+			driver.findElement(map.getLocator("billing_paypalid")).click();
+			//do something need paypal info from quicksilver
+			//for QS just click on Continue btn 
+			
+               //WebElement continuebtn=
+					driver.findElement(map.getLocator("billing_continuebtn")).click();
+
+		}
+
+	}
+	
+	
+	
+	
+//*********************************************************	
+	
+	
+	
+	
+	
 	//using email and password supplied as parameters to the method
 	public ArrayList<String> createTestAccount(WebDriver driver, String email, String password) throws Exception
 	{
+		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		
 		WebDriverWait wait =new WebDriverWait(driver,20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(map.getLocator("register_link")));
-		
-		/*
-		 * 3/17 code specific for DC Shoes US
-		 * get url and if contains 'en_US' then type in city
-		 * 
-		 */
-		
-		Boolean isUSsite=driver.getCurrentUrl().contains("en_US");
-		if(isUSsite==true)
-		{
-			WebElement registerLink =driver.findElement(map.getLocator("register_link"));
-			registerLink.click();
-		}
 		
 		WebElement registerLink =driver.findElement(map.getLocator("register_link"));
 		registerLink.click();
@@ -1815,11 +2248,11 @@ public class CommonMethods {
 		
 		driver.findElement(map.getLocator("registration_lname")).clear();
 		driver.findElement(map.getLocator("registration_lname")).sendKeys("Fluid");
-		//GENDER
+		//GENDER- n/a for US
         
         
 	      
-			new Select(driver.findElement(map.getLocator("registration_genderxpath"))).selectByVisibleText("Male");
+		//	new Select(driver.findElement(map.getLocator("registration_genderxpath"))).selectByVisibleText("Male");
 			
 		driver.findElement(map.getLocator("registration_email")).clear();		
 		driver.findElement(map.getLocator("registration_email")).sendKeys(email);
@@ -1842,40 +2275,22 @@ public class CommonMethods {
 		driver.findElement(map.getLocator("registration_zip")).clear();
 		
 		//this might be better to be replaced with slow type() method
-		slowType(driver, (map.getLocator("registration_zip")), "SE3 0RL");
-
-		/*
-		 * 3/17 code specific for DC Shoes US
-		 * get url and if contains 'en_US' then type in city
-		 * 
-		 */
+		slowType(driver, (map.getLocator("registration_zip")), "94132");
+		driver.findElement(map.getLocator("registration_city")).clear();
+		driver.findElement(map.getLocator("registration_city")).sendKeys("san francisco");
 		
-		isUSsite=driver.getCurrentUrl().contains("en_US");
-		String usCity="Hayward";
-		if(isUSsite==true)
-		{
-			driver.findElement(map.getLocator("registration_city")).clear();
-			slowType(driver, (map.getLocator("registration_city")), usCity);
-			
-			//select 5th state from the drop down
-			selectOptionFromSelect(driver,map.getLocator("registration_state"), 6);
+		
+		//select 5th state from the drop down
+		selectOptionFromSelect(driver,map.getLocator("registration_state"), 6);
 
-		}
-
+		
 		
 
 		
 		driver.findElement(map.getLocator("registration_phone")).clear();
 		driver.findElement(map.getLocator("registration_phone")).sendKeys("1234567");
 
-		//select and deselect
-		driver.findElement(map.getLocator("registration_addtositeemail")).click();
-		driver.findElement(map.getLocator("registration_addtositeemail")).click();
-
-		
-		//select and deselect
-		driver.findElement(map.getLocator("register_addtopartneremail")).click();
-		driver.findElement(map.getLocator("register_addtopartneremail")).click();
+	
 		
 		//click on confirm btn
 		driver.findElement(map.getLocator("registration_confirmbtn")).click();
@@ -1889,56 +2304,43 @@ public class CommonMethods {
 		String email_password="User selected: "+email+" password: "+password;
 
 		appendToTxt(System.getProperty("user.dir")+createdAccountsPath, email_password);	        
-
-		return (ArrayList<String>) account;
 		//should return email and password
+		return (ArrayList<String>) account;
+		
+		
 	}
 	
 	//using randomly generated email+password 12345
 	public ArrayList<String> createTestAccount(WebDriver driver) throws Exception
 	{
-		
+		//need to generate random string to avoid error 'Email taken'
+				String email = generateEmail(8);
+				String password = "12345";
+				
+				
+		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		if(isUKsite==true)
+		{
 		WebDriverWait wait =new WebDriverWait(driver,20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(map.getLocator("register_link")));
-		
-
-		/*
-		 * 3/17 code specific for DC Shoes US
-		 * get url and if contains 'en_US' then type in city
-		 * 
-		 */
-		
-		Boolean isUSsite=driver.getCurrentUrl().contains("en_US");
-		if(isUSsite==true)
-		{
-			WebElement registerLink =driver.findElement(map.getLocator("register_link"));
-			registerLink.click();
-		}
 		
 		WebElement registerLink =driver.findElement(map.getLocator("register_link"));
 		registerLink.click();
 		
-		
 		String title = driver.getTitle();
 		Reporter.log("After click on 'Register' link in the header page title is "+title);
 
-		wait.until(ExpectedConditions.titleContains("Account"));
+		wait.until(ExpectedConditions.titleContains("Account"));     
 
-		//need to generate random string to avoid error 'Email taken'
-		String email = generateEmail(8);
-		String password = "12345";
-		//Salutation removed for UK 
-		//new Select(driver.findElement(map.getLocator("registration_salutation"))).selectByVisibleText("Mrs");
-
+		
+		
 		driver.findElement(map.getLocator("registratiion_fname")).clear();
 		driver.findElement(map.getLocator("registratiion_fname")).sendKeys("Veronica");
 		
 		driver.findElement(map.getLocator("registration_lname")).clear();
 		driver.findElement(map.getLocator("registration_lname")).sendKeys("Peter");
 		//GENDER
-        
-        
-	      
+         
 		new Select(driver.findElement(map.getLocator("registration_genderxpath"))).selectByVisibleText("Female");
 		
 
@@ -1965,26 +2367,7 @@ public class CommonMethods {
 		
 		//replaced with slow type() method
 		slowType(driver, (map.getLocator("registration_zip")), "SE3 0RL");
-		
-		/*
-		 * 3/17 code specific for DC Shoes US
-		 * get url and if contains 'en_US' then type in city
-		 * 
-		 */
-		
-		isUSsite=driver.getCurrentUrl().contains("en_US");
-		String usCity="Hayward";
-		if(isUSsite==true)
-		{
-			driver.findElement(map.getLocator("registration_city")).clear();
-			slowType(driver, (map.getLocator("registration_city")),usCity);
-			
-			//select 5th state from the drop down
-			selectOptionFromSelect(driver,map.getLocator("registration_state"), 6);
-
-		}
-
-		
+	    
 		driver.findElement(map.getLocator("registration_phone")).clear();
 		driver.findElement(map.getLocator("registration_phone")).sendKeys("1234567");
 
@@ -2012,13 +2395,94 @@ public class CommonMethods {
         System.out.println("Created new account using "+email_password);
 		return (ArrayList<String>) account;
 		//should return email and password
+		}
+		
+		//US site functionality
+		//Clicking login link
+		WebDriverWait wait =new WebDriverWait(driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(map.getLocator("login_link_US")));
+		
+		WebElement registerLink =driver.findElement(map.getLocator("login_link_US"));
+		registerLink.click();
+		String title = driver.getTitle();
+		Reporter.log("After click on 'Register' link in the header page title is "+title);
+		
+		wait.until(ExpectedConditions.visibilityOfElementLocated(map.getLocator("login_create_acc_US")));
+
+		//Click on New Account button
+		driver.findElement(map.getLocator("login_create_acc_US")).click();
+		
+		
+		
+		wait.until(ExpectedConditions.titleContains("Account")); 
+		
+		wait.until(ExpectedConditions.visibilityOfElementLocated(map.getLocator("registration_salutation")));
+		
+		new Select(driver.findElement(map.getLocator("registration_salutation"))).selectByVisibleText("Mrs");
+		driver.findElement(map.getLocator("registratiion_fname")).clear();
+		driver.findElement(map.getLocator("registratiion_fname")).sendKeys("Fluid");
+		
+		driver.findElement(map.getLocator("registration_lname")).clear();
+		driver.findElement(map.getLocator("registration_lname")).sendKeys("Fluid");
+
+driver.findElement(map.getLocator("registration_email")).clear();	
+		
+		driver.findElement(map.getLocator("registration_email")).sendKeys(email);
+
+		driver.findElement(map.getLocator("registration_emailconfirm")).clear();
+		driver.findElement(map.getLocator("registration_emailconfirm")).sendKeys(email);
+
+		driver.findElement(map.getLocator("registration_password")).clear();
+		driver.findElement(map.getLocator("registration_password")).sendKeys(password);
+
+		driver.findElement(map.getLocator("registration_confirmpassword")).clear();
+		driver.findElement(map.getLocator("registration_confirmpassword")).sendKeys(password);
+		
+		driver.findElement(map.getLocator("registration_address1")).clear();
+		driver.findElement(map.getLocator("registration_address1")).sendKeys("5050 Haven pl");
+
+		driver.findElement(map.getLocator("registration_address2")).clear();
+		driver.findElement(map.getLocator("registration_address2")).sendKeys("apt 1");
+
+		driver.findElement(map.getLocator("registration_zip")).clear();
+		
+		//this might be better to be replaced with slow type() method
+		slowType(driver, (map.getLocator("registration_zip")), "94132");
+		driver.findElement(map.getLocator("registration_city")).clear();
+		driver.findElement(map.getLocator("registration_city")).sendKeys("san francisco");
+		
+		
+		//select 5th state from the drop down
+		new Select(driver.findElement(map.getLocator("registration_state_US"))).selectByVisibleText("California");
+//		selectOptionFromSelect(driver,map.getLocator("registration_state_US"), 6);
+
+		driver.findElement(map.getLocator("registration_phone")).clear();
+		driver.findElement(map.getLocator("registration_phone")).sendKeys("2024458287");
+		//click on confirm btn
+				driver.findElement(map.getLocator("registration_confirmbtn")).click();
+				
+				//wait until logout link is present to indicate that acct was successfully created
+				wait.until(ExpectedConditions.elementToBeClickable(map.getLocator("intercept_signoutlink")));
+
+				List<String> account= new ArrayList<String>();
+				account.add(email);
+				account.add(password);
+				String email_password="Randomly generated: "+email+" password: "+password;
+		 
+				appendToTxt(System.getProperty("user.dir")+createdAccountsPath, email_password);	        
+		        System.out.println("Created new account using "+email_password);
+				return (ArrayList<String>) account;
+				//should return email and password
 
 	}
 	
 	public void  verificationClickPlaceOrder(WebDriver driver) throws Exception 
 	{
+		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		if(isUKsite==true)
+		{
 		WebDriverWait wait = new WebDriverWait(driver, 20);
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(map.getLocator("verification_termsconditionsid")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(map.getLocator("verification_termsconditionsid")));
 
 		WebElement verification=driver.findElement(map.getLocator("verification_termsconditionsid"));
 		verification.click();
@@ -2028,7 +2492,13 @@ public class CommonMethods {
 		ts.takeScreenshot(driver);
 		Reporter.log("Current page title: "+driver.getTitle());
 		WebElement placeOrder= driver.findElement(map.getLocator("verification_placeorderbtn"));
-		placeOrder.click();		
+		placeOrder.click();	
+		  return;
+		}
+		
+		WebElement placeOrder= driver.findElement(map.getLocator("verification_placeorderbtn"));
+		placeOrder.click();	
+				
 
 	}
 

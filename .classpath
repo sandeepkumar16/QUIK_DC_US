@@ -109,5 +109,8 @@
 	<classpathentry kind="lib" path="/Users/vpeter/Downloads/selenium-2.42.2/libs/xalan-2.7.1.jar"/>
 	<classpathentry kind="lib" path="/Users/vpeter/Downloads/selenium-2.42.2/libs/xercesImpl-2.11.0.jar"/>
 	<classpathentry kind="lib" path="/Users/vpeter/Downloads/selenium-2.42.2/libs/xml-apis-1.4.01.jar"/>
+	<classpathentry kind="lib" path="/Users/vpeter/Downloads/testng-xslt-1.1.2-master/lib/saxon-8.7.jar"/>
+	<classpathentry kind="lib" path="/Users/vpeter/Downloads/testng-xslt-1.1.2-master/lib/SaxonLiaison.jar"/>
+	<classpathentry kind="lib" path="/Users/vpeter/Desktop/Selenium/guice-4.0-beta.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

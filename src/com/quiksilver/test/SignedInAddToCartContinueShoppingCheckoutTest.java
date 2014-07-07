@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 //import org.seleniumhq.jetty7.util.log.Log;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -28,6 +29,8 @@ import com.quiksilver.util.BaseSuite;
 public class SignedInAddToCartContinueShoppingCheckoutTest extends BaseSuite {
 	public  String testEmail = rp.readConfigProperties("yahoo");
 	  public String testPassword = rp.readConfigProperties("password_yahoo");  
+	  public String master=rp.readConfigProperties("master_nosecurecode");
+	  public String master_pass=rp.readConfigProperties("master_pass");
 	  
 
 	@BeforeMethod
@@ -45,7 +48,9 @@ public class SignedInAddToCartContinueShoppingCheckoutTest extends BaseSuite {
 		//login using email and password read from config.properties
 		System.out.println("Using email "+testEmail+" password "+testPassword);
 		cm.login(driver, testEmail, testPassword);
-		
+		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		if(isUKsite==true)
+		{		
 		By locator_tshirtLink=map.getLocator("men_tshirtcss");		
 		cm.homePageMainNavMen(driver, locator_tshirtLink);
 		
@@ -70,7 +75,7 @@ public class SignedInAddToCartContinueShoppingCheckoutTest extends BaseSuite {
 		//cm.subcatPageClickProduct(driver, locator_subcatProduct);
 		
 		//2/21 click on 8th thumbnail 
-		cm.subcatPageClickProduct(driver, 7);
+		cm.subcatPageClickProduct(driver,7);
 		
 		//on PDP select Size
 		
@@ -84,23 +89,76 @@ public class SignedInAddToCartContinueShoppingCheckoutTest extends BaseSuite {
 		//on Cart page click on Secure checkout
 		ts.takeScreenshot(driver);
 		cm.fromCartToSignIn(driver);
+		return;
+		}
+		
+		//US Site functionality
+		By locator_tshirtLink=map.getLocator("mens_Tshirt_xpath_US");
+		cm.homePageMainNavMen(driver, locator_tshirtLink);
+		
+cm.subcatPageClickProduct(driver, 4);	
+		
+		//on PDP click on save for later and assert 'saved' msg displayed on the screen
+		Reporter.log("On PDP page title is "+ driver.getTitle());
+		cm.pdpPageSelectAddToCart(driver);
+		
+		cm.fromMiniCartToCart(driver);
+
+		//on Cart page click on Secure checkout
+		//ts.takeScreenshot(driver);
+		cm.fromCartToSignIn(driver);
 	}
 	
 	@Test
 	public void testSignedInAddToCartContinueShopping() throws Exception
 	{
-		//because signed in Inscription page is skipped
-
-	        //on Step2 billing select master card
+		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		if(isUKsite==true)
+		{
 	        cm.selectPaymentOnStep2(driver, "master");
 	        
-	        //on Verification  Click on "Terms and Condition of Sale" checkbox and Place order button
+	      
 	        cm.verificationClickPlaceOrder(driver);
 	        
 	      //on Confirmation page 
 	        cm.submitConfirmation(driver);	
 	        
 	        //recommended products
+	        return;
+		}
+		
+		WebElement masterCardRadio=driver.findElement(map.getLocator("billing_masterid_US"));
+		masterCardRadio.click();
+		WebElement billing_name=driver.findElement(map.getLocator("billing_nameid"));
+		billing_name.sendKeys("veronica peter");
+
+		try
+		{   //uncheck save card
+			cm.uncheckSaveCard(driver);
+		}
+					
+		catch(Exception e)
+		{				
+			System.out.println("GUEST CHECKOUT:'Save card' checkbox is not present; ");
+		}
+		
+		WebElement cardNumber=driver.findElement(map.getLocator("billing_ccnumberid"));
+		
+		
+		cardNumber.sendKeys(master);
+
+		WebElement cardCode= driver.findElement(map.getLocator("billing_ccsecuritycodeid"));
+		cardCode.sendKeys(master_pass);
+
+		//select month #5
+	
+		new Select(driver.findElement(map.getLocator("billing_ccmonthid"))).selectByVisibleText("05");
+		//change year
+		new Select(driver.findElement(map.getLocator("billing_ccyearid"))).selectByVisibleText("2020");
+		
+		//     WebElement continuebtn=
+		driver.findElement(map.getLocator("billing_continuebtn")).click();
+		
 	        
 	}
 

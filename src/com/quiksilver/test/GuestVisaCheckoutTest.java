@@ -25,6 +25,9 @@ public class GuestVisaCheckoutTest extends BaseSuite {
 			//logout to start test with desired logged out condition
 			cm.logout(driver);
 		}
+		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		if(isUKsite==true)
+		{
 		By locator_tshirtLink=map.getLocator("men_tshirtcss");
 		cm.homePageMainNavMen(driver, locator_tshirtLink);
 
@@ -49,12 +52,35 @@ public class GuestVisaCheckoutTest extends BaseSuite {
 		//click on unregistered checkout btn
 		By locator_unregisteredcheckoutbtn=map.getLocator("interstitial_unregisteredcheckoutbtn");
 		cm.checkoutSignInClickElement(driver, locator_unregisteredcheckoutbtn);
+		return;
+		}
+		//US Site functionality
+		By locator_tshirtLink=map.getLocator("mens_Tshirt_xpath_US");
+		cm.homePageMainNavMen(driver, locator_tshirtLink);
+		
+		Reporter.log("On Subcat page title is "+ driver.getTitle());
+		
+		//2/24 using new CommonMethod, '1' means it will click on 2nd product on subcat page
+		cm.subcatPageClickProduct(driver, 5);	
+		
+		//on PDP click on save for later and assert 'saved' msg displayed on the screen
+		Reporter.log("On PDP page title is "+ driver.getTitle());
+		cm.pdpPageSelectAddToCart(driver);
+		
+		cm.fromMiniCartToCart(driver);
+
+		//on Cart page click on Secure checkout
+		//ts.takeScreenshot(driver);
+		cm.fromCartToSignIn(driver);
 
 	}
 
 	@Test
 	public void testGuestCheckoutVisa() throws Exception
 	{
+		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		if(isUKsite==true)
+		{
 		    cm.step1Fields(driver);
 
 			//this is optional if the num of test is large just remove taking screenshot below
@@ -71,7 +97,23 @@ public class GuestVisaCheckoutTest extends BaseSuite {
 	        cm.verificationClickPlaceOrder(driver);
 
 	        //on Confirmation page 
-	        cm.submitConfirmation(driver);	        
+	        cm.submitConfirmation(driver);
+	        return;
+		}
+		
+		//US site functionality
+		cm.fromCartToGuestCheckout(driver);
+		 cm.step1FieldsUS(driver);
+		 cm.fromInscriptionToStep2Payment(driver);
+	        Reporter.log("After click on 'continue' button on Inscription page got to "+ driver.getTitle());
+
+	        cm.selectPaymentOnStep2US(driver,"visa");
+
+	        //on Verification  Click on "Terms and Condition of Sale" checkbox and Place order button
+	       cm.verificationClickPlaceOrder(driver);
+
+	        //on Confirmation page 
+	        cm.submitConfirmation(driver);
 
 	}
 

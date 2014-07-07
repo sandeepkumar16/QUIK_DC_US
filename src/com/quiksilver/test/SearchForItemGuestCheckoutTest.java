@@ -36,7 +36,7 @@ public class SearchForItemGuestCheckoutTest extends BaseSuite {
 		//on PDP add to cart
 		Reporter.log("On PDP page title is "+ driver.getTitle());
 		//ts.takeScreenshot(driver);
-		cm.pdpPageSelectAddToCart(driver);
+		cm.pdpPageSelectAddToCartNumSizes(driver);
 
 		cm.fromMiniCartToCart(driver);
 
@@ -53,6 +53,9 @@ public class SearchForItemGuestCheckoutTest extends BaseSuite {
 	@Test
 	public void searchForItemGuestCheckout() throws Exception
 	{
+		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		if(isUKsite==true)
+		{
 		   cm.step1Fields(driver);	                	      
 
 	        cm.fromInscriptionToStep2Payment(driver);
@@ -67,6 +70,23 @@ public class SearchForItemGuestCheckoutTest extends BaseSuite {
 
 	        //on Confirmation page 
 	        cm.submitConfirmation(driver);	
+	        return;
+		}
+
+		//US site functionality
+		
+		 cm.step1FieldsUS(driver);
+		 cm.fromInscriptionToStep2Payment(driver);
+	        Reporter.log("After click on 'continue' button on Inscription page got to "+ driver.getTitle());
+
+	        cm.selectPaymentOnStep2US(driver,"visa");
+
+	        //on Verification  Click on "Terms and Condition of Sale" checkbox and Place order button
+	       cm.verificationClickPlaceOrder(driver);
+
+	        //on Confirmation page 
+	        cm.submitConfirmation(driver);
+
 
 	}
 
