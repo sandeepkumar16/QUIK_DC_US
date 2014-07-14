@@ -1303,6 +1303,7 @@ public class CommonMethods {
 	{
 		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
 		WebDriverWait wait= new WebDriverWait(driver,25);
+		
 		if(isUKsite==true)
 		{
 		
