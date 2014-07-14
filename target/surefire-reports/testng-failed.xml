@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [Multibrowser_DC_Quiksilver]">
+  <parameter name="browser" value="safari"/>
+  <parameter name="url" value="stagingDC_US"/>
+  <test name="FirefoxTest(failed)" preserve-order="false">
+    <parameter name="browser" value="firefox"/>
+    <parameter name="url" value="stagingDC"/>
+    <classes>
+      <class name="com.quiksilver.test.GuestCheckoutExpressAmexTest">
+        <methods>
+          <include name="getToStep1GuestCheckout"/>
+          <include name="beforeTest"/>
+          <include name="getToHome"/>
+          <include name="tearDown"/>
+        </methods>
+      </class>
+      <class name="com.quiksilver.test.AddToWishListPdpTest">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="getToHome"/>
+          <include name="tearDown"/>
+          <include name="saveForLaterPDP"/>
+        </methods>
+      </class>
+    </classes>
+  </test>
+  <test name="ChromeTest(failed)" preserve-order="false">
+    <parameter name="browser" value="chrome"/>
+    <parameter name="url" value="stagingDC"/>
+    <classes>
+      <class name="com.quiksilver.test.GuestCheckoutExpressAmexTest">
+        <methods>
+          <include name="getToStep1GuestCheckout"/>
+          <include name="testGuestCheckoutAmex"/>
+          <include name="beforeTest"/>
+          <include name="getToHome"/>
+          <include name="tearDown"/>
+        </methods>
+      </class>
+      <class name="com.quiksilver.test.AddToWishListPdpTest">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="getToHome"/>
+          <include name="tearDown"/>
+        </methods>
+      </class>
+    </classes>
+  </test>
+</suite>

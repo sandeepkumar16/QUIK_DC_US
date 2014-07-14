@@ -17,7 +17,9 @@ import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -58,12 +60,27 @@ public class WebDriverManager {
 		
 		if(browser.equalsIgnoreCase("firefox")) 
 		{
+			final int nonStandardPort = 9999;
 			
 			
-			// System.setProperty("webdriver.firefox.driver", "/Applications/Firefox.app/Contents/MacOS/firefox.exe");
-			 
+			//System.setProperty("webdriver.firefox.driver", "/Applications/Firefox.app/Contents/MacOS/firefox.exe");
+			File profileDirectory = new File("/Users/vpeter/Library/Application Support/Firefox/Profiles/qa");
+		//FirefoxProfile profile = new FirefoxProfile(profileDirectory);
+	//profile.setPreference(FirefoxProfile.PORT_PREFERENCE, 7054);
+		//driver = new FirefoxDriver();
+		 FirefoxProfile profile = new FirefoxProfile(profileDirectory);
+		 int nonStandardPort1 = 9999;
+	//	profile.setFirefoxPort(nonStandardPort1);
+		WebDriver driver = new FirefoxDriver(profile);
+
+	
+
+		DesiredCapabilities dc = DesiredCapabilities.firefox();
+	//	dc.setCapability(CapabilityType.FIREFOX_WEBDRIVER_PORT, 9999);
+		dc.setCapability(FirefoxDriver.PROFILE, profile);
+		 driver = new RemoteWebDriver(dc);
 			
-			  driver = new FirefoxDriver();
+			  //driver = new FirefoxDriver();
 
 			
 		    defaultWindowSize(driver);

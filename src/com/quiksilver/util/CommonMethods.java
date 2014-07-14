@@ -1015,12 +1015,29 @@ public class CommonMethods {
 		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
 		if(isUKsite==true)
 		{	
-		//hover over product
-		onMouseOver(driver, locator);
-		driver.findElement(map.getLocator("subcat_productxpressshop")).click();
-		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("subcat_addtocartexpress")));
-		driver.findElement(map.getLocator("subcat_addtocartexpress")).click();
-		return;
+			try{
+				WebElement element = driver.findElement(map.getLocator("subcat_product"));
+				Actions actionsProvider = new Actions(driver);
+				actionsProvider.moveToElement(element).perform();
+				wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("subcat_productxpressshop")));
+				driver.findElement(map.getLocator("subcat_productxpressshop")).click();
+				Thread.sleep(5000L);
+				wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("subcat_addtocartexpress")));
+				driver.findElement(map.getLocator("subcat_addtocartexpress")).click();
+		
+			}
+			catch(Exception e)
+			{
+				//hover over product
+				onMouseOver(driver, locator);
+				driver.findElement(map.getLocator("subcat_productxpressshop")).click();
+				wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("subcat_addtocartexpress")));
+				driver.findElement(map.getLocator("subcat_addtocartexpress")).click();
+				
+				
+			}
+			
+			return;
 		}
 		
 		

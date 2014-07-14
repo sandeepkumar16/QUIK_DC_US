@@ -1,0 +1,45 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 2, Errors: 0, Skipped: 1, Time elapsed: 118.88 sec <<< FAILURE! - in TestSuite
+saveForLaterPDP(com.quiksilver.test.AddToWishListPdpTest)  Time elapsed: 74.82 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/openqa/selenium/html5/BrowserConnection
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:366)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:355)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:354)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:423)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:356)
+	at org.openqa.selenium.remote.html5.AddBrowserConnection.getDescribedInterface(AddBrowserConnection.java:34)
+	at org.openqa.selenium.remote.Augmenter.determineAugmentation(Augmenter.java:117)
+	at org.openqa.selenium.remote.Augmenter.create(Augmenter.java:51)
+	at org.openqa.selenium.remote.BaseAugmenter.augment(BaseAugmenter.java:114)
+	at com.quiksilver.util.TakeScreenshot.takeScreenshot(TakeScreenshot.java:29)
+	at com.quiksilver.test.AddToWishListPdpTest.saveForLaterPDP(AddToWishListPdpTest.java:44)
+
+getToStep1GuestCheckout(com.quiksilver.test.GuestCheckoutExpressAmexTest)  Time elapsed: 97.786 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchElementException: no such element
+  (Session info: chrome=35.0.1916.153)
+  (Driver info: chromedriver=2.9.248307,platform=Mac OS X 10.7.5 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 72 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.42.2', revision: '6a6995d31c7c56c340d6f45a76976d43506cd6cc', time: '2014-06-03 10:52:47'
+System info: host: 'PUNRAZ.local', ip: '10.37.129.2', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.7.5', java.version: '1.7.0_07'
+Session ID: 49f545ee9b43b7603b53f0a386ce121e
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/var/folders/vv/30lw1_z968g34f959mr38g3m0000gp/T/.org.chromium.Chromium.iLKO4m}, rotatable=false, locationContextEnabled=true, version=35.0.1916.153, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, nativeEvents=true, webStorageEnabled=true, applicationCacheEnabled=false, takesScreenshot=true}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:525)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:193)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:145)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:307)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:404)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:357)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:299)
+	at com.quiksilver.util.CommonMethods.subcatPageHoverOnProductClickExpressLink(CommonMethods.java:1012)
+	at com.quiksilver.test.GuestCheckoutExpressAmexTest.getToStep1GuestCheckout(GuestCheckoutExpressAmexTest.java:39)
+
