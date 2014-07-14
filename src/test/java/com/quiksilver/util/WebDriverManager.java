@@ -66,7 +66,7 @@ public class WebDriverManager implements SauceOnDemandSessionIdProvider {
 			caps.setCapability("platform", "Windows 7");
 		    caps.setCapability("version", "30");
 		    driver = new RemoteWebDriver(
-						  new URL("http://FluidQA:535f3514-ec3d-4632-af78-a613825a77a9@ondemand.saucelabs.com:80/wd/hub"),
+						  new URL("http://veronicapeterfluid:f7c04d36-8386-4bf8-b75a-5ff52f50f61a@ondemand.saucelabs.com:80/wd/hub"),
 						  caps);
 			
 		   
@@ -102,7 +102,7 @@ if(browser.equalsIgnoreCase("chrome")) {
 	caps.setCapability("platform", "OS X 10.6");
 	caps.setCapability("version", "27");
     driver = new RemoteWebDriver(
-				  new URL("http://FluidQA:535f3514-ec3d-4632-af78-a613825a77a9@ondemand.saucelabs.com:80/wd/hub"),
+				  new URL("http://veronicapeterfluid:f7c04d36-8386-4bf8-b75a-5ff52f50f61a@ondemand.saucelabs.com:80/wd/hub"),
 				  caps);
 
 	    }
