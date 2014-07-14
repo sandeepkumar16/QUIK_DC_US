@@ -852,10 +852,12 @@ public class CommonMethods {
 		driver.findElement(map.getLocator("searchField")).sendKeys(item);
 		Thread.sleep(5000L);
 		driver.findElement(map.getLocator("searchField")).sendKeys(Keys.ENTER);
+	
+		Thread.sleep(2000L);
 		driver.findElement(map.getLocator("searchField")).sendKeys(Keys.ENTER);
 		
-		
-		CommonMethods.pause(1800);
+		Thread.sleep(9000L);
+	//	CommonMethods.pause(1800);
 
 		/* this can be done later verifying search breadcrumbs
 		boolean search_breadcrumbs = driver.findElement(
@@ -1318,8 +1320,8 @@ public class CommonMethods {
 		driver.findElement(map.getLocator("pdp_sizeselector")).click();
 		Thread.sleep(5000L);
 		
-		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselector5swatch")));
-		driver.findElement(map.getLocator("pdp_sizeselector5swatch")).click();
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselector28swatch")));
+		driver.findElement(map.getLocator("pdp_sizeselector28swatch")).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_aftersize")));
 		Thread.sleep(5000L);
 		driver.findElement(map.getLocator("pdp_addtocart_aftersize")).click();

@@ -50,7 +50,7 @@ if(isUKsite==true)
 
 			return;
 }
-		By locator_searchboardshorts=map.getLocator("subcat_searchitem");
+		By locator_searchboardshorts=map.getLocator("subcat_searchitem2");
 		cm.subcatPageClickProduct(driver, locator_searchboardshorts);
 
 		
