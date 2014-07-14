@@ -1303,7 +1303,7 @@ public class CommonMethods {
 	{
 		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
 		WebDriverWait wait= new WebDriverWait(driver,25);
-		if(isUKsite==true)
+	/*	if(isUKsite==true)
 		{
 		
 		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_UK")));
@@ -1312,7 +1312,7 @@ public class CommonMethods {
 		return;
 		
 		//optional logic to ensure mini-cart triggered can go here
-		}
+		}*/
 		//US Site// Select size dropdown and size swatch
 		
 		
