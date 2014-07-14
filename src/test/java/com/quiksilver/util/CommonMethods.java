@@ -852,6 +852,7 @@ public class CommonMethods {
 		driver.findElement(map.getLocator("searchField")).sendKeys(item);
 		Thread.sleep(5000L);
 		driver.findElement(map.getLocator("searchField")).sendKeys(Keys.ENTER);
+		driver.findElement(map.getLocator("searchField")).sendKeys(Keys.ENTER);
 		
 		
 		CommonMethods.pause(1800);
