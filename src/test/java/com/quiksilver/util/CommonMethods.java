@@ -837,7 +837,7 @@ public class CommonMethods {
 
 	public void searchByItemName(WebDriver driver) throws Exception {
 
-		String item = "Boardshorts";
+		String item = "BOARDSHORTS";
 		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
 		if(isUKsite==true)
 		{
@@ -850,6 +850,7 @@ public class CommonMethods {
 		//DC US no search button need to click on Enter key
 		driver.findElement(map.getLocator("searchField")).clear();
 		driver.findElement(map.getLocator("searchField")).sendKeys(item);
+		Thread.sleep(5000L);
 		driver.findElement(map.getLocator("searchField")).sendKeys(Keys.ENTER);
 		
 		

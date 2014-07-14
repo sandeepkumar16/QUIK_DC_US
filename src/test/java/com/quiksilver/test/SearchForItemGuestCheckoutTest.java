@@ -27,7 +27,7 @@ public class SearchForItemGuestCheckoutTest extends BaseSuite {
 		}
 
 		cm.searchByItemName(driver);
-
+Thread.sleep(5000L);
 		//By locator_searchboardshorts=map.getLocator("subcat_searchitem");
 		//cm.subcatPageClickProduct(driver, locator_searchboardshorts);
 
