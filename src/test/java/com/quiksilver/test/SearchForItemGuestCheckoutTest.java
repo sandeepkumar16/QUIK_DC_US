@@ -68,6 +68,7 @@ if(isUKsite==true)
 		//click on unregistered checkout btn
 		By locator_unregisteredcheckoutbtn=map.getLocator("interstitial_unregisteredcheckoutbtn");
 		cm.checkoutSignInClickElement(driver, locator_unregisteredcheckoutbtn);
+		cm.sauceReport();
 
 	}
 
