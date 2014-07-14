@@ -26,8 +26,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestContext;
 import org.testng.Reporter;
 
+import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 
-public class WebDriverManager {
+
+public class WebDriverManager implements SauceOnDemandSessionIdProvider {
 	private static WebDriver driver ;
 	private static Logger log;
 	private static DesiredCapabilities capability;
@@ -60,25 +62,25 @@ public class WebDriverManager {
 		
 		if(browser.equalsIgnoreCase("firefox")) 
 		{
-			/*DesiredCapabilities caps = DesiredCapabilities.firefox();
-	    	caps.setCapability("platform", "OS X 10.6");
-	    	caps.setCapability("version", "27");
+			DesiredCapabilities caps = DesiredCapabilities.firefox();
+			caps.setCapability("platform", "Windows 7");
+		    caps.setCapability("version", "30");
 		    driver = new RemoteWebDriver(
 						  new URL("http://veronicapeterfluid:f7c04d36-8386-4bf8-b75a-5ff52f50f61a@ondemand.saucelabs.com:80/wd/hub"),
 						  caps);
-			*/
+			
 		   
 
 		    
 			//*************Use jenkins plugin browser version
-			   DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+			/*	   DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
 desiredCapabilities.setVersion(System.getenv("SELENIUM_VERSION"));
 desiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
 driver = new RemoteWebDriver(
      new URL("http://veronicapeterfluid:f7c04d36-8386-4bf8-b75a-5ff52f50f61a@ondemand.saucelabs.com:80/wd/hub"),
      desiredCapabilities);
-			 defaultWindowSize(driver);
+			 defaultWindowSize(driver);*/
 		    
 	    }
 		
@@ -177,6 +179,12 @@ if(browser.equalsIgnoreCase("chrome")) {
 	public static Logger LoggerGetInstance() {
 		log = Logger.getLogger(WebDriverManager.class);
 		return log;
+	}
+
+	@Override
+	public String getSessionId() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 
