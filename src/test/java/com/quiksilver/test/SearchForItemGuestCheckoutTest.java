@@ -50,9 +50,7 @@ if(isUKsite==true)
 
 			return;
 }
-		By locator_searchboardshorts=map.getLocator("subcat_searchitem2");
-		cm.subcatPageClickProduct(driver, locator_searchboardshorts);
-
+cm.subcatPageClickProduct(driver, 1);
 		
 		//on PDP add to cart
 		Reporter.log("On PDP page title is "+ driver.getTitle());
