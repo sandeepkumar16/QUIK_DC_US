@@ -1318,7 +1318,7 @@ public class CommonMethods {
 		driver.findElement(map.getLocator("pdp_sizeselector")).click();
 		Thread.sleep(5000L);
 		
-	//	wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselector5swatch")));
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselector5swatch")));
 		driver.findElement(map.getLocator("pdp_sizeselector5swatch")).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_aftersize")));
 		Thread.sleep(5000L);
