@@ -11,6 +11,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Hashtable;
@@ -48,6 +50,8 @@ import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.Reporter;
 
+import com.quiksilver.util.WebDriverManager;
+
 
 
 
@@ -63,7 +67,7 @@ public class CommonMethods {
     public String productionQuik = rp.readConfigProperties("production");
     public  String stagingDC = rp.readConfigProperties("staging_dcshoes");
     public String productionDC = rp.readConfigProperties("production_dcshoes");  
-
+    public WebDriverManager wm=new WebDriverManager();
 
 
 	//ATT: this waits need to be instantiated in the methods below 
@@ -80,10 +84,32 @@ public class CommonMethods {
 	PrintWriter pw ;
 
 
-	/*****************************************************START OF ALL COMMON METHODS *****************************/
+	/*****************************************************START OF ALL COMMON METHODS 
+	 * @throws MalformedURLException *****************************/
 
 
+//Saucelabs
+	public void sauceReport() throws MalformedURLException
+	{
+	String m=	wm.getSessionId();
+	int l=m.length();
+	String mm=m.substring(23,55);
+	
 
+	//String h=hm.printHMac(mm);
+	
+	
+	
+	Reporter.log(m);
+	
+	String urlString ="https://saucelabs.com/jobs/"+mm;
+	URL testURL=new URL(urlString);
+	
+	
+	Reporter.log("<a>Here is your url for screenshots: "+testURL+"</a>");
+	
+	}
+	
 	//example: type(driver, By.name("txtUserName"), username);
 
 	public static void type (WebDriver driver, By locator, String text) {
