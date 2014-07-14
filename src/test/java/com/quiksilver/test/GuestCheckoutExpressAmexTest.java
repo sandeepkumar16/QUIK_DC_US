@@ -26,29 +26,30 @@ public class GuestCheckoutExpressAmexTest extends BaseSuite {
 			//logout to start test with desired logged out condition
 			cm.logout(driver);
 		}
+		
 		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
 		if(isUKsite==true)
 		{
-		By locator_tshirtLink=map.getLocator("men_tshirtcss");
-		cm.homePageMainNavMen(driver, locator_tshirtLink);
-		
-		//on subcat page click on product - pass driver and locator for the product you want to click on
-		Reporter.log("On Subcat page title is "+ driver.getTitle());
-		//ts.takeScreenshot(driver);
-		
-		By locator_subcatProduct = map.getLocator("subcat_product");
-		cm.subcatPageHoverOnProductClickExpressLink(driver,locator_subcatProduct);
-		
-		cm.fromMiniCartToCart(driver);
-		
-		//on Cart page click on Secure checkout
-		//ts.takeScreenshot(driver);
-		cm.fromCartToSignIn(driver);		
-		
-		//click on unregistered checkout btn
-		By locator_unregisteredcheckoutbtn=map.getLocator("interstitial_unregisteredcheckoutbtn");
-		cm.checkoutSignInClickElement(driver, locator_unregisteredcheckoutbtn);
-		return;
+				By locator_tshirtLink=map.getLocator("men_tshirtcss");
+				cm.homePageMainNavMen(driver, locator_tshirtLink);
+				
+				//on subcat page click on product - pass driver and locator for the product you want to click on
+				Reporter.log("On Subcat page title is "+ driver.getTitle());
+				//ts.takeScreenshot(driver);
+				
+				By locator_subcatProduct = map.getLocator("subcat_product");
+				cm.subcatPageHoverOnProductClickExpressLink(driver,locator_subcatProduct);
+				
+				cm.fromMiniCartToCart(driver);
+				
+				//on Cart page click on Secure checkout
+				//ts.takeScreenshot(driver);
+				cm.fromCartToSignIn(driver);		
+				
+				//click on unregistered checkout btn
+				By locator_unregisteredcheckoutbtn=map.getLocator("interstitial_unregisteredcheckoutbtn");
+				cm.checkoutSignInClickElement(driver, locator_unregisteredcheckoutbtn);
+				return;
 		}
 		
 		//US Site functionality

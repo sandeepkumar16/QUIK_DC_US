@@ -32,7 +32,7 @@
 
        <test name="ChromeTest">
               <parameter name="browser" value="chrome" />
-              <parameter name="url" value="stagingDC" />
+              <parameter name="url" value="stagingDC_US" />
               
                <classes>
                  
