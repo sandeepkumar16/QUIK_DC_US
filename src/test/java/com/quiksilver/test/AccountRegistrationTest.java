@@ -24,7 +24,7 @@ import com.quiksilver.util.WebDriverManager;
 
 //TC #2 Create Account 
 public class AccountRegistrationTest extends BaseSuite{
-
+	public WebDriverManager wm=new WebDriverManager();
 	@Test 
 	public void registrationForm() throws Exception
 	{
@@ -48,6 +48,7 @@ public class AccountRegistrationTest extends BaseSuite{
 			//clean up logout
 			cm.logout(driver);
 		}
+		cm.sauceReport();
 
 	}
 

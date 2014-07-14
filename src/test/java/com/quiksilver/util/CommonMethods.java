@@ -1250,14 +1250,27 @@ public class CommonMethods {
 			driver.findElement(map.getLocator("pdp_sizeselectorSswatch")).click();
 			
 			Thread.sleep(5000L);
+			//if size SMALL is not available
 			if (driver.findElement(map.getLocator("pdp_sizeunavailMsg")).isDisplayed())
 			{
 				wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorWithSize")));
 				driver.findElement(map.getLocator("pdp_sizeselectorWithSize")).click();
 				Thread.sleep(5000L);
+				// if S is not available select L
 				wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorLswatch")));
 				driver.findElement(map.getLocator("pdp_sizeselectorLswatch")).click();
 				
+				Thread.sleep(5000L);
+				//if L is not available select XL
+				if (driver.findElement(map.getLocator("pdp_sizeunavailMsg")).isDisplayed())
+				{
+					wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorWithSize")));
+					driver.findElement(map.getLocator("pdp_sizeselectorWithSize")).click();
+					Thread.sleep(5000L);
+					// if L is not available select XL
+					wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorXLswatch")));
+					driver.findElement(map.getLocator("pdp_sizeselectorXLswatch")).click();
+				}
 				
 			}
 		}
