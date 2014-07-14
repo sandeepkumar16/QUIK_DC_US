@@ -28,12 +28,32 @@ public class SearchForItemGuestCheckoutTest extends BaseSuite {
 
 		cm.searchByItemName(driver);
 Thread.sleep(5000L);
-		//By locator_searchboardshorts=map.getLocator("subcat_searchitem");
-		//cm.subcatPageClickProduct(driver, locator_searchboardshorts);
 
-		//3/17 click on 4th item on subcat page
-		cm.subcatPageClickProduct(driver, 2);
+Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+if(isUKsite==true)
+{
+	cm.subcatPageClickProduct(driver, 2);
+	//on PDP add to cart
+			Reporter.log("On PDP page title is "+ driver.getTitle());
+			////ts.takeScreenshot(driver);
+			cm.pdpPageSelectAddToCartNumSizes(driver);
 
+			cm.fromMiniCartToCart(driver);
+
+			//on Cart page click on Secure checkout
+			////ts.takeScreenshot(driver);
+			cm.fromCartToSignIn(driver);
+
+			//click on unregistered checkout btn
+			By locator_unregisteredcheckoutbtn=map.getLocator("interstitial_unregisteredcheckoutbtn");
+			cm.checkoutSignInClickElement(driver, locator_unregisteredcheckoutbtn);
+
+			return;
+}
+		By locator_searchboardshorts=map.getLocator("subcat_searchitem");
+		cm.subcatPageClickProduct(driver, locator_searchboardshorts);
+
+		
 		//on PDP add to cart
 		Reporter.log("On PDP page title is "+ driver.getTitle());
 		////ts.takeScreenshot(driver);
