@@ -33,7 +33,7 @@ public class GuestCheckoutExpressAmexTest extends BaseSuite {
 		
 		//on subcat page click on product - pass driver and locator for the product you want to click on
 		Reporter.log("On Subcat page title is "+ driver.getTitle());
-		ts.takeScreenshot(driver);
+		//ts.takeScreenshot(driver);
 		
 		By locator_subcatProduct = map.getLocator("subcat_product");
 		cm.subcatPageHoverOnProductClickExpressLink(driver,locator_subcatProduct);
@@ -41,7 +41,7 @@ public class GuestCheckoutExpressAmexTest extends BaseSuite {
 		cm.fromMiniCartToCart(driver);
 		
 		//on Cart page click on Secure checkout
-		ts.takeScreenshot(driver);
+		//ts.takeScreenshot(driver);
 		cm.fromCartToSignIn(driver);		
 		
 		//click on unregistered checkout btn
@@ -62,7 +62,7 @@ public class GuestCheckoutExpressAmexTest extends BaseSuite {
 		cm.fromMiniCartToCart(driver);
 
 		//on Cart page click on Secure checkout
-		//ts.takeScreenshot(driver);
+		////ts.takeScreenshot(driver);
 		cm.fromCartToSignIn(driver);
 	}
 	
@@ -74,7 +74,7 @@ public class GuestCheckoutExpressAmexTest extends BaseSuite {
 		{
 	        cm.step1Fields(driver);
 			//this is optional if the num of test is large just remove taking screenshot below
-	        ts.takeScreenshot(driver);
+	        //ts.takeScreenshot(driver);
 
 	        cm.fromInscriptionToStep2Payment(driver);
 	        Reporter.log("After click on 'continue' button on Inscription page got to "+ driver.getTitle());

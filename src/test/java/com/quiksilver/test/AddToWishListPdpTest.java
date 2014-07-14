@@ -41,7 +41,7 @@ Reporter.log("On Subcat page title is "+ driver.getTitle());
 		//on PDP click on save for later and assert 'saved' msg displayed on the screen
 		Reporter.log("On PDP page title is "+ driver.getTitle());
 		cm.pdpPageSaveForLater(driver);	
-		//ts.takeScreenshot(driver);
+		//////ts.takeScreenshot(driver);
 		return;
 		
 		}
@@ -60,7 +60,7 @@ Reporter.log("On Subcat page title is "+ driver.getTitle());
 		
 		
 		Reporter.log("On the US site there is no SAVE FOR LATER button");
-		//ts.takeScreenshot(driver);
+		////ts.takeScreenshot(driver);
 				
 
 	}

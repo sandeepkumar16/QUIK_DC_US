@@ -183,8 +183,9 @@ if(browser.equalsIgnoreCase("chrome")) {
 
 	@Override
 	public String getSessionId() {
-		// TODO Auto-generated method stub
-		return null;
+		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", ((RemoteWebDriver) driver).getSessionId().toString(), "quik Automation Test");
+        System.out.println(message);
+		return message;
 	}
 }
 
