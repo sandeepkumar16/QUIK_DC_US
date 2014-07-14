@@ -1244,6 +1244,8 @@ public class CommonMethods {
 		driver.findElement(map.getLocator("pdp_sizeselector")).click();
 		Thread.sleep(5000L);
 		//US Site// Select size dropdown and size swatch
+		
+		try{
 		if (size.equals("S"))
 		{
 			wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorSswatch")));
@@ -1283,7 +1285,11 @@ public class CommonMethods {
 		
 		Thread.sleep(5000L);
 		driver.findElement(map.getLocator("pdp_addtocart_aftersize")).click();
-		
+		}
+		catch(Throwable t)
+		{
+			Reporter.log("<b>None of the sizes are available for this product -- unable to add to cart</b>");
+		}
 		
 	}
 	

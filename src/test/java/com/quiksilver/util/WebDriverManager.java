@@ -66,7 +66,7 @@ public class WebDriverManager implements SauceOnDemandSessionIdProvider {
 			caps.setCapability("platform", "Windows 7");
 		    caps.setCapability("version", "30");
 		    driver = new RemoteWebDriver(
-						  new URL("http://veronicapeterfluid:f7c04d36-8386-4bf8-b75a-5ff52f50f61a@ondemand.saucelabs.com:80/wd/hub"),
+						  new URL("http://FluidQA:535f3514-ec3d-4632-af78-a613825a77a9@ondemand.saucelabs.com:80/wd/hub"),
 						  caps);
 			
 		   
@@ -92,12 +92,18 @@ driver = new RemoteWebDriver(
 	    }
 	    
 if(browser.equalsIgnoreCase("chrome")) {
-             System.setProperty("webdriver.chrome.driver", "/Users/vpeter/Desktop/Selenium/AllWebDriverJARs/chromedriver.exe");
+           /*  System.setProperty("webdriver.chrome.driver", "/Users/vpeter/Desktop/Selenium/AllWebDriverJARs/chromedriver.exe");
 
               driver=new ChromeDriver();
 
 
-            defaultWindowSize(driver);
+            defaultWindowSize(driver);*/
+	DesiredCapabilities caps = DesiredCapabilities.chrome();
+	caps.setCapability("platform", "OS X 10.6");
+	caps.setCapability("version", "27");
+    driver = new RemoteWebDriver(
+				  new URL("http://FluidQA:535f3514-ec3d-4632-af78-a613825a77a9@ondemand.saucelabs.com:80/wd/hub"),
+				  caps);
 
 	    }
 	    if(browser.equalsIgnoreCase("safari")) {
@@ -183,7 +189,7 @@ if(browser.equalsIgnoreCase("chrome")) {
 
 	@Override
 	public String getSessionId() {
-		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", ((RemoteWebDriver) driver).getSessionId().toString(), "quik Automation Test");
+		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", ((RemoteWebDriver) driver).getSessionId().toString(), "QUIKSILVER-DC SHOES Brand Automation Tests");
         System.out.println(message);
 		return message;
 	}

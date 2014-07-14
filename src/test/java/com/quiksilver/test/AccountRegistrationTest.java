@@ -48,8 +48,8 @@ public class AccountRegistrationTest extends BaseSuite{
 			//clean up logout
 			cm.logout(driver);
 		}
-		cm.sauceReport();
-
+		cm.sauceReport();	
 	}
+	
 
 }
