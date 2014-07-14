@@ -1316,11 +1316,29 @@ public class CommonMethods {
 		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart")));
 		driver.findElement(map.getLocator("pdp_sizeselector")).click();
 		Thread.sleep(5000L);
+		
+		
 		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselector28swatch")));
+		
+		WebElement Num28Swatch=driver.findElement(map.getLocator("pdp_sizeselector28swatch"));
+		if (Num28Swatch.isDisplayed())
+		{
 		driver.findElement(map.getLocator("pdp_sizeselector28swatch")).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_aftersize")));
 		Thread.sleep(5000L);
 		driver.findElement(map.getLocator("pdp_addtocart_aftersize")).click();
+		}
+		else
+		{
+			wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselector5swatch")));
+			driver.findElement(map.getLocator("pdp_sizeselector5swatch")).click();
+			wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_aftersize")));
+			Thread.sleep(5000L);
+			driver.findElement(map.getLocator("pdp_addtocart_aftersize")).click();
+		}
+			
+			
+			
 		
 		/*Thread.sleep(5000L);
 		WebElement SizeUnavailStatus=driver.findElement(map.getLocator("pdp_sizeunavailMsg"));

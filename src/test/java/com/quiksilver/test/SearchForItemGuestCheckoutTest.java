@@ -57,7 +57,7 @@ if(isUKsite==true)
 		//on PDP add to cart
 		Reporter.log("On PDP page title is "+ driver.getTitle());
 		////ts.takeScreenshot(driver);
-		cm.pdpPageSelectAddToCart(driver,"S");
+		cm.pdpPageSelectAddToCartNumSizes(driver);
 
 		cm.fromMiniCartToCart(driver);
 
