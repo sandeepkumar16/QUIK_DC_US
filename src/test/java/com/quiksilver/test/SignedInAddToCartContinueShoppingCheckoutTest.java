@@ -24,7 +24,7 @@ import com.quiksilver.util.BaseSuite;
  * @author igonzalez
  *Smoke tests group
  */
-@Listeners({ com.quiksilver.util.TestListenerFailPass.class })
+//@Listeners({ com.quiksilver.util.TestListenerFailPass.class })
 
 public class SignedInAddToCartContinueShoppingCheckoutTest extends BaseSuite {
 	public  String testEmail = rp.readConfigProperties("yahoo");
@@ -100,7 +100,8 @@ cm.subcatPageClickProduct(driver, 4);
 		
 		//on PDP click on save for later and assert 'saved' msg displayed on the screen
 		Reporter.log("On PDP page title is "+ driver.getTitle());
-		cm.pdpPageSelectAddToCart(driver);
+		//cm.pdpPageSelectAddToCart(driver);
+		cm.pdpPageSelectAddToCart(driver,"S");
 		
 		cm.fromMiniCartToCart(driver);
 
