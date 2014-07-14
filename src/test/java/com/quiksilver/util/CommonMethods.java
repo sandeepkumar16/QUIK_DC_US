@@ -1300,9 +1300,10 @@ public class CommonMethods {
 	public void pdpPageSelectAddToCartNumSizes(WebDriver driver) throws Exception
 	{
 		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		WebDriverWait wait= new WebDriverWait(driver,25);
 		if(isUKsite==true)
 		{
-		WebDriverWait wait= new WebDriverWait(driver,25);
+		
 		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_UK")));
 		driver.findElement(map.getLocator("pdp_addtocart_UK")).click();
 		Thread.sleep(5000L);
@@ -1312,7 +1313,7 @@ public class CommonMethods {
 		}
 		//US Site// Select size dropdown and size swatch
 		
-		WebDriverWait wait= new WebDriverWait(driver,15);
+		
 	//	wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart")));
 		driver.findElement(map.getLocator("pdp_sizeselector")).click();
 		Thread.sleep(5000L);
