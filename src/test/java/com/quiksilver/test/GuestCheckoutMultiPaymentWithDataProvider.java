@@ -89,7 +89,7 @@ public class GuestCheckoutMultiPaymentWithDataProvider extends BaseSuite {
 			Reporter.log("On Subcat page title is "+ driver.getTitle());
 			
 			//2/24 using new CommonMethod, '1' means it will click on 2nd product on subcat page
-			cm.subcatPageClickProduct(driver, 2);	
+			cm.subcatPageClickProduct(driver, 3);	
 			
 			//on PDP click on save for later and assert 'saved' msg displayed on the screen
 			Reporter.log("On PDP page title is "+ driver.getTitle());
