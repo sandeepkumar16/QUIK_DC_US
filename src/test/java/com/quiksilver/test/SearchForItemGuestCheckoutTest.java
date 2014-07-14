@@ -9,10 +9,11 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.quiksilver.util.BaseSuite;
+import com.quiksilver.util.WebDriverManager;
 
 //TC#16 Search for item Guest Checkout
 public class SearchForItemGuestCheckoutTest extends BaseSuite {
-
+	public WebDriverManager wm=new WebDriverManager();
 	@BeforeMethod
 	public void searchForItemGetToCheckout() throws Exception
 	{
@@ -35,13 +36,13 @@ public class SearchForItemGuestCheckoutTest extends BaseSuite {
 
 		//on PDP add to cart
 		Reporter.log("On PDP page title is "+ driver.getTitle());
-		//ts.takeScreenshot(driver);
+		////ts.takeScreenshot(driver);
 		cm.pdpPageSelectAddToCart(driver,"S");
 
 		cm.fromMiniCartToCart(driver);
 
 		//on Cart page click on Secure checkout
-		//ts.takeScreenshot(driver);
+		////ts.takeScreenshot(driver);
 		cm.fromCartToSignIn(driver);
 
 		//click on unregistered checkout btn
@@ -86,7 +87,7 @@ public class SearchForItemGuestCheckoutTest extends BaseSuite {
 
 	        //on Confirmation page 
 	        cm.submitConfirmation(driver);
-
+cm.sauceReport();
 
 	}
 

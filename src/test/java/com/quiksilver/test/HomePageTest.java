@@ -21,13 +21,13 @@ import com.quiksilver.util.WebDriverManager;
 //this class can be used for possible future testing of Home page
 //@Listeners({ com.quicksilver.util.TestListenerFailPass.class })
 public class HomePageTest extends BaseSuite {	
-     
+	public WebDriverManager wm=new WebDriverManager();
 	@Test
      public void testHome () throws Exception
      {
     	 cm.openHomePage(driver);
     	 Boolean isLoggedIn=cm.isLoggedIn(driver);   	     		
-    	 
+    	 cm.sauceReport();
      }    
   
 }

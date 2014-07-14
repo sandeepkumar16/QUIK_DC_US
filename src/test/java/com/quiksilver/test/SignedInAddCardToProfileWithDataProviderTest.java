@@ -10,6 +10,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.quiksilver.util.BaseSuite;
+import com.quiksilver.util.WebDriverManager;
 
 /**
  * @author igonzalez
@@ -23,6 +24,7 @@ import com.quiksilver.util.BaseSuite;
 
 
 public class SignedInAddCardToProfileWithDataProviderTest extends BaseSuite {
+	public WebDriverManager wm=new WebDriverManager();
 	
 	@DataProvider(name = "multicard")
 	public Object[][] createData1() {
@@ -56,7 +58,7 @@ public class SignedInAddCardToProfileWithDataProviderTest extends BaseSuite {
 		
 		//on subcat page click on product - pass driver and locator for the product you want to click on
 		Reporter.log("On Subcat page title is "+ driver.getTitle());
-		ts.takeScreenshot(driver);
+		//ts.takeScreenshot(driver);
 		
 		By locator_subcatProduct = map.getLocator("subcat_product");
 		cm.subcatPageHoverOnProductClickExpressLink(driver,locator_subcatProduct);
@@ -64,7 +66,7 @@ public class SignedInAddCardToProfileWithDataProviderTest extends BaseSuite {
 		cm.fromMiniCartToCart(driver);
 		
 		//on Cart page click on Secure checkout
-		ts.takeScreenshot(driver);
+		//ts.takeScreenshot(driver);
 		cm.fromCartToSignIn(driver);
 	}
 	
@@ -92,7 +94,7 @@ public class SignedInAddCardToProfileWithDataProviderTest extends BaseSuite {
 			}
 			
 			//take screenshot on Payment page to capture selected card type
-			ts.takeScreenshot(driver);
+			//ts.takeScreenshot(driver);
 			//click on Continue btn on Payment page
 			cm.fromStep2PaymentToStep3(driver);
 			
@@ -121,7 +123,8 @@ public class SignedInAddCardToProfileWithDataProviderTest extends BaseSuite {
 	       Assert.assertTrue(isSaved==0, "expected isSaved=0 and but was isSaved="+isSaved);
 	       
 	       //take screenshot on My Account>>Payment Setting page to verify saved card
-	       ts.takeScreenshot(driver);
+	       //ts.takeScreenshot(driver);
+	       cm.sauceReport();
 
 	}
 	

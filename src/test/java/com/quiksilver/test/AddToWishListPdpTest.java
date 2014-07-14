@@ -5,11 +5,12 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import com.quiksilver.util.BaseSuite;
+import com.quiksilver.util.WebDriverManager;
 
 
 //TC # 6 Add to WishList from PDP
 public class AddToWishListPdpTest extends BaseSuite {
-
+	public WebDriverManager wm=new WebDriverManager();
 	@Test
 	public void saveForLaterPDP() throws Exception
 	{
@@ -61,7 +62,7 @@ Reporter.log("On Subcat page title is "+ driver.getTitle());
 		
 		Reporter.log("On the US site there is no SAVE FOR LATER button");
 		////ts.takeScreenshot(driver);
-				
+				cm.sauceReport();
 
 	}
 	

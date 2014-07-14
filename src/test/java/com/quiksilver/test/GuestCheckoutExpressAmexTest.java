@@ -9,11 +9,12 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.quiksilver.util.BaseSuite;
+import com.quiksilver.util.WebDriverManager;
 
 //TC#15 Guest Express Checkout in Smoke Test spreadsheet- test card not specified in TC should test Amex or Master
 
 public class GuestCheckoutExpressAmexTest extends BaseSuite {
-	
+	public WebDriverManager wm=new WebDriverManager();
 	@BeforeMethod
 	public void getToStep1GuestCheckout() throws Exception
 	{
@@ -103,7 +104,7 @@ public class GuestCheckoutExpressAmexTest extends BaseSuite {
 
 	        //on Confirmation page 
 	        cm.submitConfirmation(driver);
-
+	        cm.sauceReport();
 	        
 	}
 

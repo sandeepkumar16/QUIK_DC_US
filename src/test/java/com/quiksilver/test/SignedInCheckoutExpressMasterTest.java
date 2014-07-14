@@ -15,16 +15,12 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.quiksilver.util.BaseSuite;
+import com.quiksilver.util.WebDriverManager;
 
-//TC#14 in Smoke Test spreadsheet
 
-/**
- * @author igonzalez
- * TC #14 in Smoke Test
- * 2/27 added condition to extend for Regression TC #14
- */
 public class SignedInCheckoutExpressMasterTest extends BaseSuite {
 	
+	public WebDriverManager wm=new WebDriverManager();
 	public  String testEmail = rp.readConfigProperties("hotmail");
 	  public String testPassword = rp.readConfigProperties("password_hotmail");  
 	  public String master=rp.readConfigProperties("master_nosecurecode");
@@ -55,7 +51,7 @@ public class SignedInCheckoutExpressMasterTest extends BaseSuite {
 		
 		//on subcat page click on product - pass driver and locator for the product you want to click on
 		Reporter.log("On Subcat page title is "+ driver.getTitle());
-		ts.takeScreenshot(driver);
+		//ts.takeScreenshot(driver);
 		
 		By locator_subcatProduct = map.getLocator("subcat_product");
 		cm.subcatPageHoverOnProductClickExpressLink(driver,locator_subcatProduct);
@@ -63,7 +59,7 @@ public class SignedInCheckoutExpressMasterTest extends BaseSuite {
 		cm.fromMiniCartToCart(driver);
 		
 		//on Cart page click on Secure checkout
-		ts.takeScreenshot(driver);
+		//ts.takeScreenshot(driver);
 		cm.fromCartToSignIn(driver);
 		return;
 		}
@@ -79,7 +75,7 @@ public class SignedInCheckoutExpressMasterTest extends BaseSuite {
 				cm.fromMiniCartToCart(driver);
 
 				//on Cart page click on Secure checkout
-				//ts.takeScreenshot(driver);
+				////ts.takeScreenshot(driver);
 				cm.fromCartToSignIn(driver);
 				
 				
@@ -123,7 +119,7 @@ public class SignedInCheckoutExpressMasterTest extends BaseSuite {
 	        driver.findElement(map.getLocator("login_paymentsettings")).click();
 	        
 	       
-	       ts.takeScreenshot(driver);
+	       //ts.takeScreenshot(driver);
 	       return;
 		}
 //US Site
@@ -158,7 +154,7 @@ public class SignedInCheckoutExpressMasterTest extends BaseSuite {
 		
 		//     WebElement continuebtn=
 		driver.findElement(map.getLocator("billing_continuebtn")).click();
-		
+		cm.sauceReport();
 		
 	}
 

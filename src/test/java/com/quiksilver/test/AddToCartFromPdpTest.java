@@ -7,11 +7,12 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import com.quiksilver.util.BaseSuite;
+import com.quiksilver.util.WebDriverManager;
 
 
 //TC # 7 Add to Cart from PDP
 public class AddToCartFromPdpTest extends BaseSuite {
-
+	public WebDriverManager wm=new WebDriverManager();
 	@Test
 	public void fromHomeToPDP() throws Exception
 	{
@@ -62,7 +63,7 @@ public class AddToCartFromPdpTest extends BaseSuite {
 		cm.pdpPageSelectAddToCart(driver);
 		
 		//ts.takeScreenshot(driver);
-		
+		cm.sauceReport();
 
 	}
 
