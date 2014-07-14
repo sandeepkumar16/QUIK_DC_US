@@ -1313,10 +1313,17 @@ public class CommonMethods {
 		//US Site// Select size dropdown and size swatch
 		
 		WebDriverWait wait= new WebDriverWait(driver,15);
-		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart")));
+	//	wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart")));
 		driver.findElement(map.getLocator("pdp_sizeselector")).click();
 		Thread.sleep(5000L);
-		/*
+		
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselector5swatch")));
+		driver.findElement(map.getLocator("pdp_sizeselector5swatch")).click();
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_aftersize")));
+		Thread.sleep(5000L);
+		driver.findElement(map.getLocator("pdp_addtocart_aftersize")).click();
+			
+/*
 		
 		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselector28swatch")));
 		
@@ -1336,13 +1343,6 @@ public class CommonMethods {
 			Thread.sleep(5000L);
 			driver.findElement(map.getLocator("pdp_addtocart_aftersize")).click();
 		}*/
-		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselector5swatch")));
-		driver.findElement(map.getLocator("pdp_sizeselector5swatch")).click();
-		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_aftersize")));
-		Thread.sleep(5000L);
-		driver.findElement(map.getLocator("pdp_addtocart_aftersize")).click();
-			
-			
 			
 		
 		/*Thread.sleep(5000L);
