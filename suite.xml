@@ -36,8 +36,7 @@
               <parameter name="url" value="stagingDC_US" />
               
                <classes>
-               <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/>                   
-                     
+             
                         
                                                                                      
          <!--             
@@ -51,7 +50,8 @@
                       <class name="com.quiksilver.test.AccountRegistrationTest" /> 
                 <class name="com.quiksilver.test.GuestVisaCheckoutTest"/>  
                     <class name= "com.quiksilver.test.SearchForItemGuestCheckoutTest"/> 
-                    
+                      <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/>                   
+                     
                      <class name = "com.quiksilver.test.GuestCheckoutMultiPaymentWithDataProvider"/>           
                       
                      -->
@@ -65,8 +65,8 @@
               <parameter name="url" value="stagingDC_US" />              
               
           <classes>
-              <!-- <class name= "com.quiksilver.test.AddToCartFromPdpTest"/>   
-                      <class name= "com.quiksilver.test.GuestCheckoutExpressAmexTest"/>   
+               <class name= "com.quiksilver.test.AddToCartFromPdpTest"/>   
+              <!--        <class name= "com.quiksilver.test.GuestCheckoutExpressAmexTest"/>   
                       <class name="com.quiksilver.test.GuestVisaCheckoutTest"/>   
                       <class name= "com.quiksilver.test.SearchForItemGuestCheckoutTest"/>                                                                             
                       <class name= "com.quiksilver.test.SignedInCheckoutExpressMasterTest"/> 
