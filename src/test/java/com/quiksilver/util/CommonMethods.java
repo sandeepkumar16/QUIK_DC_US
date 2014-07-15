@@ -850,8 +850,9 @@ public class CommonMethods {
 		
 		String item2 = "BOARDSHORTS";
 		//DC US no search button need to click on Enter key
-		driver.findElement(map.getLocator("searchField")).clear();
+	//	driver.findElement(map.getLocator("searchField")).clear();
 		driver.findElement(map.getLocator("searchField")).sendKeys(item2);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(map.getLocator("searchKeywordLink")));
 		driver.findElement(map.getLocator("searchKeywordLink")).click();
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(map.getLocator("searchPageTitle")));
