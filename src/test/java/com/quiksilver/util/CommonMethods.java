@@ -837,19 +837,21 @@ public class CommonMethods {
 
 	public void searchByItemName(WebDriver driver) throws Exception {
 
-		String item = "BOARDSHORTS";
+		
 		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
 		if(isUKsite==true)
-		{
+		{String item = "BOARDSHORTS";
 		driver.findElement(map.getLocator("searchField")).clear();
 		driver.findElement(map.getLocator("searchField")).sendKeys(item);
 		driver.findElement(map.getLocator("searchBtn")).click();
 		return;
 		
 		}
+		
+		String item2 = "BOARDSHORTS";
 		//DC US no search button need to click on Enter key
 		driver.findElement(map.getLocator("searchField")).clear();
-		driver.findElement(map.getLocator("searchField")).sendKeys(item);
+		driver.findElement(map.getLocator("searchField")).sendKeys(item2);
 		driver.findElement(map.getLocator("searchKeywordLink")).click();
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(map.getLocator("searchPageTitle")));
