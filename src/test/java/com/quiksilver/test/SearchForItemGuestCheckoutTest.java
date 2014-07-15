@@ -50,7 +50,8 @@ if(isUKsite==true)
 
 			return;
 }
-cm.subcatPageClickProduct(driver, 1);
+
+	cm.subcatPageClickProduct(driver, 1);
 		
 		//on PDP add to cart
 		Reporter.log("On PDP page title is "+ driver.getTitle());

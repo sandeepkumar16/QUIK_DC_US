@@ -850,13 +850,10 @@ public class CommonMethods {
 		//DC US no search button need to click on Enter key
 		driver.findElement(map.getLocator("searchField")).clear();
 		driver.findElement(map.getLocator("searchField")).sendKeys(item);
-		Thread.sleep(5000L);
-		driver.findElement(map.getLocator("searchField")).sendKeys(Keys.ENTER);
-	
-		Thread.sleep(2000L);
-		driver.findElement(map.getLocator("searchField")).sendKeys(Keys.ENTER);
+		driver.findElement(map.getLocator("searchKeywordLink")).click();
 		
-		Thread.sleep(9000L);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(map.getLocator("searchPageTitle")));
+		
 	//	CommonMethods.pause(1800);
 
 		/* this can be done later verifying search breadcrumbs
