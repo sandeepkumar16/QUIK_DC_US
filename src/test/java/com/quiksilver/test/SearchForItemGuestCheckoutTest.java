@@ -2,6 +2,7 @@ package com.quiksilver.test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.AssertJUnit;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeMethod;
@@ -51,6 +52,15 @@ if(isUKsite==true)
 			return;
 }
 
+String item2 = "BOARDSHORTS";
+//DC US no search button need to click on Enter key
+driver.findElement(map.getLocator("searchField")).clear();
+driver.findElement(map.getLocator("searchField")).sendKeys(item2);
+wait.until(ExpectedConditions.visibilityOfElementLocated(map.getLocator("searchKeywordLink")));
+driver.findElement(map.getLocator("searchKeywordLink")).click();
+
+wait.until(ExpectedConditions.visibilityOfElementLocated(map.getLocator("searchPageTitle")));
+
 	cm.subcatPageClickProduct(driver, 1);
 		
 		//on PDP add to cart
@@ -67,8 +77,7 @@ if(isUKsite==true)
 		//click on unregistered checkout btn
 		By locator_unregisteredcheckoutbtn=map.getLocator("interstitial_unregisteredcheckoutbtn");
 		cm.checkoutSignInClickElement(driver, locator_unregisteredcheckoutbtn);
-		cm.sauceReport();
-
+	
 	}
 
 	@Test
