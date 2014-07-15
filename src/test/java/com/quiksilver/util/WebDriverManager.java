@@ -128,8 +128,8 @@ if(browser.equalsIgnoreCase("chrome")) {
 			}*/
 	    	
 	    	DesiredCapabilities caps = DesiredCapabilities.safari();
-	    	caps.setCapability("platform", "OS X 10.8");
-	    	caps.setCapability("version", "6");
+	    	caps.setCapability("platform", "OS X 10.6");
+	    	caps.setCapability("version", "5");
 	    	 driver = new RemoteWebDriver(
 					  new URL("http://veronicapeterfluid:f7c04d36-8386-4bf8-b75a-5ff52f50f61a@ondemand.saucelabs.com:80/wd/hub"),  //http://FluidQA:535f3514-ec3d-4632-af78-a613825a77a9@ondemand.saucelabs.com:80/wd/hub
 					  caps);
