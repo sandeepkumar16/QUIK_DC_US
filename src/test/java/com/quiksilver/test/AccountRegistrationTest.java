@@ -48,6 +48,7 @@ public class AccountRegistrationTest extends BaseSuite{
 			//clean up logout
 			cm.logout(driver);
 		}
+		wm.getSessionId();
 		cm.sauceReport();	
 	}
 	

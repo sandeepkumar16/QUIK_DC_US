@@ -61,9 +61,9 @@ Reporter.log("Welcome message is : "+welcome);
 	//logout to clean up
 		cm.logout(driver);
 		//to make sure that logged out and got back to interst sign in page
-		driver.findElement(map.getLocator("create_accountbtn"));
+	//	driver.findElement(map.getLocator("create_accountbtn"));
 		cm.sauceReport();
-
+wm.getSessionId();
 	}
 
 	

@@ -118,6 +118,8 @@ public class GuestVisaCheckoutTest extends BaseSuite {
 	        //on Confirmation page 
 	        cm.submitConfirmation(driver);
 	        cm.sauceReport();
+	        wm.getSessionId();
+			
 	}
 
 }

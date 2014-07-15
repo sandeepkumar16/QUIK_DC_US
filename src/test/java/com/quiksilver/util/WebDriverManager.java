@@ -30,7 +30,7 @@ import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 
 
 public class WebDriverManager implements SauceOnDemandSessionIdProvider {
-	private static WebDriver driver ;
+	private static RemoteWebDriver driver ;
 	private static Logger log;
 	private static DesiredCapabilities capability;
 	static ProfilesIni allProfiles = new ProfilesIni();
@@ -197,7 +197,8 @@ if(browser.equalsIgnoreCase("chrome")) {
 
 	@Override
 	public String getSessionId() {
-		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", ((RemoteWebDriver) driver).getSessionId().toString(), "QUIKSILVER-DC SHOES Brand Automation Tests");
+		String sessionClass="QUIKSILVER-DC SHOES Brand Automation Tests"+driver.getClass().getName();
+		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", driver.getSessionId().toString(),sessionClass) ;
         System.out.println(message);
 		return message;
 	}
