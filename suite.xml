@@ -7,14 +7,14 @@
               <parameter name="browser" value="firefox" />
               <parameter name="url" value="stagingDC_US" />
                   
-             
+              <!--    
               <classes>    
                       <class name="com.quiksilver.test.LoginTest" />
                        <class name="com.quiksilver.test.AccountRegistrationTest" />
                           
                       
            		 	   <class name="com.quiksilver.test.GuestVisaCheckoutTest"/>   
-              <!--    
+             
               <class name= "com.quiksilver.test.AddToCartFromPdpTest"/>   
                                               <class name= "com.quiksilver.test.SearchForItemGuestCheckoutTest"/>                                                                             
                   
