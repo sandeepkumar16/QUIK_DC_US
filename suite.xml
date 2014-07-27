@@ -7,9 +7,9 @@
               <parameter name="browser" value="firefox" />
               <parameter name="url" value="stagingDC_US" />
                   
-              <!--    
+               
               <classes>    
-                      <class name="com.quiksilver.test.LoginTest" />
+                <!--         <class name="com.quiksilver.test.LoginTest" />
                        <class name="com.quiksilver.test.AccountRegistrationTest" />
                           
                       
