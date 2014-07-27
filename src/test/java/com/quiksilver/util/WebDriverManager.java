@@ -197,7 +197,7 @@ if(browser.equalsIgnoreCase("chrome")) {
 
 	@Override
 	public String getSessionId() {
-		String sessionClass="QUIKSILVER-DC SHOES Brand Automation Tests"+driver.getClass().getName();
+		String sessionClass="QUIKSILVER-DC SHOES Brand Automation Tests";
 		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", driver.getSessionId().toString(),sessionClass) ;
         System.out.println(message);
 		return message;
