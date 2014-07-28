@@ -1084,8 +1084,10 @@ public class CommonMethods {
 		WebElement element = driver.findElement(map.getLocator("subcatproductUS"));
 		Actions actionsProvider = new Actions(driver);
 		actionsProvider.moveToElement(element).perform();
-		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("subcat_productQuickview")));
-		driver.findElement(map.getLocator("subcat_productQuickview")).click();
+		WebElement QVLink=driver.findElement(map.getLocator("subcat_productQuickview"));
+		
+		wait.until(ExpectedConditions.visibilityOf(QVLink));
+		QVLink.click();
 		Thread.sleep(5000L);
 		}
 		catch(Exception e)

@@ -40,7 +40,7 @@ public class BaseSuite {
   public String productionDC = rp.readConfigProperties("production_dcshoes");  
   
   public String stagingDC_US=rp.readConfigProperties("staging_dcshoesUS");  //dc shoes us site in staging
-
+  public WebDriverManager wm=new WebDriverManager();
 
   public String testEmail = rp.readConfigProperties("yahoo_random");
   public String testPassword = rp.readConfigProperties("password_random");
@@ -77,6 +77,7 @@ public class BaseSuite {
 			    wait=new WebDriverWait(driver,20);
 				shortWait= new WebDriverWait(driver,6);
 			} 
+			 
 	 }
 	 
 	 @Parameters("url")
@@ -105,6 +106,7 @@ public class BaseSuite {
 			 driver.get(stagingDC_US);
 
 		 }
+wm.getSessionId();
 	 }
 	 @AfterClass(alwaysRun=true)
 	 public void tearDown()

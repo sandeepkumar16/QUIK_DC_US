@@ -66,7 +66,7 @@ public class WebDriverManager implements SauceOnDemandSessionIdProvider {
 			caps.setCapability("platform", "Windows 7");
 		    caps.setCapability("version", "30");
 		    driver = new RemoteWebDriver(
-						  new URL("http://veronicapeterfluid:f7c04d36-8386-4bf8-b75a-5ff52f50f61a@ondemand.saucelabs.com:80/wd/hub"),   //http://FluidQA:535f3514-ec3d-4632-af78-a613825a77a9@ondemand.saucelabs.com:80/wd/hub
+						  new URL("http://Fluid_QUI:69ac4528-5390-4f71-8764-cfa204882297@ondemand.saucelabs.com:80/wd/hub"),   //http://FluidQA:535f3514-ec3d-4632-af78-a613825a77a9@ondemand.saucelabs.com:80/wd/hub
 						  caps);
 			
 		   //535f3514-ec3d-4632-af78-a613825a77a9
@@ -102,7 +102,7 @@ if(browser.equalsIgnoreCase("chrome")) {
 	caps.setCapability("platform", "OS X 10.6");
 	caps.setCapability("version", "27");
     driver = new RemoteWebDriver(
-				  new URL("http://veronicapeterfluid:f7c04d36-8386-4bf8-b75a-5ff52f50f61a@ondemand.saucelabs.com:80/wd/hub"),  //
+				  new URL("http://Fluid_QUI:69ac4528-5390-4f71-8764-cfa204882297@ondemand.saucelabs.com:80/wd/hub"),  //
 				  caps);
 
 	    }
@@ -135,7 +135,7 @@ if(browser.equalsIgnoreCase("chrome")) {
 					  caps);
 	    	
 	    }
-
+	   
 		//defaultWindowSize(driver);
 		return driver;
 	}
@@ -194,12 +194,11 @@ if(browser.equalsIgnoreCase("chrome")) {
 		log = Logger.getLogger(WebDriverManager.class);
 		return log;
 	}
-
-	@Override
+	 @Override
 	public String getSessionId() {
 		String sessionClass="QUIKSILVER-DC SHOES Brand Automation Tests";
 		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", driver.getSessionId().toString(),sessionClass) ;
-        System.out.println(message);
+        Reporter.log(message);
 		return message;
 	}
 }
