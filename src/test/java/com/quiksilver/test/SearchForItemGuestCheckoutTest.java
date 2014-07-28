@@ -36,8 +36,8 @@ public class SearchForItemGuestCheckoutTest extends BaseSuite {
 		//on PDP add to cart
 		Reporter.log("On PDP page title is "+ driver.getTitle());
 		//ts.takeScreenshot(driver);
-		cm.pdpPageSelectAddToCartNumSizes(driver);
-
+		//cm.pdpPageSelectAddToCartNumSizes(driver);
+		cm.pdpPageSelectAddToCart(driver, "S");
 		cm.fromMiniCartToCart(driver);
 
 		//on Cart page click on Secure checkout

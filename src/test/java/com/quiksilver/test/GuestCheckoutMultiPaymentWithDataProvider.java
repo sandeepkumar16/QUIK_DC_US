@@ -65,7 +65,7 @@ public class GuestCheckoutMultiPaymentWithDataProvider extends BaseSuite {
 				//on PDP add to cart
 				Reporter.log("On PDP page title is "+ driver.getTitle());
 				//ts.takeScreenshot(driver);
-				cm.pdpPageSelectAddToCart(driver);
+				cm.pdpPageSelectAddToCart(driver, "S");
 		
 				cm.fromMiniCartToCart(driver);
 				

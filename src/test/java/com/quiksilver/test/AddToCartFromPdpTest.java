@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import com.quiksilver.util.BaseSuite;
@@ -63,8 +64,15 @@ public class AddToCartFromPdpTest extends BaseSuite {
 		cm.pdpPageSelectAddToCart(driver);
 		
 		//ts.takeScreenshot(driver);
-		cm.sauceReport();
+		
 
+	}
+	@AfterTest
+	public void sauceSessionReport() throws Exception
+	{
+	wm.getSessionId();
+	cm.sauceReport();	
+	
 	}
 
 }

@@ -82,7 +82,8 @@ public class SignedInAddToCartContinueShoppingCheckoutTest extends BaseSuite {
 		//on PDP select Length
 		
 		//on PDP click on ADD TO CART btn
-		cm.pdpPageSelectAddToCart(driver);
+		//cm.pdpPageSelectAddToCart(driver);
+		cm.pdpPageSelectAddToCart(driver, "S");
 		//click on Checkout btn in Mini-cart
 		cm.fromMiniCartToCart(driver);
 		

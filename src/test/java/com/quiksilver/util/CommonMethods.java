@@ -848,7 +848,7 @@ public class CommonMethods {
 
 	public void searchByItemName(WebDriver driver) throws Exception {
 
-		String item = "Boardshorts";
+		String item = "Tshirt";
 		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
 		if(isUKsite==true)
 		{
@@ -1339,6 +1339,7 @@ public class CommonMethods {
 	
 	public void pdpPageSelectAddToCart(WebDriver driver, String size) throws Exception
 	{
+		try{
 		WebDriverWait wait= new WebDriverWait(driver,15);
 		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart")));
 		driver.findElement(map.getLocator("pdp_sizeselector")).click();
@@ -1350,28 +1351,51 @@ public class CommonMethods {
 			driver.findElement(map.getLocator("pdp_sizeselectorSswatch")).click();
 			
 			Thread.sleep(5000L);
-			if (driver.findElement(map.getLocator("pdp_sizeunavailMsg")).isDisplayed())
+			if (driver.findElement(map.getLocator("pdp_sizeunavailMsg")).isDisplayed())  //SMALL not available
 			{
 				wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorWithSize")));
 				driver.findElement(map.getLocator("pdp_sizeselectorWithSize")).click();
 				Thread.sleep(5000L);
 				wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorLswatch")));
 				driver.findElement(map.getLocator("pdp_sizeselectorLswatch")).click();
+				Thread.sleep(5000L);
+				
+				if (driver.findElement(map.getLocator("pdp_sizeunavailMsg")).isDisplayed())  // SMALL and LARGE not available
+				{
+					wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorWithSize")));
+					driver.findElement(map.getLocator("pdp_sizeselectorWithSize")).click();
+					Thread.sleep(5000L);
+				wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorXLswatch")));
+				driver.findElement(map.getLocator("pdp_sizeselectorXLswatch")).click();
+				Thread.sleep(5000L);
+						if (driver.findElement(map.getLocator("pdp_sizeunavailMsg")).isDisplayed())  // SMALL ,  LARGE and  XLARGE not available
+						{
+							wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorWithSize")));
+							driver.findElement(map.getLocator("pdp_sizeselectorWithSize")).click();
+							Thread.sleep(5000L);
+						wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorMswatch")));
+						driver.findElement(map.getLocator("pdp_sizeselectorMswatch")).click();
+						Thread.sleep(5000L);
+						}
+				
+				
+				
+				}
 				
 				
 			}
 		}
-		else
-		{
-		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorXLswatch")));
-		driver.findElement(map.getLocator("pdp_sizeselectorXLswatch")).click();
-		}
+		
 		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_aftersize")));
 		
 		Thread.sleep(5000L);
 		driver.findElement(map.getLocator("pdp_addtocart_aftersize")).click();
 		
-		
+		}
+		catch (Throwable t)
+		{//S,L, M, XL not available
+			Reporter.log("None of the sizes are available for this product");
+		}
 	}
 	
 	
