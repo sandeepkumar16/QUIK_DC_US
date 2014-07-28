@@ -44,13 +44,13 @@
                <classes>
                   
                               
-             <class name= "com.quiksilver.test.SearchForItemGuestCheckoutTest"/> 
+             
              <class name = "com.quiksilver.test.GuestCheckoutMultiPaymentWithDataProvider"/>           
                
              <!--       
              <class name= "com.quiksilver.test.AddToCartFromPdpTest"/>   
               <class name="com.quiksilver.test.GuestVisaCheckoutTest"/> 
-                    
+                    <class name= "com.quiksilver.test.SearchForItemGuestCheckoutTest"/> 
                         <class name= "com.quiksilver.test.SignedInCheckoutExpressMasterTest"/>   
                     
                               <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/>                   

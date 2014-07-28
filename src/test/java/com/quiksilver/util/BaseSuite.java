@@ -106,7 +106,7 @@ public class BaseSuite {
 			 driver.get(stagingDC_US);
 
 		 }
-wm.getSessionId();
+
 	 }
 	 @AfterClass(alwaysRun=true)
 	 public void tearDown()

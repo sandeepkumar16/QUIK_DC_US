@@ -1558,29 +1558,28 @@ public class CommonMethods {
 			{
 				try
 				{
+					/*
+					WebElement addSelect=driver.findElement(map.getLocator("select-address"));
 					
-				wait.until(ExpectedConditions.presenceOfElementLocated(By.className("select-address")));
-				    
-			WebElement div1=	driver.findElement(By.className("select-address"));
-			
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("address")));
-
-			 //select Address Option 1
-			div1.findElement(By.name("address")).click();
-			
-	        System.out.println("From Inscription redirected to next page");
-					  					
-				//driver.findElement(By.xpath("//input[@name='address']")).click();;
-				//locator for Address Option2    xpath>(//input[@name='address'])[last()]
-					
-				}
+					wait.until(ExpectedConditions.visibilityOf(addSelect));*/
+					    
+				 //select Address Option 1
+				driver.findElement(map.getLocator("add_option2")).click();
+				Thread.sleep(5000L);
 				
-				catch(Exception e)
-				{
-					e.printStackTrace();
-					System.out.println("DC US: Address Options not displayed on Inscription page");
-				}				      
-			}	       
+		        System.out.println("From Inscription redirected to next page");
+						  					
+					//driver.findElement(By.xpath("//input[@name='address']")).click();;
+					//locator for Address Option2    xpath>(//input[@name='address'])[last()]
+						
+					}
+					
+					catch(Exception e)
+					{
+						e.printStackTrace();
+						System.out.println("DC US: Address Options not displayed on Inscription page");
+					}				      
+				}	       
 
 	}
 	
