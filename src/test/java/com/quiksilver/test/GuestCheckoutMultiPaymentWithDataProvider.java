@@ -23,7 +23,7 @@ import com.quiksilver.util.CommonMethods;
 import com.quiksilver.util.ObjectMap;
 import com.quiksilver.util.ReadingProperties;
 import com.quiksilver.util.Return2D;
-import com.quiksilver.util.TakeScreenshot;
+
 import com.quiksilver.util.WebDriverManager;
 
 
@@ -57,14 +57,14 @@ public class GuestCheckoutMultiPaymentWithDataProvider extends BaseSuite {
 				
 				//on subcat page click on product - pass driver and locator for the product you want to click on
 				Reporter.log("On Subcat page title is "+ driver.getTitle());
-				ts.takeScreenshot(driver);
+				////ts.takeScreenshot(driver);
 				
 				//2/24 using new CommonMethod, '1' means it will click on 2nd product on subcat page
 				cm.subcatPageClickProduct(driver, 1);	
 						
 				//on PDP add to cart
 				Reporter.log("On PDP page title is "+ driver.getTitle());
-				ts.takeScreenshot(driver);
+				////ts.takeScreenshot(driver);
 				cm.pdpPageSelectAddToCart(driver);
 		
 				cm.fromMiniCartToCart(driver);
@@ -98,7 +98,7 @@ public class GuestCheckoutMultiPaymentWithDataProvider extends BaseSuite {
 			cm.fromMiniCartToCart(driver);
 
 			//on Cart page click on Secure checkout
-			//ts.takeScreenshot(driver);
+			//////ts.takeScreenshot(driver);
 			cm.fromCartToSignIn(driver);
 			cm.fromCartToGuestCheckout(driver);
 			

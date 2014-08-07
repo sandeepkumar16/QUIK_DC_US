@@ -72,7 +72,7 @@ public class CommonMethods {
 	//-----------------------
 
 	Actions action;
-	TakeScreenshot ts=new TakeScreenshot();
+//	TakeScreenshot ts=new TakeScreenshot();
 	Workbook workbook;
 
 	FileWriter fw;
@@ -1264,7 +1264,7 @@ public class CommonMethods {
 
 		log.info("UserGen screenshot taken");
 		CommonMethods.pause(2000);
-		ts.takeScreenshot(driver);
+		//////ts.takeScreenshot(driver);
 
 		//select color
 		//select size
@@ -1631,7 +1631,7 @@ public class CommonMethods {
 		 WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(map.getLocator("inscription_continuebtnname")));
 
-			ts.takeScreenshot(driver);
+			//////ts.takeScreenshot(driver);
 	        //click on 'Continue' btn	        
 	        driver.findElement(map.getLocator("inscription_continuebtnname")).click();
 	        
@@ -1980,7 +1980,7 @@ public class CommonMethods {
 	        slowType(driver, locator_zip, "W1D 3DH");        
 	        
 	      //this is optional if the num of test is large just remove taking screenshot below
-	        ts.takeScreenshot(driver);
+	   //     ////ts.takeScreenshot(driver);
 
 	        /*
 			 * 3/17 code specific for DC Shoes US
@@ -2018,7 +2018,7 @@ public class CommonMethods {
 		      //select 5th state from the drop down
 				selectOptionFromSelect(driver,map.getLocator("inscription_state"), 6);
 				//this is optional if the num of test is large just remove taking screenshot below
-		        ts.takeScreenshot(driver);
+		     //   ////ts.takeScreenshot(driver);
 
 				
 			}
@@ -2756,7 +2756,7 @@ driver.findElement(map.getLocator("registration_email")).clear();
 		System.out.println("terms and conditions on Verification page checked "+verification.isSelected());
 		Assert.assertEquals((verification.isSelected()), true);
 
-		ts.takeScreenshot(driver);
+		////ts.takeScreenshot(driver);
 		Reporter.log("Current page title: "+driver.getTitle());
 		WebElement placeOrder= driver.findElement(map.getLocator("verification_placeorderbtn"));
 		placeOrder.click();	

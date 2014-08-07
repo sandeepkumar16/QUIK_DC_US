@@ -45,7 +45,7 @@ public class AddToCartFromPdpTest extends BaseSuite {
 			Reporter.log("On PDP page title is "+ driver.getTitle());
 			cm.pdpPageSelectAddToCart(driver);
 	
-			ts.takeScreenshot(driver);
+			//ts.takeScreenshot(driver);
 			return;
 		}
 		
@@ -61,7 +61,7 @@ public class AddToCartFromPdpTest extends BaseSuite {
 		Reporter.log("On PDP page title is "+ driver.getTitle());
 		cm.pdpPageSelectAddToCart(driver,"S");
 		
-	//	ts.takeScreenshot(driver);
+	//	//ts.takeScreenshot(driver);
 		
 
 	}

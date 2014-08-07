@@ -43,7 +43,7 @@ public class SignedInNewShippingOnInscriptionTest extends BaseSuite {
 		
 		//on subcat page click on product - pass driver and locator for the product you want to click on
 		Reporter.log("On Subcat page title is "+ driver.getTitle());
-		ts.takeScreenshot(driver);
+		//ts.takeScreenshot(driver);
 		
 		By locator_subcatProduct = map.getLocator("subcat_product");
 		cm.subcatPageHoverOnProductClickExpressLink(driver,locator_subcatProduct);
@@ -51,7 +51,7 @@ public class SignedInNewShippingOnInscriptionTest extends BaseSuite {
 		cm.fromMiniCartToCart(driver);
 		
 		//on Cart page click on Secure checkout
-		ts.takeScreenshot(driver);
+		//ts.takeScreenshot(driver);
 		cm.fromCartToSignIn(driver);		
 		
 	}

@@ -46,7 +46,7 @@ public class SignedInEditOnVerificationWithDataProviderTest extends BaseSuite {
 		
 		//on subcat page click on product - pass driver and locator for the product you want to click on
 		Reporter.log("On Subcat page title is "+ driver.getTitle());
-		ts.takeScreenshot(driver);
+		//ts.takeScreenshot(driver);
 		
 		By locator_subcatProduct = map.getLocator("subcat_product");
 		cm.subcatPageHoverOnProductClickExpressLink(driver,locator_subcatProduct);
@@ -54,7 +54,7 @@ public class SignedInEditOnVerificationWithDataProviderTest extends BaseSuite {
 		cm.fromMiniCartToCart(driver);
 		
 		//on Cart page click on Secure checkout
-		ts.takeScreenshot(driver);
+		//ts.takeScreenshot(driver);
 		cm.fromCartToSignIn(driver);		
 	}
 	
@@ -71,7 +71,7 @@ public class SignedInEditOnVerificationWithDataProviderTest extends BaseSuite {
 		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(map.getLocator("verification_termsconditionsid")));
 		
 		//before change
-		ts.takeScreenshot(driver);
+		//ts.takeScreenshot(driver);
 		
 		if (requestedChange.equalsIgnoreCase("change shipping"))
 		{
@@ -105,7 +105,7 @@ public class SignedInEditOnVerificationWithDataProviderTest extends BaseSuite {
 		System.out.println("terms and conditions on Verification page checked "+verification.isSelected());
 		
 		//after requested change
-		ts.takeScreenshot(driver);
+		//ts.takeScreenshot(driver);
 		Assert.assertEquals((verification.isSelected()), true);
 
 		//click on Place Order btn

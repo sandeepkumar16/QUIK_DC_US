@@ -1,4 +1,4 @@
-package com.quiksilver.util;
+/*package com.quiksilver.util;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,3 +48,4 @@ public class TakeScreenshot {
 	}
 
 
+*/

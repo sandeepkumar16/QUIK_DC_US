@@ -32,7 +32,7 @@ public class BaseSuite {
     public ReadingProperties rp = new ReadingProperties();
     public  ObjectMap map = new ObjectMap();
     public CommonMethods cm =new CommonMethods();
-    public  TakeScreenshot ts= new TakeScreenshot();
+  //  public  TakeScreenshot ts= new TakeScreenshot();
     
   public String stagingQuik = rp.readConfigProperties("staging");
   public String productionQuik = rp.readConfigProperties("production");
