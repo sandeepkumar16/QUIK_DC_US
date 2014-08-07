@@ -25,7 +25,7 @@ import com.quiksilver.util.BaseSuite;
  * @author igonzalez
  *Smoke tests group
  */
-@Listeners({ com.quiksilver.util.TestListenerFailPass.class })
+//@Listeners({ com.quiksilver.util.TestListenerFailPass.class })
 
 public class SignedInAddToCartContinueShoppingCheckoutTest extends BaseSuite {
 	public  String testEmail = rp.readConfigProperties("yahoo");
