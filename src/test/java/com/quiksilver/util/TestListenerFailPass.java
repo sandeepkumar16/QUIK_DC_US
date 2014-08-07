@@ -1,4 +1,4 @@
-package com.quiksilver.util;
+/*package com.quiksilver.util;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,24 +20,24 @@ import org.testng.annotations.Listeners;
 import org.apache.log4j.*;
 
 
-/*
+
  * It's very easy to generate your own reports with TestNG with Listeners and Reporters:
 Listeners implement the interface org.testng.ITestListener and are notified in real time 
 of when a test starts, passes, fails, etc...
 Reporters implement the interface org.testng.IReporter and are notified when all the suites 
 have been run by TestNG. The IReporter instance receives a list of objects
  that describe the entire test run.
- */
+ 
 
-/*
+
  * I chose to extend TestListenerAdapter, which implements ITestListener with empty methods, 
  * so I don't have to override other methods from the interface that I have no interest in. 
  * If you try public class 'TestScreenshotOnFailure implements ITestResult' - implementing an interface  instead of 
  * extending your class with a TestNG class that implements the interface you want (ITestResult) then
  * you will have to override ALL (15-18) methods declared in ITestResult interface which is not productive
- */
+ 
 
-/*THIS CLASS DEFINES RULES for DEFAULT BEHAVIOUR of  org.testng.ITestResult.Failure or Success
+THIS CLASS DEFINES RULES for DEFAULT BEHAVIOUR of  org.testng.ITestResult.Failure or Success
  * http://testng.org/javadocs/constant-values.html#org.testng.ITestResult.FAILURE
 
  * TO USE THIS CLASS:
@@ -45,7 +45,7 @@ have been run by TestNG. The IReporter instance receives a list of objects
  *put this annotation before you class where you define your test methods
  * @Listeners({ com.quicksilver.util.TestListenerFailPass.class })
 
- */
+ 
 public class TestListenerFailPass extends TestListenerAdapter {
 
 	
@@ -122,12 +122,13 @@ public class TestListenerFailPass extends TestListenerAdapter {
 	
 	
 	public void onFinish(ISuite suite)
-	/*every time testng finished running a testsuite it should create a folder  - label it with suite name and date of run
+	every time testng finished running a testsuite it should create a folder  - label it with suite name and date of run
 	 * 
-	 */
+	 
 	{
 		
 	}
 }
 
 
+*/
