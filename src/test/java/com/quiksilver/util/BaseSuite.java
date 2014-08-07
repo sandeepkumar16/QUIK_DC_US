@@ -40,7 +40,7 @@ public class BaseSuite {
   public String productionDC = rp.readConfigProperties("production_dcshoes");  
   
   public String stagingDC_US=rp.readConfigProperties("staging_dcshoesUS");  //dc shoes us site in staging
-  public WebDriverManager wm=new WebDriverManager();
+
 
   public String testEmail = rp.readConfigProperties("yahoo_random");
   public String testPassword = rp.readConfigProperties("password_random");
@@ -49,9 +49,9 @@ public class BaseSuite {
   public String pswdForTestEmailWithSavedCards = rp.readConfigProperties("password_hotmail");
 
 	 @Parameters("browser")
-     @BeforeClass	 
-     public void beforeTest(@Optional("chrome") String browser) throws MalformedURLException{
-		 
+	 @BeforeClass	 
+     public void beforeTest(@Optional("chrome") String browser) throws MalformedURLException {
+
 		 if (browser.equalsIgnoreCase("firefox")) 
 
 			{       
@@ -77,7 +77,6 @@ public class BaseSuite {
 			    wait=new WebDriverWait(driver,20);
 				shortWait= new WebDriverWait(driver,6);
 			} 
-			 
 	 }
 	 
 	 @Parameters("url")
@@ -106,9 +105,9 @@ public class BaseSuite {
 			 driver.get(stagingDC_US);
 
 		 }
-
 	 }
-	 @AfterClass(alwaysRun=true)
+	 
+	@AfterClass(alwaysRun=true)
 	 public void tearDown()
 	 {
 		 driver.quit();

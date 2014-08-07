@@ -79,7 +79,7 @@ public class TestListenerFailPass extends TestListenerAdapter {
 			System.out.println("Could not take screenshot on failure"+ tr.getInstance());//getInstanceName =package+className
 			log.debug("Could not take screenshot on failure"+ tr.getInstance());//getInstanceName =package+className
 		}
-//		Reporter.setEscapeHtml(false);
+		//Reporter.setEscapeHtml(false);
 		Reporter.log("Saved <a href=../screenshot/FAIL/" + destFile + ">Screenshot</a>");
 	}
 

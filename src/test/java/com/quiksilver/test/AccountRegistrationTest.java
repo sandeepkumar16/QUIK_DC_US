@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -25,8 +24,7 @@ import com.quiksilver.util.WebDriverManager;
 
 //TC #2 Create Account 
 public class AccountRegistrationTest extends BaseSuite{
-	public WebDriverManager wm=new WebDriverManager();
-	
+
 	@Test 
 	public void registrationForm() throws Exception
 	{
@@ -50,13 +48,7 @@ public class AccountRegistrationTest extends BaseSuite{
 			//clean up logout
 			cm.logout(driver);
 		}
-		
+
 	}
-	@AfterTest
-	public void sauceSessionReport() throws Exception
-	{
-	wm.getSessionId();
-	cm.sauceReport();	
-	
-	}
+
 }

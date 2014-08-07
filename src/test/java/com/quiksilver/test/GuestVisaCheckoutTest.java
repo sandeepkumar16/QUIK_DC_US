@@ -4,20 +4,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.AssertJUnit;
 import org.testng.Reporter;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.quiksilver.util.BaseSuite;
-import com.quiksilver.util.WebDriverManager;
 
 //TC#8 Guest Visa Checkout without DataProvider
 
 public class GuestVisaCheckoutTest extends BaseSuite {
 
-	public WebDriverManager wm=new WebDriverManager();
-	
 	@BeforeMethod
 	public void getToStep1() throws Exception
 	{
@@ -69,8 +65,7 @@ public class GuestVisaCheckoutTest extends BaseSuite {
 		
 		//on PDP click on save for later and assert 'saved' msg displayed on the screen
 		Reporter.log("On PDP page title is "+ driver.getTitle());
-	//	cm.pdpPageSelectAddToCart(driver);
-		cm.pdpPageSelectAddToCart(driver, "S");
+		cm.pdpPageSelectAddToCart(driver,"S");
 		cm.fromMiniCartToCart(driver);
 
 		//on Cart page click on Secure checkout
@@ -118,19 +113,7 @@ public class GuestVisaCheckoutTest extends BaseSuite {
 
 	        //on Confirmation page 
 	        cm.submitConfirmation(driver);
-	        cm.sauceReport();
-	        
-	        
-	        wm.getSessionId();
-			
-	}
-	
-	@AfterTest
-	public void sauceSessionReport() throws Exception
-	{
-	wm.getSessionId();
-	cm.sauceReport();	
-	
+
 	}
 
 }

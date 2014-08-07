@@ -4,16 +4,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import com.quiksilver.util.BaseSuite;
-import com.quiksilver.util.WebDriverManager;
 
 
 //TC # 7 Add to Cart from PDP
 public class AddToCartFromPdpTest extends BaseSuite {
-	public WebDriverManager wm=new WebDriverManager();
+
 	@Test
 	public void fromHomeToPDP() throws Exception
 	{
@@ -41,13 +39,13 @@ public class AddToCartFromPdpTest extends BaseSuite {
 			Reporter.log("On Subcat page title is "+ driver.getTitle());
 	
 			//2/24 using new CommonMethod, 1 will click on 2nd product on subcat page
-			cm.subcatPageClickProduct(driver, 2);		
+			cm.subcatPageClickProduct(driver, 3);		
 	
 			//on PDP add to cart
 			Reporter.log("On PDP page title is "+ driver.getTitle());
 			cm.pdpPageSelectAddToCart(driver);
 	
-			//ts.takeScreenshot(driver);
+			ts.takeScreenshot(driver);
 			return;
 		}
 		
@@ -61,18 +59,11 @@ public class AddToCartFromPdpTest extends BaseSuite {
 		
 		//on PDP click on save for later and assert 'saved' msg displayed on the screen
 		Reporter.log("On PDP page title is "+ driver.getTitle());
-		cm.pdpPageSelectAddToCart(driver);
+		cm.pdpPageSelectAddToCart(driver,"S");
 		
-		//ts.takeScreenshot(driver);
+	//	ts.takeScreenshot(driver);
 		
 
-	}
-	@AfterTest
-	public void sauceSessionReport() throws Exception
-	{
-	wm.getSessionId();
-	cm.sauceReport();	
-	
 	}
 
 }

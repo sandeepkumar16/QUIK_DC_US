@@ -3,6 +3,7 @@ package com.quiksilver.test;
 import java.util.ArrayList;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -24,7 +25,7 @@ import com.quiksilver.util.BaseSuite;
  * @author igonzalez
  *Smoke tests group
  */
-//@Listeners({ com.quiksilver.util.TestListenerFailPass.class })
+@Listeners({ com.quiksilver.util.TestListenerFailPass.class })
 
 public class SignedInAddToCartContinueShoppingCheckoutTest extends BaseSuite {
 	public  String testEmail = rp.readConfigProperties("yahoo");
@@ -82,8 +83,7 @@ public class SignedInAddToCartContinueShoppingCheckoutTest extends BaseSuite {
 		//on PDP select Length
 		
 		//on PDP click on ADD TO CART btn
-		//cm.pdpPageSelectAddToCart(driver);
-		cm.pdpPageSelectAddToCart(driver, "S");
+		cm.pdpPageSelectAddToCart(driver);
 		//click on Checkout btn in Mini-cart
 		cm.fromMiniCartToCart(driver);
 		
@@ -94,14 +94,20 @@ public class SignedInAddToCartContinueShoppingCheckoutTest extends BaseSuite {
 		}
 		
 		//US Site functionality
+		
+		cm.clearCart(driver); 
+		
 		By locator_tshirtLink=map.getLocator("mens_Tshirt_xpath_US");
 		cm.homePageMainNavMen(driver, locator_tshirtLink);
 		
-cm.subcatPageClickProduct(driver, 4);	
+Reporter.log("On Subcat page title is "+ driver.getTitle());
+		
+		//2/24 using new CommonMethod, '1' means it will click on 2nd product on subcat page
+		cm.subcatPageClickProduct(driver, 5);	
+		
 		
 		//on PDP click on save for later and assert 'saved' msg displayed on the screen
 		Reporter.log("On PDP page title is "+ driver.getTitle());
-		//cm.pdpPageSelectAddToCart(driver);
 		cm.pdpPageSelectAddToCart(driver,"S");
 		
 		cm.fromMiniCartToCart(driver);

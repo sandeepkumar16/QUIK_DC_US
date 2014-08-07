@@ -11,8 +11,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Hashtable;
@@ -50,7 +48,6 @@ import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.Reporter;
 
-import com.quiksilver.util.WebDriverManager;
 
 
 
@@ -67,7 +64,7 @@ public class CommonMethods {
     public  String stagingDC = rp.readConfigProperties("staging_dcshoes");
     public String productionDC = rp.readConfigProperties("production_dcshoes");  
 
-    public WebDriverManager wm=new WebDriverManager();
+
 
 	//ATT: this waits need to be instantiated in the methods below 
 	WebDriverWait shortWait;
@@ -85,40 +82,6 @@ public class CommonMethods {
 
 	/*****************************************************START OF ALL COMMON METHODS *****************************/
 
-	
-	//Saucelabs
-
-	public void sauceReport() throws MalformedURLException
-
-	{
-
-	String m=	wm.getSessionId();
-
-	int l=m.length();
-
-	String mm=m.substring(23,55);
-
-
-
-
-	//String h=hm.printHMac(mm);
-
-
-
-
-	Reporter.log(m);
-
-
-	String urlString ="https://saucelabs.com/jobs/"+mm;
-
-	URL testURL=new URL(urlString);
-
-
-
-	Reporter.log("<a>Here is your url for screenshots: "+testURL+"</a>");
-
-
-	}
 
 
 	//example: type(driver, By.name("txtUserName"), username);
@@ -848,10 +811,12 @@ public class CommonMethods {
 
 	public void searchByItemName(WebDriver driver) throws Exception {
 
-		String item = "Tshirt";
+		
 		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
 		if(isUKsite==true)
 		{
+			
+			String item = "Boardshorts";
 		driver.findElement(map.getLocator("searchField")).clear();
 		driver.findElement(map.getLocator("searchField")).sendKeys(item);
 		driver.findElement(map.getLocator("searchBtn")).click();
@@ -859,12 +824,17 @@ public class CommonMethods {
 		
 		}
 		//DC US no search button need to click on Enter key
+		
+		String item1 = "Tshirt";
 		driver.findElement(map.getLocator("searchField")).clear();
-		driver.findElement(map.getLocator("searchField")).sendKeys(item);
+		driver.findElement(map.getLocator("searchField")).sendKeys(item1);
+		
 		driver.findElement(map.getLocator("searchField")).sendKeys(Keys.ENTER);
+		System.out.println("After hitting ENTER on search");
+		driver.get("http://www.stg.dcshoes.com/on/demandware.store/Sites-DC-US-Site/en_US/Search-Show?q=T%20Shirts");
+	
+		Thread.sleep(30000L);
 		
-		
-		CommonMethods.pause(1800);
 
 		/* this can be done later verifying search breadcrumbs
 		boolean search_breadcrumbs = driver.findElement(
@@ -1084,10 +1054,8 @@ public class CommonMethods {
 		WebElement element = driver.findElement(map.getLocator("subcatproductUS"));
 		Actions actionsProvider = new Actions(driver);
 		actionsProvider.moveToElement(element).perform();
-		WebElement QVLink=driver.findElement(map.getLocator("subcat_productQuickview"));
-		
-		wait.until(ExpectedConditions.visibilityOf(QVLink));
-		QVLink.click();
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("subcat_productQuickview")));
+		driver.findElement(map.getLocator("subcat_productQuickview")).click();
 		Thread.sleep(5000L);
 		}
 		catch(Exception e)
@@ -1155,52 +1123,134 @@ public class CommonMethods {
 		}
 	}
 	
+	public boolean isUnAvail(WebDriver driver) throws Exception
+	{
+		int count=driver.findElements(By.xpath("pdp_sizeunavailMsg")).size();
+		boolean isAvail=(count>0);
+		if (isAvail)
+		{
+		System.out.println("count is "+count +"and isAvailable is "+isAvail+"  size is not available");
+		return true;
+		}
+		else
+		{
+		return false;
+		}
+	}
 	
 	public void subcatQuickviewAddtoCart(WebDriver driver,String size) throws Exception
 	{
-		
-			WebDriverWait wait= new WebDriverWait(driver,15);
-			wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("quickview_AddtoCart")));
-			driver.findElement(map.getLocator("quickview_sizeselector")).click();
+		try{
+		WebDriverWait wait= new WebDriverWait(driver,15);
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("quickview_AddtoCart")));
+		driver.findElement(map.getLocator("quickview_sizeselector")).click();
+		Thread.sleep(5000L);
+		//US Site// Select size dropdown and size swatch
+		if (size.equals("S"))
+		{
+			wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("quickview_Ssize")));
+			driver.findElement(map.getLocator("quickview_Ssize")).click();
+			
 			Thread.sleep(5000L);
-			//US Site// Select size dropdown and size swatch
-			if (size.equals("S"))
+			
+			
+
+			if (driver.findElement(map.getLocator("pdp_sizeunavailMsg")).isDisplayed())  //SMALL not available
 			{
-				WebElement SSwatch=driver.findElement(map.getLocator("quickview_Ssize"));
-				WebElement MSwatch=driver.findElement(map.getLocator("quickview_Msize"));
-				//
-				
-				
-				wait.until(ExpectedConditions.visibilityOf(MSwatch));
-				MSwatch.click();
-				
+				System.out.println("size smll is not available");
+				wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("quickview_sizeselectorWithSize")));
+				driver.findElement(map.getLocator("quickview_sizeselectorWithSize")).click();
+				Thread.sleep(5000L);
+				wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("quickview_Lsize")));
+				driver.findElement(map.getLocator("quickview_Lsize")).click();
 				Thread.sleep(5000L);
 				
-				//if size Medium is not available
 				
-			
 				
-			if  (driver.findElement(map.getLocator("pdp_sizeunavailMsg")).isDisplayed())
+				
+				
+				 if (driver.findElement(map.getLocator("pdp_sizeunavailMsg")).isDisplayed())  // SMALL and LARGE not available
 				{
+					 System.out.println("size large is not available");
+					wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("quickview_sizeselectorWithSize")));
+					driver.findElement(map.getLocator("quickview_sizeselectorWithSize")).click();
+					Thread.sleep(5000L);
+				wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("quickview_XLsize")));
+				driver.findElement(map.getLocator("quickview_XLsize")).click();
+				Thread.sleep(5000L);
 				
-					driver.findElement(map.getLocator("quickview_sizeSelectedDropDown")).click();
-					Thread.sleep(5000L);
-					SSwatch=driver.findElement(map.getLocator("quickview_Ssize"));
-					wait.until(ExpectedConditions.visibilityOf(SSwatch));
-					SSwatch.click();
+				 if (driver.findElement(map.getLocator("pdp_sizeunavailMsg")).isDisplayed())  // SMALL ,  LARGE and  XLARGE not available
+						{
+					 System.out.println("size xtra large is not available");
+					 
+							wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("quickview_sizeselectorWithSize")));
+							driver.findElement(map.getLocator("quickview_sizeselectorWithSize")).click();
+							Thread.sleep(5000L);
+						wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("quickview_Msize")));
+						driver.findElement(map.getLocator("quickview_Msize")).click();
+						Thread.sleep(5000L);
+						
+						if (driver.findElement(map.getLocator("pdp_sizeunavailMsg")).isDisplayed())  // SMALL ,Medium,  LARGE and  XLARGE not available
+						{
+					 System.out.println("size xtra medium is not available");
+					 
+							wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("quickview_sizeselectorWithSize")));
+							driver.findElement(map.getLocator("quickview_sizeselectorWithSize")).click();
+							Thread.sleep(5000L);
+						wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("quickview_XXLsize")));
+						driver.findElement(map.getLocator("quickview_XXLsize")).click();
+						Thread.sleep(5000L);
+						
+						}
+						
+						}
+				
+
 					
-					Thread.sleep(5000L);
-					
+				
+				
 				}
-				
+
+					
 				
 			}
-			driver.findElement(map.getLocator("quickview_AddtoCart")).click();
+
 			
-			
-			Thread.sleep(15000L);
 		
+			}
+		
+			
+		}	
+			
+				
+				
+		
+		
+		catch (Throwable t)
+		{
+			
+			System.out.println("inside catch");
+			//wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("quickview_AddtoCart_aftersize")));
+			
+			Thread.sleep(5000L);
+			System.out.println("About to click ADD TO CART");
+			
+			driver.findElement(map.getLocator("quickview_AddtoCart_aftersize")).click();
+			
+		}
+	finally
+	{
+	
+		//S,L, M, XL not available
+		Reporter.log("None of the sizes are available for this product");
+	
+	
 	}
+
+	}
+	
+	
+	
 
 	/************************************************************PDP PAGE*****************************/
 	/************************************************************PDP PAGE*****************************/
@@ -1336,7 +1386,6 @@ public class CommonMethods {
 		}*/
 	}
 	
-	
 	public void pdpPageSelectAddToCart(WebDriver driver, String size) throws Exception
 	{
 		try{
@@ -1376,6 +1425,20 @@ public class CommonMethods {
 						wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorMswatch")));
 						driver.findElement(map.getLocator("pdp_sizeselectorMswatch")).click();
 						Thread.sleep(5000L);
+						
+						if (driver.findElement(map.getLocator("pdp_sizeunavailMsg")).isDisplayed())  // SMALL ,Medium,  LARGE and  XLARGE not available
+						{
+							System.out.println("size  medium is not available");
+					 
+							wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorWithSize")));
+							driver.findElement(map.getLocator("pdp_sizeselectorWithSize")).click();
+							Thread.sleep(5000L);
+						wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_sizeselectorXXLswatch")));
+						driver.findElement(map.getLocator("pdp_sizeselectorXXLswatch")).click();
+						Thread.sleep(5000L);
+						
+						}
+						
 						}
 				
 				
@@ -1397,6 +1460,8 @@ public class CommonMethods {
 			Reporter.log("None of the sizes are available for this product");
 		}
 	}
+	
+	
 	
 	
 	
@@ -1580,30 +1645,33 @@ public class CommonMethods {
 	        Boolean isUSsite=driver.getCurrentUrl().contains("en_US");
 			if(isUSsite==true)
 			{
-				try
-				{
-					/*
-					WebElement addSelect=driver.findElement(map.getLocator("select-address"));
-					
-					wait.until(ExpectedConditions.visibilityOf(addSelect));*/
-					    
-				 //select Address Option 1
-				driver.findElement(map.getLocator("add_option2")).click();
 				Thread.sleep(5000L);
-				
-		        System.out.println("From Inscription redirected to next page");
-						  					
-					//driver.findElement(By.xpath("//input[@name='address']")).click();;
-					//locator for Address Option2    xpath>(//input[@name='address'])[last()]
-						
-					}
+				try //if address overlay is displayed
+				{
 					
-					catch(Exception e)
-					{
-						e.printStackTrace();
-						System.out.println("DC US: Address Options not displayed on Inscription page");
-					}				      
-				}	       
+				
+			
+				    
+			 //select Address Option 2
+					driver.findElement(map.getLocator("add_option2")).click();
+					Thread.sleep(5000L);
+					
+			        System.out.println("From Inscription redirected to next page");
+							  					
+			
+			
+				}
+				//driver.findElement(By.xpath("//input[@name='address']")).click();;
+				//locator for Address Option2    xpath>(//input[@name='address'])[last()]
+					
+				
+				
+				catch(Exception e)
+				{
+					e.printStackTrace();
+					System.out.println("DC US: Address Options not displayed on Inscription page");
+				}				      
+			}	       
 
 	}
 	

@@ -36,8 +36,23 @@ public class SearchForItemGuestCheckoutTest extends BaseSuite {
 		//on PDP add to cart
 		Reporter.log("On PDP page title is "+ driver.getTitle());
 		//ts.takeScreenshot(driver);
-		//cm.pdpPageSelectAddToCartNumSizes(driver);
-		cm.pdpPageSelectAddToCart(driver, "S");
+		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
+		if(isUKsite==true)
+		{
+		cm.pdpPageSelectAddToCartNumSizes(driver);
+		cm.fromMiniCartToCart(driver);
+
+		//on Cart page click on Secure checkout
+		//ts.takeScreenshot(driver);
+		cm.fromCartToSignIn(driver);
+
+		//click on unregistered checkout btn
+		By locator_unregisteredcheckoutbtn=map.getLocator("interstitial_unregisteredcheckoutbtn");
+		cm.checkoutSignInClickElement(driver, locator_unregisteredcheckoutbtn);
+		return;
+		}
+		//US site functionality
+		cm.pdpPageSelectAddToCart(driver,"S");
 		cm.fromMiniCartToCart(driver);
 
 		//on Cart page click on Secure checkout

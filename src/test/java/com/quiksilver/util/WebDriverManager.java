@@ -26,10 +26,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestContext;
 import org.testng.Reporter;
 
-import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 
-
-public class WebDriverManager implements SauceOnDemandSessionIdProvider {
+public class WebDriverManager {
 	private static RemoteWebDriver driver ;
 	private static Logger log;
 	private static DesiredCapabilities capability;
@@ -62,25 +60,20 @@ public class WebDriverManager implements SauceOnDemandSessionIdProvider {
 		
 		if(browser.equalsIgnoreCase("firefox")) 
 		{
+			
 			DesiredCapabilities caps = DesiredCapabilities.firefox();
-			caps.setCapability("platform", "Windows 7");
+			caps.setCapability("name", "DC Shoes US");
+			caps.setCapability("platform", "OS X 10.6");
 		    caps.setCapability("version", "30");
 		    driver = new RemoteWebDriver(
-						  new URL("http://veronicapeterfluid:f7c04d36-8386-4bf8-b75a-5ff52f50f61a@ondemand.saucelabs.com:80/wd/hub"),   //http://FluidQA:535f3514-ec3d-4632-af78-a613825a77a9@ondemand.saucelabs.com:80/wd/hub
-						  caps);
+						  new URL("http://Fluid_QUI:69ac4528-5390-4f71-8764-cfa204882297@ondemand.saucelabs.com:80/wd/hub"),caps);
 			
-		   //535f3514-ec3d-4632-af78-a613825a77a9
+			
+		/*driver = new FirefoxDriver();
 
-		    
-			//*************Use jenkins plugin browser version
-			/*	   DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
-desiredCapabilities.setVersion(System.getenv("SELENIUM_VERSION"));
-desiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
-driver = new RemoteWebDriver(
-     new URL("http://veronicapeterfluid:f7c04d36-8386-4bf8-b75a-5ff52f50f61a@ondemand.saucelabs.com:80/wd/hub"),
-     desiredCapabilities);
-			 defaultWindowSize(driver);*/
+			
+		    defaultWindowSize(driver);
+*/
 		    
 	    }
 		
@@ -92,23 +85,17 @@ driver = new RemoteWebDriver(
 	    }
 	    
 if(browser.equalsIgnoreCase("chrome")) {
-           /*  System.setProperty("webdriver.chrome.driver", "/Users/vpeter/Desktop/Selenium/AllWebDriverJARs/chromedriver.exe");
+             System.setProperty("webdriver.chrome.driver", "/Users/vpeter/Desktop/Selenium/AllWebDriverJARs/chromedriver.exe");
 
               driver=new ChromeDriver();
 
 
-            defaultWindowSize(driver);*/
-	DesiredCapabilities caps = DesiredCapabilities.chrome();
-	caps.setCapability("platform", "OS X 10.6");
-	caps.setCapability("version", "27");
-    driver = new RemoteWebDriver(
-				  new URL("http://veronicapeterfluid:f7c04d36-8386-4bf8-b75a-5ff52f50f61a@ondemand.saucelabs.com:80/wd/hub"),  //
-				  caps);
+            defaultWindowSize(driver);
 
 	    }
 	    if(browser.equalsIgnoreCase("safari")) {
 	    	
-	    	/*SafariOptions options = new SafariOptions();
+	    	SafariOptions options = new SafariOptions();
 
 	        capability = DesiredCapabilities.safari();
 	        capability.setBrowserName("safari");
@@ -125,17 +112,9 @@ if(browser.equalsIgnoreCase("chrome")) {
 			{
 
 			    driver = new SafariDriver(capability);
-			}*/
-	    	
-	    	DesiredCapabilities caps = DesiredCapabilities.safari();
-	    	caps.setCapability("platform", "OS X 10.6");
-	    	caps.setCapability("version", "5");
-	    	 driver = new RemoteWebDriver(
-					  new URL("http://veronicapeterfluid:f7c04d36-8386-4bf8-b75a-5ff52f50f61a@ondemand.saucelabs.com:80/wd/hub"),   //  http://FluidQA:535f3514-ec3d-4632-af78-a613825a77a9@ondemand.saucelabs.com:80/wd/hub
-					  caps);
-	    	
+			}
 	    }
-	   
+
 		//defaultWindowSize(driver);
 		return driver;
 	}
@@ -194,13 +173,7 @@ if(browser.equalsIgnoreCase("chrome")) {
 		log = Logger.getLogger(WebDriverManager.class);
 		return log;
 	}
-	 @Override
-	public String getSessionId() {
-		
-		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", driver.getSessionId().toString(),"QUIKSILVER-DC SHOES Brand US Automation Tests") ;
-        Reporter.log(message);
-		return message;
-	}
+	
 }
 
 
