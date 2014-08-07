@@ -2,9 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Multibrowser_DC_Quiksilver" configfailurepolicy="continue" >
     
-<listeners>
-<listener class-name="com.quiksilver.util.TestListenerFailPass"/>
-</listeners>
+
        <test name="FirefoxTest">
               <parameter name="browser" value="firefox" />
               <parameter name="url" value="stagingDC_US" />
