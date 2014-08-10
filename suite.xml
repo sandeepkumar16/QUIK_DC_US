@@ -10,17 +10,17 @@
                   
                 
               <classes>    
-                    
+                     <class name="com.quiksilver.test.AccountRegistrationTest" />
                       
                  
-                   <class name= "com.quiksilver.test.AddToCartFromPdpTest"/>   
+                    <!--     <class name= "com.quiksilver.test.AddToCartFromPdpTest"/>   
              
                 <class name="com.quiksilver.test.GuestVisaCheckoutTest"/>  
                 
                    <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/>                   
                            <class name="com.quiksilver.test.LoginTest" />
                       <class name="com.quiksilver.test.AccountRegistrationTest" />
-                   <!--      <class name = "com.quiksilver.test.GuestCheckoutMultiPaymentWithDataProvider"/>  
+                   <class name = "com.quiksilver.test.GuestCheckoutMultiPaymentWithDataProvider"/>  
                          <class name= "com.quiksilver.test.SearchForItemGuestCheckoutTest"/> 
                          <class name="com.quiksilver.test.GuestCheckoutExpressAmexTest"/>       
                        -->                                                                                        
@@ -30,7 +30,7 @@
 
        <test name="ChromeTest">
               <parameter name="browser" value="chrome" />
-              <parameter name="url" value="stagingDC" />
+              <parameter name="url" value="stagingDC_US" />
               
                <classes>
                
@@ -40,13 +40,13 @@
                    
                     
                        
-                   
-                      <!-- 
+                  <!-- <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/>    
+                     
                      
                           <class name= "com.quiksilver.test.AddToCartFromPdpTest"/>   
              
                 
-                  <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/>                   
+                                   
                       <class name="com.quiksilver.test.LoginTest" />
                       <class name="com.quiksilver.test.AccountRegistrationTest" />
                         <class name = "com.quiksilver.test.GuestCheckoutMultiPaymentWithDataProvider"/>    

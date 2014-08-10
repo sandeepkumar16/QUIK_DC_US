@@ -1114,7 +1114,7 @@ public class CommonMethods {
 		{
 		for (int i=1; i<=count; i++)
 		{
-			String x="cart_removeLink"+i;
+			String x="cart_removeLink1";    //+i;
 			driver.findElement(map.getLocator(x)).click();
 			
 		}

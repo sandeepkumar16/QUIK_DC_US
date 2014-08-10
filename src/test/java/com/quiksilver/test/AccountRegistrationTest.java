@@ -48,7 +48,17 @@ public class AccountRegistrationTest extends BaseSuite{
 			//clean up logout
 			cm.logout(driver);
 		}
-
+    getSessionId();
 	}
+	
+	public String getSessionId() {
+		// TODO Auto-generated method stub
+		//SauceOnDemandSessionID=YOUR_SESSION_ID job-name=YOUR_JOB_NAME
+		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", ((WebDriverManager) driver).getSessionId().toString(), "ACC Creation Test");
+        System.out.println(message);
+		return message;
+		//SauceOnDemandSessionID=YOUR_SESSION_ID job-name=YOUR_JOB_NAME
+	}
+	
 
 }

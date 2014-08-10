@@ -36,7 +36,7 @@ public class ReadingProperties {
 		//read from the properties file		
 		FileInputStream fis = null;
 		try {
-			fis = new FileInputStream(System.getProperty("user.dir")+"/src/com/quiksilver/config/OR.properties");
+			fis = new FileInputStream(System.getProperty("user.dir")+"/src/test/java/com/quiksilver/config/OR.properties");
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -78,7 +78,7 @@ public class ReadingProperties {
 		//read from the properties file		
 		FileInputStream fis = null;
 		try {
-			fis = new FileInputStream(System.getProperty("user.dir")+"/src/com/quiksilver/config/config.properties");
+			fis = new FileInputStream(System.getProperty("user.dir")+"/src/test/java/com/quiksilver/config/config.properties");
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

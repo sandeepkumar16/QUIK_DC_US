@@ -174,6 +174,18 @@ if(browser.equalsIgnoreCase("chrome")) {
 		return log;
 	}
 	
+	
+	public String getSessionId() {
+		// TODO Auto-generated method stub
+		//SauceOnDemandSessionID=YOUR_SESSION_ID job-name=YOUR_JOB_NAME
+		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", driver.getSessionId().toString(), "dc Automation Test");
+        System.out.println(message);
+		return message;
+		//SauceOnDemandSessionID=YOUR_SESSION_ID job-name=YOUR_JOB_NAME
+	}
+	
+	
+	
 }
 
 

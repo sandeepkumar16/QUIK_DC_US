@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Multibrowser_DC_Quiksilver]">
+<suite configfailurepolicy="continue" name="Failed suite [Multibrowser_DC_Quiksilver]">
   <parameter name="browser" value="safari"/>
-  <parameter name="url" value="stagingDC"/>
+  <parameter name="url" value="stagingDC_US"/>
   <test name="ChromeTest(failed)">
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="stagingDC_US"/>
     <classes>
-      <class name="com.quiksilver.test.GuestCheckoutMultiPaymentWithDataProvider">
+      <class name="com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest">
         <methods>
+          <include name="addToCartContinueShoppingPDP"/>
+          <include name="testSignedInAddToCartContinueShopping"/>
           <include name="beforeTest"/>
-          <include name="fillOutStep1InscriptionForm"/>
-          <include name="getToStep1"/>
           <include name="getToHome"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- com.quiksilver.test.GuestCheckoutMultiPaymentWithDataProvider -->
+      </class> <!-- com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest -->
     </classes>
   </test> <!-- ChromeTest(failed) -->
 </suite> <!-- Failed suite [Multibrowser_DC_Quiksilver] -->
