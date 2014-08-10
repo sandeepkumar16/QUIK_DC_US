@@ -28,7 +28,7 @@ import org.testng.Reporter;
 
 
 public class WebDriverManager {
-	private static RemoteWebDriver driver ;
+	public static RemoteWebDriver driver ;
 	private static Logger log;
 	private static DesiredCapabilities capability;
 	static ProfilesIni allProfiles = new ProfilesIni();
