@@ -9,11 +9,12 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.quiksilver.util.BaseSuite;
+import com.quiksilver.util.WebDriverManager;
 
 //TC#8 Guest Visa Checkout without DataProvider
 
 public class GuestVisaCheckoutTest extends BaseSuite {
-
+	private WebDriverManager wm=new WebDriverManager();
 	@BeforeMethod
 	public void getToStep1() throws Exception
 	{
@@ -113,6 +114,9 @@ public class GuestVisaCheckoutTest extends BaseSuite {
 
 	        //on Confirmation page 
 	        cm.submitConfirmation(driver);
+	        
+	        String m=	wm.getSessionId();
+			Reporter.log(m);
 
 	}
 

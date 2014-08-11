@@ -12,7 +12,7 @@
               <classes>    
                        <class name="com.quiksilver.test.LoginTest" />
                   <class name="com.quiksilver.test.GuestVisaCheckoutTest"/>
-                    <!--     <class name= "com.quiksilver.test.AddToCartFromPdpTest"/>   
+                   <!--      <class name= "com.quiksilver.test.AddToCartFromPdpTest"/>   
              
                 <class name="com.quiksilver.test.GuestVisaCheckoutTest"/>  
                 
@@ -33,13 +33,11 @@
               
                <classes>
                
-             
+                 <!--
        
-                
-                   
-                    
+                <class name="com.quiksilver.test.GuestVisaCheckoutTest"/>
                        
-                  <!-- <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/>    
+               <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/>    
                      
                      
                           <class name= "com.quiksilver.test.AddToCartFromPdpTest"/>   

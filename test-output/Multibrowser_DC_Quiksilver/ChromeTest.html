@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/0/1</td>
 </tr><tr>
-<td>Started on:</td><td>Sun Aug 10 12:25:50 PDT 2014</td>
+<td>Started on:</td><td>Sun Aug 10 22:46:28 PDT 2014</td>
 </tr>
-<tr><td>Total time:</td><td>25 seconds (25894 ms)</td>
+<tr><td>Total time:</td><td>55 seconds (55788 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,54 +75,58 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest.addToCartContinueShoppingPDP()'><b>addToCartContinueShoppingPDP</b><br>Test class: com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest<br/>
-<a href="#Output-1569765164" onClick='toggleBox("Output-1569765164", this, "Show output", "Hide output");'>Show output</a>
+<td title='com.quiksilver.test.GuestVisaCheckoutTest.getToStep1()'><b>getToStep1</b><br>Test class: com.quiksilver.test.GuestVisaCheckoutTest<br/>
+<a href="#Output-343935649" onClick='toggleBox("Output-343935649", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-1569765164" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1569765164">
+<a href="#Output-343935649" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-343935649">
 On Home page title is DC Shoes | Skate & Snowboard Quality Clothing<br/>
-After click on 'Login' link in the header page title is Login to your Personal Account - DC Shoes<br/>
-Logging in using email:software_test22@yahoo.com and password: fluid2<br/>
-Cart is empty--proceeding<br/>
+On Subcat page title is Mens T-Shirts: Short and Long Sleeve Tees - DC Shoes<br/>
+On subcategory page title is 'Mens T-Shirts: Short and Long Sleeve Tees - DC Shoes'<br/>
+On PDP page title is dcshoes RD UNIVERSITY TEE ADYZT03025 - DC Shoes<br/>
+None of the sizes are available for this product<br/>
 </div>
 </td>
-<td><div><pre>org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=36.0.1985.125)
-  (Driver info: chromedriver=2.9.248307,platform=Mac OS X 10.7.5 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 3 milliseconds
+<td><div><pre>org.openqa.selenium.TimeoutException: Timed out after 15 seconds waiting for presence of element located by: By.xpath: //a[contains(@href,&apos;en_US/Cart-Show&apos;)]
 Build info: version: &apos;2.42.2&apos;, revision: &apos;6a6995d31c7c56c340d6f45a76976d43506cd6cc&apos;, time: &apos;2014-06-03 10:52:47&apos;
 System info: host: &apos;PUNRAZ.local&apos;, ip: &apos;192.168.0.2&apos;, os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.7.5&apos;, java.version: &apos;1.6.0_65&apos;
-Session ID: 85180323f2b4d6ce83df6cec5ce9c8b0
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:259)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at com.quiksilver.util.CommonMethods.fromMiniCartToCart(CommonMethods.java:1565)
+	at com.quiksilver.test.GuestVisaCheckoutTest.getToStep1(GuestVisaCheckoutTest.java:69)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element
+  (Session info: chrome=36.0.1985.125)
+  (Driver info: chromedriver=2.9.248307,platform=Mac OS X 10.7.5 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 6 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.42.2&apos;, revision: &apos;6a6995d31c7c56c340d6f45a76976d43506cd6cc&apos;, time: &apos;2014-06-03 10:52:47&apos;
+System info: host: &apos;PUNRAZ.local&apos;, ip: &apos;192.168.0.2&apos;, os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.7.5&apos;, java.version: &apos;1.6.0_65&apos;
+Session ID: 79ed583d6674367ceed013728b33d013
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/var/folders/vv/30lw1_z968g34f959mr38g3m0000gp/T/.org.chromium.Chromium.FraO9R}, rotatable=false, locationContextEnabled=true, version=36.0.1985.125, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, nativeEvents=true, webStorageEnabled=true, applicationCacheEnabled=false, takesScreenshot=true}]
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/var/folders/vv/30lw1_z968g34f959mr38g3m0000gp/T/.org.chromium.Chromium.rvLZEt}, rotatable=false, locationContextEnabled=true, version=36.0.1985.125, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, nativeEvents=true, webStorageEnabled=true, applicationCacheEnabled=false, takesScreenshot=true}]
 	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:193)
 	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:145)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
-	at org.openqa.selenium.remote.RemoteWebDriver.getTitle(RemoteWebDriver.java:285)
-	at com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest.addToCartContinueShoppingPDP(SignedInAddToCartContinueShoppingCheckoutTest.java:103)
-... Removed 30 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1569765164", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1569765164'><pre>org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=36.0.1985.125)
-  (Driver info: chromedriver=2.9.248307,platform=Mac OS X 10.7.5 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 3 milliseconds
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:307)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:404)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:357)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:299)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:730)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:39)
+	at org.openqa.selenium.support.ui.ExpectedConditions$3.apply(ExpectedConditions.java:106)
+	at org.openqa.selenium.support.ui.ExpectedConditions$3.apply(ExpectedConditions.java:103)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
+	... 28 more
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace343935649", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace343935649'><pre>org.openqa.selenium.TimeoutException: Timed out after 15 seconds waiting for presence of element located by: By.xpath: //a[contains(@href,&apos;en_US/Cart-Show&apos;)]
 Build info: version: &apos;2.42.2&apos;, revision: &apos;6a6995d31c7c56c340d6f45a76976d43506cd6cc&apos;, time: &apos;2014-06-03 10:52:47&apos;
 System info: host: &apos;PUNRAZ.local&apos;, ip: &apos;192.168.0.2&apos;, os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.7.5&apos;, java.version: &apos;1.6.0_65&apos;
-Session ID: 85180323f2b4d6ce83df6cec5ce9c8b0
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/var/folders/vv/30lw1_z968g34f959mr38g3m0000gp/T/.org.chromium.Chromium.FraO9R}, rotatable=false, locationContextEnabled=true, version=36.0.1985.125, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, nativeEvents=true, webStorageEnabled=true, applicationCacheEnabled=false, takesScreenshot=true}]
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:193)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:145)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
-	at org.openqa.selenium.remote.RemoteWebDriver.getTitle(RemoteWebDriver.java:285)
-	at com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest.addToCartContinueShoppingPDP(SignedInAddToCartContinueShoppingCheckoutTest.java:103)
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:259)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at com.quiksilver.util.CommonMethods.fromMiniCartToCart(CommonMethods.java:1565)
+	at com.quiksilver.test.GuestVisaCheckoutTest.getToStep1(GuestVisaCheckoutTest.java:69)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
@@ -149,9 +153,35 @@ Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browse
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element
+  (Session info: chrome=36.0.1985.125)
+  (Driver info: chromedriver=2.9.248307,platform=Mac OS X 10.7.5 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 6 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.42.2&apos;, revision: &apos;6a6995d31c7c56c340d6f45a76976d43506cd6cc&apos;, time: &apos;2014-06-03 10:52:47&apos;
+System info: host: &apos;PUNRAZ.local&apos;, ip: &apos;192.168.0.2&apos;, os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.7.5&apos;, java.version: &apos;1.6.0_65&apos;
+Session ID: 79ed583d6674367ceed013728b33d013
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/var/folders/vv/30lw1_z968g34f959mr38g3m0000gp/T/.org.chromium.Chromium.rvLZEt}, rotatable=false, locationContextEnabled=true, version=36.0.1985.125, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, nativeEvents=true, webStorageEnabled=true, applicationCacheEnabled=false, takesScreenshot=true}]
+	at sun.reflect.GeneratedConstructorAccessor16.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:193)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:145)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:307)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:404)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:357)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:299)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:730)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:39)
+	at org.openqa.selenium.support.ui.ExpectedConditions$3.apply(ExpectedConditions.java:106)
+	at org.openqa.selenium.support.ui.ExpectedConditions$3.apply(ExpectedConditions.java:103)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
+	... 28 more
 </pre></div></td>
 <td>0</td>
-<td>com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest@7cfefe3f</td></tr>
+<td>com.quiksilver.test.GuestVisaCheckoutTest@4737371</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-skipped'>
 <tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
@@ -161,10 +191,10 @@ Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browse
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest.testSignedInAddToCartContinueShopping()'><b>testSignedInAddToCartContinueShopping</b><br>Test class: com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest</td>
+<td title='com.quiksilver.test.GuestVisaCheckoutTest.testGuestCheckoutVisa()'><b>testGuestCheckoutVisa</b><br>Test class: com.quiksilver.test.GuestVisaCheckoutTest</td>
 <td></td>
 <td>0</td>
-<td>com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest@7cfefe3f</td></tr>
+<td>com.quiksilver.test.GuestVisaCheckoutTest@4737371</td></tr>
 </table><p>
 </body>
 </html>

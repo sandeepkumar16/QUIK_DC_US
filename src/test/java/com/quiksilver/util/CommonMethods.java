@@ -1392,7 +1392,7 @@ public class CommonMethods {
 		WebDriverWait wait= new WebDriverWait(driver,15);
 		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart")));
 		driver.findElement(map.getLocator("pdp_sizeselector")).click();
-		Thread.sleep(5000L);
+		Thread.sleep(9000L);
 		//US Site// Select size dropdown and size swatch
 		if (size.equals("S"))
 		{

@@ -7,15 +7,15 @@
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="stagingDC_US"/>
     <classes>
-      <class name="com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest">
+      <class name="com.quiksilver.test.GuestVisaCheckoutTest">
         <methods>
-          <include name="addToCartContinueShoppingPDP"/>
-          <include name="testSignedInAddToCartContinueShopping"/>
+          <include name="getToStep1"/>
           <include name="beforeTest"/>
+          <include name="testGuestCheckoutVisa"/>
           <include name="getToHome"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest -->
+      </class> <!-- com.quiksilver.test.GuestVisaCheckoutTest -->
     </classes>
   </test> <!-- ChromeTest(failed) -->
 </suite> <!-- Failed suite [Multibrowser_DC_Quiksilver] -->
