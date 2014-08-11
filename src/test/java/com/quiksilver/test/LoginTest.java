@@ -28,7 +28,7 @@ import com.quiksilver.util.WebDriverManager;
 
 //TC#1 Login with DataProvider
 public class LoginTest extends BaseSuite {		
-
+	private WebDriverManager wm=new WebDriverManager();
 	@DataProvider(name = "registeredCheckout")
 	public Object[][] createData1() {
 		return new Object[][] {
@@ -62,7 +62,8 @@ Reporter.log("Welcome message is : "+welcome);
 		cm.logout(driver);
 		//to make sure that logged out and got back to interst sign in page
 		driver.findElement(map.getLocator("create_accountbtn"));
-
+		String m=	wm.getSessionId();
+		Reporter.log(m);
 	}
 
 
