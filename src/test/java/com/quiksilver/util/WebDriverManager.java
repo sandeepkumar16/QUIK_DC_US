@@ -26,14 +26,23 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestContext;
 import org.testng.Reporter;
 
+import com.saucelabs.common.SauceOnDemandAuthentication;
+import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 
-public class WebDriverManager {
+
+public class WebDriverManager  implements SauceOnDemandSessionIdProvider {
 	public static RemoteWebDriver driver ;
 	private static Logger log;
 	private static DesiredCapabilities capability;
 	static ProfilesIni allProfiles = new ProfilesIni();
 	static FirefoxProfile webdriver;
 	static FirefoxProfile defaultProfile;
+
+	
+
+  
+	
+    private String sessionId;
 	
 	static ReadingProperties rp = new ReadingProperties();
 	static String chromePath =rp.readConfigProperties("chromePath");
@@ -67,7 +76,7 @@ public class WebDriverManager {
 			caps.setCapability("platform", "OS X 10.6");
 		    caps.setCapability("version", "30");
 		    driver = new RemoteWebDriver(
-						  new URL("http://veronicapeterfluid:f7c04d36-8386-4bf8-b75a-5ff52f50f61a@ondemand.saucelabs.com:80/wd/hub"),caps);
+						  new URL("http://Fluid_QUI:69ac4528-5390-4f71-8764-cfa204882297@ondemand.saucelabs.com:80/wd/hub"),caps);
 			
 			
 		/*driver = new FirefoxDriver();
