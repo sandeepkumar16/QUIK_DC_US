@@ -62,15 +62,12 @@ public class WebDriverManager {
 		{
 			
 			DesiredCapabilities caps = DesiredCapabilities.firefox();
-			/*caps.setCapability("name", "DC Shoes US");
+			caps.setCapability("name", "DC Shoes US");
 			
 			caps.setCapability("platform", "OS X 10.6");
-		    caps.setCapability("version", "30");*/
-			caps.setBrowserName(System.getenv("SELENIUM_BROWSER"));
-			caps.setVersion(System.getenv("SELENIUM_VERSION"));
-			caps.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
+		    caps.setCapability("version", "30");
 		    driver = new RemoteWebDriver(
-						  new URL("http://Fluid_QUI:69ac4528-5390-4f71-8764-cfa204882297@ondemand.saucelabs.com:80/wd/hub"),caps);
+						  new URL("http://veronicapeterfluid:f7c04d36-8386-4bf8-b75a-5ff52f50f61a@ondemand.saucelabs.com:80/wd/hub"),caps);
 			
 			
 		/*driver = new FirefoxDriver();
