@@ -9,10 +9,11 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.quiksilver.util.BaseSuite;
+import com.quiksilver.util.WebDriverManager;
 
 //TC#16 Search for item Guest Checkout
 public class SearchForItemGuestCheckoutTest extends BaseSuite {
-
+	private WebDriverManager wm=new WebDriverManager();
 	@BeforeMethod
 	public void searchForItemGetToCheckout() throws Exception
 	{
@@ -101,6 +102,8 @@ public class SearchForItemGuestCheckoutTest extends BaseSuite {
 
 	        //on Confirmation page 
 	        cm.submitConfirmation(driver);
+	        String m=	wm.getSessionId();
+			Reporter.log(m);
 
 
 	}

@@ -17,6 +17,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.quiksilver.util.BaseSuite;
+import com.quiksilver.util.WebDriverManager;
 
 //TC # 9 Browse from top level-subcategory-category navigation-express shop add to cart-Continue Shoping 
 //Add other item to cart-View cart and checkout
@@ -28,6 +29,7 @@ import com.quiksilver.util.BaseSuite;
 //@Listeners({ com.quiksilver.util.TestListenerFailPass.class })
 
 public class SignedInAddToCartContinueShoppingCheckoutTest extends BaseSuite {
+	private WebDriverManager wm=new WebDriverManager();
 	public  String testEmail = rp.readConfigProperties("yahoo");
 	  public String testPassword = rp.readConfigProperties("password_yahoo");  
 	  public String master=rp.readConfigProperties("master_nosecurecode");
@@ -167,7 +169,9 @@ Reporter.log("On Subcat page title is "+ driver.getTitle());
 		//     WebElement continuebtn=
 		driver.findElement(map.getLocator("billing_continuebtn")).click();
 		
-	        
+		 String m=	wm.getSessionId();
+			Reporter.log(m);
+
 	}
 
 }

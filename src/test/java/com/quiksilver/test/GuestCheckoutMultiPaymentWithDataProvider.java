@@ -30,7 +30,7 @@ import com.quiksilver.util.WebDriverManager;
 
 //TC #8 Guest Visa Checkout  with data provider using data from xlsx spreadsheet
 public class GuestCheckoutMultiPaymentWithDataProvider extends BaseSuite {
-
+	private WebDriverManager wm=new WebDriverManager();
 
 	 String excelPath= rp.readConfigProperties("excel.path");
      String path = System.getProperty("user.dir")+excelPath;
@@ -237,7 +237,9 @@ public class GuestCheckoutMultiPaymentWithDataProvider extends BaseSuite {
 		        //on Confirmation page 
 		        cm.submitConfirmation(driver);
 	        
-		
+		        String m=	wm.getSessionId();
+				Reporter.log(m);
+
 		
 		
 	}
