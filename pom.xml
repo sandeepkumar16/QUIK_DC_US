@@ -10,7 +10,24 @@
     <description>A sample Maven project that demonstrates how to integrate Sauce OnDemand with WebDriver tests
         that run using TestNG
     </description>
-
+ <reporting>
+        <plugins>
+            <plugin>
+               <groupId>org.reportyng</groupId>
+                <artifactId>reporty-ng</artifactId>
+                <version>1.2</version>
+                <configuration>
+                          
+             <outputDir>/target/site/reportyng-xslt</outputDir>
+             <sorttestcaselinks>true</sorttestcaselinks>
+               <showRuntimeTotals>true</showRuntimeTotals>
+                <sortTestCaseLinks>true</sortTestCaseLinks>
+                    <testDetailsFilter>FAIL,PASS,SKIP,CONF,BY_CLASS</testDetailsFilter>
+                    <!-- <cssFile>myCustomStyle.css</cssFile> -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
@@ -18,6 +35,7 @@
             <version>6.1.1</version>
             <scope>test</scope>
         </dependency>
+        
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -94,7 +112,7 @@
         </plugins>
     </build>
 
-    <repositories>
+    <!-- <repositories>
         <repository>
             <id>saucelabs-repository</id>
             <url>http://repository-saucelabs.forge.cloudbees.com/release</url>
@@ -105,6 +123,31 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
-    </repositories>
+        
+        </repositories> 
+      
+         -->
+         <pluginRepositories>
+         <pluginRepository>
+         <id>reporty-ng</id>
+         <url>https://github.com/cosminaru/reporty-ng/raw/master/dist/maven</url>
+        </pluginRepository>
+         
+  </pluginRepositories>
+         
+     <repositories>
+        <repository>
+            <id>saucelabs-repository</id>
+            <url>http://repository-saucelabs.forge.cloudbees.com/release</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        
+        </repositories> 
+      
 
 </project>

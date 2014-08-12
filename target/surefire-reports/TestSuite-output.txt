@@ -1,98 +1,46 @@
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
 Successfully read from config.properties file <or.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
 Successfully read from config.properties file <or.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
 log4j:WARN No appenders could be found for logger (myLogger).
 log4j:WARN Please initialize the log4j system properly.
 log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
 Successfully read from config.properties file <submittedorders.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
 Successfully read from config.properties file <createdaccounts.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
 Successfully read from config.properties file <staging>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
 Successfully read from config.properties file <production>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
 Successfully read from config.properties file <staging_dcshoes>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
 Successfully read from config.properties file <production_dcshoes>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <fail.screenshot.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <pass.screenshot.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <usergen.screenshot.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <fail.screenshot.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <pass.screenshot.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <usergen.screenshot.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
 Successfully read from config.properties file <staging>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
 Successfully read from config.properties file <production>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
 Successfully read from config.properties file <staging_dcshoes>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
 Successfully read from config.properties file <production_dcshoes>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
 Successfully read from config.properties file <staging_dcshoesUS>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
 Successfully read from config.properties file <hotmail>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
+path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVNXXX/config.properties
 Successfully read from config.properties file <password_hotmail>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <or.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <or.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <submittedorders.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <createdaccounts.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <staging>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <production>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <staging_dcshoes>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <production_dcshoes>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <fail.screenshot.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <pass.screenshot.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <usergen.screenshot.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <fail.screenshot.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <pass.screenshot.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <usergen.screenshot.path>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <staging>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <production>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <staging_dcshoes>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <production_dcshoes>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <staging_dcshoesUS>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <hotmail>
-path is /Users/vpeter/Desktop/eclipse/TestScripts/QUIKMVN/config.properties
-Successfully read from config.properties file <password_hotmail>
+Startingob ChromeDriver (v2jc.9[.21483067) on 958]: Objport 377e89
+ct 0xe50170 of class NSThread autoreleased with no pool in place - just leaking - break on objc_autoreleaseNoPool() to debug
 Geo popup not triggered/present
 NOT logged in. Logout link is not present 
 Logging in using email:software_test22@hotmail.com and password: fluid
-Using email software_test22@hotmail.com password fluid
-On subcategory page title is 'Mens T Shirt Collection - DC Shoes'
-linkOmni.size()=48
+SauceOnDemandSessionID=8326998adffe7e7c419a37d8342da8f3 job-name=dc Automation Test
+Geo popup not triggered/present
+NOT logged in. Logout link is not present 
+Logging in using email:software_test22@yahoo.com and password: fluid2
+SauceOnDemandSessionID=8326998adffe7e7c419a37d8342da8f3 job-name=dc Automation Test
