@@ -32,7 +32,7 @@ public class SearchForItemGuestCheckoutTest extends BaseSuite {
 		//cm.subcatPageClickProduct(driver, locator_searchboardshorts);
 
 		//3/17 click on 4th item on subcat page
-		cm.subcatPageClickProduct(driver, 3);
+		cm.subcatPageClickProduct(driver, 23);
 
 		//on PDP add to cart
 		Reporter.log("On PDP page title is "+ driver.getTitle());
