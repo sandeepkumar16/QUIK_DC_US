@@ -95,12 +95,21 @@ public class WebDriverManager  implements SauceOnDemandSessionIdProvider {
 	    }
 	    
 if(browser.equalsIgnoreCase("chrome")) {
-             System.setProperty("webdriver.chrome.driver", "/Users/vpeter/Desktop/Selenium/AllWebDriverJARs/chromedriver.exe");
+           /*  System.setProperty("webdriver.chrome.driver", "/Users/vpeter/Desktop/Selenium/AllWebDriverJARs/chromedriver.exe");
 
               driver=new ChromeDriver();
 
 
-            defaultWindowSize(driver);
+            defaultWindowSize(driver);*/
+	
+	
+	DesiredCapabilities caps = DesiredCapabilities.chrome();
+	caps.setCapability("platform", "OS X 10.6");
+	caps.setCapability("version", "31");
+	driver = new RemoteWebDriver(
+			  new URL("http://Fluid_QUI:69ac4528-5390-4f71-8764-cfa204882297@ondemand.saucelabs.com:80/wd/hub"),caps);
+
+
 
 	    }
 	    if(browser.equalsIgnoreCase("safari")) {
