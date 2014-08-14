@@ -1253,6 +1253,8 @@ public class CommonMethods {
 			
 			driver.findElement(map.getLocator("quickview_AddtoCart_aftersize")).click();
 			
+			Thread.sleep(5000L);
+			
 		}
 	finally
 	{
