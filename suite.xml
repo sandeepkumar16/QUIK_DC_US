@@ -53,6 +53,7 @@
                        
                          <class name="com.quiksilver.test.GuestCheckoutExpressAmexTest"/>   
                           <class name="com.quiksilver.test.GuestVisaCheckoutTest"/> 
+                          <class name="com.quiksilver.test.AccountRegistrationTest" />
                  <!-- <class name="com.quiksilver.test.LoginTest" />
               
        

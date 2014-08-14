@@ -104,6 +104,7 @@ if(browser.equalsIgnoreCase("chrome")) {
 	
 	
 	DesiredCapabilities caps = DesiredCapabilities.chrome();
+	caps.setCapability("name", "DC Shoes US");
 	caps.setCapability("platform", "OS X 10.6");
 	caps.setCapability("version", "31");
 	driver = new RemoteWebDriver(
