@@ -824,7 +824,7 @@ public class CommonMethods {
 		
 		}
 		//DC US no search button need to click on Enter key
-		
+		try{
 		String item1 = "Tshirt";
 		driver.findElement(map.getLocator("searchField")).clear();
 		driver.findElement(map.getLocator("searchField")).sendKeys(item1);
@@ -834,7 +834,11 @@ public class CommonMethods {
 		driver.get("http://www.stg.dcshoes.com/on/demandware.store/Sites-DC-US-Site/en_US/Search-Show?q=T%20Shirts");
 	
 		Thread.sleep(30000L);
-		
+		}
+		catch (Throwable t)
+		{
+			Reporter.log("<b>There was an error searching for an item </b>");
+		}
 
 		/* this can be done later verifying search breadcrumbs
 		boolean search_breadcrumbs = driver.findElement(
@@ -948,8 +952,14 @@ public class CommonMethods {
 	
 	public void subcatPageClickProduct(WebDriver driver, int productNumber) throws Exception
 	{
+		try{
 		WebElement product=subcatPageFindProduct(driver,productNumber);
-		product.click();	 
+		product.click();	
+		}
+		catch (Throwable t)
+		{
+			Reporter.log("<b>There was an issue clicking on a product..</b>");
+		}
 	}	
 	
 	public void subcatPageHoverOnProductClickExpressLink(WebDriver driver, int productNumber) throws Exception
