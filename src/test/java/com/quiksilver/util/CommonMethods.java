@@ -1251,7 +1251,7 @@ public class CommonMethods {
 			Thread.sleep(5000L);
 			System.out.println("About to click ADD TO CART");
 			
-			driver.findElement(map.getLocator("quickview_AddtoCart_aftersize")).click();
+			driver.findElement(map.getLocator("quickview_AddtoCart")).click();
 			
 			Thread.sleep(5000L);
 			
