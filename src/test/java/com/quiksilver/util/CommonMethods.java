@@ -1250,9 +1250,18 @@ public class CommonMethods {
 			
 			Thread.sleep(5000L);
 			System.out.println("About to click ADD TO CART");
+			//if (driver.findElements(By.xpath("quickview_AddtoCart")).size()!=0)
+			//{
 			
+			if (driver.findElement(map.getLocator("quickview_AddtoCart")).isDisplayed())
+			{
 			driver.findElement(map.getLocator("quickview_AddtoCart")).click();
 			
+			}
+			else
+			{	
+				Reporter.log("None of the sizes are available for this product");
+			}
 			Thread.sleep(5000L);
 			
 		}
