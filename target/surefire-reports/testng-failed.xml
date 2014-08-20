@@ -1,34 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite verbose="0" name="Failed suite [Multibrowser_DC_Quiksilver]">
+<suite configfailurepolicy="continue" verbose="0" name="Failed suite [Multibrowser_DC_Quiksilver]">
   <parameter name="browser" value="safari"/>
   <parameter name="url" value="stagingDC_US"/>
-  <test name="FirefoxTest(failed)" preserve-order="false">
-    <parameter name="browser" value="firefox"/>
-    <parameter name="url" value="stagingDC"/>
-    <classes>
-      <class name="com.quiksilver.test.GuestCheckoutExpressAmexTest">
-        <methods>
-          <include name="getToStep1GuestCheckout"/>
-          <include name="beforeTest"/>
-          <include name="getToHome"/>
-          <include name="tearDown"/>
-        </methods>
-      </class>
-      <class name="com.quiksilver.test.AddToWishListPdpTest">
-        <methods>
-          <include name="beforeTest"/>
-          <include name="getToHome"/>
-          <include name="tearDown"/>
-          <include name="saveForLaterPDP"/>
-        </methods>
-      </class>
-    </classes>
-  </test>
   <test name="ChromeTest(failed)" preserve-order="false">
     <parameter name="browser" value="chrome"/>
-    <parameter name="url" value="stagingDC"/>
+    <parameter name="url" value="stagingDC_US"/>
     <classes>
+      <class name="com.quiksilver.test.LoginTest">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="tearDown"/>
+          <include name="getToHome"/>
+        </methods>
+      </class>
       <class name="com.quiksilver.test.GuestCheckoutExpressAmexTest">
         <methods>
           <include name="getToStep1GuestCheckout"/>
@@ -38,11 +23,51 @@
           <include name="tearDown"/>
         </methods>
       </class>
-      <class name="com.quiksilver.test.AddToWishListPdpTest">
+      <class name="com.quiksilver.test.SearchForItemGuestCheckoutTest">
+        <methods>
+          <include name="searchForItemGuestCheckout"/>
+          <include name="searchForItemGetToCheckout"/>
+          <include name="beforeTest"/>
+          <include name="getToHome"/>
+          <include name="tearDown"/>
+        </methods>
+      </class>
+      <class name="com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest">
+        <methods>
+          <include name="addToCartContinueShoppingPDP"/>
+          <include name="beforeTest"/>
+          <include name="getToHome"/>
+          <include name="tearDown"/>
+        </methods>
+      </class>
+      <class name="com.quiksilver.test.AddToCartFromPdpTest">
         <methods>
           <include name="beforeTest"/>
           <include name="getToHome"/>
           <include name="tearDown"/>
+        </methods>
+      </class>
+      <class name="com.quiksilver.test.AccountRegistrationTest">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="getToHome"/>
+          <include name="tearDown"/>
+        </methods>
+      </class>
+      <class name="com.quiksilver.test.GuestCheckoutMultiPaymentWithDataProvider">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="getToStep1"/>
+          <include name="tearDown"/>
+          <include name="getToHome"/>
+        </methods>
+      </class>
+      <class name="com.quiksilver.test.GuestVisaCheckoutTest">
+        <methods>
+          <include name="getToStep1"/>
+          <include name="beforeTest"/>
+          <include name="tearDown"/>
+          <include name="getToHome"/>
         </methods>
       </class>
     </classes>
