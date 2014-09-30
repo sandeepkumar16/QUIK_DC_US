@@ -1367,11 +1367,15 @@ public class CommonMethods {
 	public void pdpPageSelectAddToCart(WebDriver driver) throws Exception
 	{
 		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
-		if(isUKsite==true)
+		Boolean isFRsite=driver.getCurrentUrl().contains("fr");
+		
+		if(isUKsite==true || isFRsite==true)
 		{
 		WebDriverWait wait= new WebDriverWait(driver,25);
-		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_UK")));
-		driver.findElement(map.getLocator("pdp_addtocart_UK")).click();
+		wait.until(ExpectedConditions.presenceOfElementLocated(map.getLocator("pdp_addtocart_UKFR")));
+		System.out.println("before clicking button");
+		driver.findElement(map.getLocator("pdp_addtocart_UKFR")).click();
+		System.out.println("after clicking button");
 		Thread.sleep(5000L);
 		return;
 		
@@ -1573,7 +1577,8 @@ public class CommonMethods {
 	public void fromMiniCartToCart(WebDriver driver) throws Exception
 	{
 		Boolean isUKsite=driver.getCurrentUrl().contains("uk");
-		if(isUKsite==true)
+		Boolean isFRsite=driver.getCurrentUrl().contains("fr");
+		if(isUKsite==true || isFRsite==true)
 		{
 		By locator_basket=map.getLocator("minicart_link");
 		onMouseOver(driver,locator_basket);	
