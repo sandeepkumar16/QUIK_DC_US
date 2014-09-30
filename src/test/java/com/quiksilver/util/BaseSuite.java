@@ -41,6 +41,9 @@ public class BaseSuite {
   
   public String stagingDC_US=rp.readConfigProperties("staging_dcshoesUS");  //dc shoes us site in staging
 
+  public String devDCshoesUS=rp.readConfigProperties("dev_dcshoesUS");
+  public String devDCshoesFR=rp.readConfigProperties("dev_dcshoesFR");
+  
 
   public String testEmail = rp.readConfigProperties("yahoo_random");
   public String testPassword = rp.readConfigProperties("password_random");
@@ -103,6 +106,16 @@ public class BaseSuite {
 		 else if (url.equalsIgnoreCase("stagingDC_US"))
 		 {
 			 driver.get(stagingDC_US);
+
+		 }
+		 else if (url.equalsIgnoreCase("devDCshoesUS"))
+		 {
+			 driver.get(devDCshoesUS);
+
+		 }
+		 else if (url.equalsIgnoreCase("devDCshoesFR"))
+		 {
+			 driver.get(devDCshoesFR);
 
 		 }
 	 }

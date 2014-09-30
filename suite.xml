@@ -11,7 +11,7 @@
                 
               <classes>   
                 
-                   <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/>   
+              <!--     <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/>   
                                  
                              
                          <class name="com.quiksilver.test.GuestCheckoutExpressAmexTest"/>   
@@ -25,7 +25,7 @@
                       <class name = "com.quiksilver.test.GuestCheckoutMultiPaymentWithDataProvider"/>  
                  
                     
-             <!--          -->                                                                                        
+                       -->                                                                                        
                      
               </classes>
        </test>
@@ -65,6 +65,34 @@
                </classes>
        </test>      
 
+
+
+<test name="DCShoesDEVELOPMENTUSFirefoxTest">
+              <parameter name="browser" value="firefox" />
+              <parameter name="url" value="devDCshoesUS" />
+                  
+                  
+                
+              <classes>   
+                
+                   <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/>   
+                                 
+           
+               </classes>
+       </test>      
+<test name="DCShoesDEVELOPMENT_FRANCEChromeTest">
+              <parameter name="browser" value="chrome" />
+              <parameter name="url" value="devDCshoesFR" />
+                  
+                  
+                
+              <classes>   
+                
+                   <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/>   
+                                 
+           
+               </classes>
+       </test>  
   
 
   <test name="SafariTest">

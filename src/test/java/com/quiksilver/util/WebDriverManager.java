@@ -95,12 +95,22 @@ public class WebDriverManager  implements SauceOnDemandSessionIdProvider {
 	    }
 	    
 if(browser.equalsIgnoreCase("chrome")) {
-             System.setProperty("webdriver.chrome.driver", "/Users/vpeter/Desktop/Selenium/AllWebDriverJARs/chromedriver.exe");
+	//run on local desktop
+    /* System.setProperty("webdriver.chrome.driver", "/Users/vpeter/Desktop/Selenium/AllWebDriverJARs/chromedriver.exe");
 
-              driver=new ChromeDriver();
+      driver=new ChromeDriver();*/
+
+DesiredCapabilities caps = DesiredCapabilities.chrome();
+caps.setCapability("name", "quiksilver UK-- Chrome");
+
+caps.setCapability("platform", "Windows 7");
+caps.setCapability("version", "36");
+driver = new RemoteWebDriver(
+	  new URL("http://Fluid_QUI:69ac4528-5390-4f71-8764-cfa204882297@ondemand.saucelabs.com:80/wd/hub"),caps);
 
 
-            defaultWindowSize(driver);
+    //defaultWindowSize(driver);
+
 	/*
 	
 	DesiredCapabilities caps = DesiredCapabilities.chrome();
