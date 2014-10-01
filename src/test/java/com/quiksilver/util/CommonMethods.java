@@ -829,11 +829,24 @@ public class CommonMethods {
 		driver.findElement(map.getLocator("searchField")).clear();
 		driver.findElement(map.getLocator("searchField")).sendKeys(item1);
 		
-		driver.findElement(map.getLocator("searchField")).sendKeys(Keys.ENTER);
-		System.out.println("After hitting ENTER on search");
-		driver.get("http://www.stg.dcshoes.com/on/demandware.store/Sites-DC-US-Site/en_US/Search-Show?q=T%20Shirts");
+		//driver.findElement(map.getLocator("searchField")).sendKeys(Keys.ENTER);
+		//System.out.println("After hitting ENTER on search");
+		/*String urlConcat="Search-Show?q=t-shirts";
+		String urlToGo=driver.getCurrentUrl()+urlConcat;
+		driver.get(urlToGo);*/
+		Thread.sleep(5000L);
+		List<WebElement> searchSuggestions=driver.findElements(map.getLocator("searchSuggestionsList"));
+		int count=searchSuggestions.size();
+		Reporter.log("Total suggestions= "+count);
+		for(int i=0; i<count;i++)
+		{
+			Reporter.log( i+" element is "+searchSuggestions.get(i).getText());
+		}
+		
+		driver.findElement(map.getLocator("searchResult1")).click();
 	
 		Thread.sleep(30000L);
+		Reporter.log("<b>Current page title - </b>"+driver.getTitle());
 		}
 		catch (Throwable t)
 		{
@@ -1094,10 +1107,19 @@ public class CommonMethods {
 	public void clearCart(WebDriver driver) throws Exception
 	{
 		//works only for US site
+		System.out.println(driver.getCurrentUrl());
+		//driver.get("https://www.stg.dcshoes.com/on/demandware.store/Sites-DC-US-Site/en_US/Cart-Show/");
+		//http://www.stg.dcshoes.com/on/demandware.store/Sites-DC-US-Site/en_US/Home-Show
 		
+	if (driver.getCurrentUrl().contains("development"))
+	{driver.get("https://development-store-quiksilverinc.demandware.net/on/demandware.store/Sites-DC-US-Site/en_US/Cart-Show");
+	
+	}
+	else
+	{
 		driver.get("https://www.stg.dcshoes.com/on/demandware.store/Sites-DC-US-Site/en_US/Cart-Show/");
-		
-		
+	}
+		Thread.sleep(5000L);
 		
 		//fromMiniCartToCart(driver);
 		try{

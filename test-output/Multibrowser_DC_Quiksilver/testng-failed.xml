@@ -3,19 +3,19 @@
 <suite configfailurepolicy="continue" name="Failed suite [Multibrowser_DC_Quiksilver]">
   <parameter name="browser" value="safari"/>
   <parameter name="url" value="stagingDC_US"/>
-  <test name="DCShoesDEVELOPMENT_FRANCEChromeTest(failed)">
-    <parameter name="browser" value="chrome"/>
-    <parameter name="url" value="devDCshoesFR"/>
+  <test name="DCShoesDEVELOPMENTUSFirefoxTest(failed)">
+    <parameter name="browser" value="firefox"/>
+    <parameter name="url" value="dev_dcshoesUS"/>
     <classes>
-      <class name="com.quiksilver.test.GuestVisaCheckoutTest">
+      <class name="com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest">
         <methods>
-          <include name="getToStep1"/>
+          <include name="addToCartContinueShoppingPDP"/>
+          <include name="testSignedInAddToCartContinueShopping"/>
           <include name="beforeTest"/>
-          <include name="testGuestCheckoutVisa"/>
           <include name="getToHome"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- com.quiksilver.test.GuestVisaCheckoutTest -->
+      </class> <!-- com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest -->
     </classes>
-  </test> <!-- DCShoesDEVELOPMENT_FRANCEChromeTest(failed) -->
+  </test> <!-- DCShoesDEVELOPMENTUSFirefoxTest(failed) -->
 </suite> <!-- Failed suite [Multibrowser_DC_Quiksilver] -->

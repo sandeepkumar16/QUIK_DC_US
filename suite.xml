@@ -49,9 +49,7 @@
                      
                               
                   
-               <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/>    
-       
-                    
+                 
                      
                           <class name= "com.quiksilver.test.AddToCartFromPdpTest"/>   
              
@@ -74,31 +72,17 @@
                   
                 
               <classes>   
-                
-                         <class name="com.quiksilver.test.GuestCheckoutExpressAmexTest"/>  
-                 
-                    <class name= "com.quiksilver.test.SearchForItemGuestCheckoutTest"/>   
-                  
-             <class name="com.quiksilver.test.GuestVisaCheckoutTest"/> 
-            
-          
-                         
-              <class name="com.quiksilver.test.LoginTest" />  
-                       
-                     
-                              
-                  
-          
-                    
-                     
-                          <class name= "com.quiksilver.test.AddToCartFromPdpTest"/>   
-             
-                                    
+                 <class name="com.quiksilver.test.GuestVisaCheckoutTest"/>   
+                      <class name= "com.quiksilver.test.SearchForItemGuestCheckoutTest"/> 
+                        <class name= "com.quiksilver.test.GuestCheckoutExpressAmexTest"/>   
+                        
+                                                                                       
+                      <class name= "com.quiksilver.test.SignedInCheckoutExpressMasterTest"/> 
+                      <class name= "com.quiksilver.test.SignedInAddToCartContinueShoppingCheckoutTest"/>                   
+                      <class name="com.quiksilver.test.LoginTest" />
                       <class name="com.quiksilver.test.AccountRegistrationTest" />
-                        <class name = "com.quiksilver.test.GuestCheckoutMultiPaymentWithDataProvider"/>    
-          
-               
-           
+                      <class name = "com.quiksilver.test.GuestCheckoutMultiPaymentWithDataProvider"/> 
+                  
                </classes>
        </test>      
 <!-- <test name="DCShoesDEVELOPMENT_FRANCEChromeTest">
@@ -109,8 +93,6 @@
                 
               <classes>   
                        <class name="com.quiksilver.test.GuestVisaCheckoutTest"/> 
-            
-                        
            
                </classes>
        </test>  
@@ -122,7 +104,7 @@
               
            <classes>
                               <!-- <class name= "com.quiksilver.test.AddToCartFromPdpTest"/>   
-     <class name= "com.quiksilver.test.GuestCheckoutExpressAmexTest"/>   
+    
                       <class name="com.quiksilver.test.GuestVisaCheckoutTest"/>   
                       <class name= "com.quiksilver.test.SearchForItemGuestCheckoutTest"/>                                                                             
                       <class name= "com.quiksilver.test.SignedInCheckoutExpressMasterTest"/> 
